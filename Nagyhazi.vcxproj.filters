@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\fmt">
+      <UniqueIdentifier>{0fc62ebf-afb6-470e-a9ec-4271868afc49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LinMath">
+      <UniqueIdentifier>{6f499573-4aaa-43a4-bb91-f8bce4938dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LinMath">
+      <UniqueIdentifier>{d2f64c19-421b-4d3b-bcc6-50ee29f3c592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fmt">
+      <UniqueIdentifier>{fa9778a0-6c04-4345-aa53-3bc898335e29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{10335c8f-dea5-4778-8fa4-caa0c2cf3a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OnePort">
+      <UniqueIdentifier>{b127c2af-1a8b-46d0-b326-fb375fe52614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OnePort">
+      <UniqueIdentifier>{66036b0e-32c0-4375-a257-a3c7095bf36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{b14fd0af-263c-405a-8be6-d21d698e269a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Nagyhazi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinMath\LinearEquationSystem.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="LinMath\LinVector.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="LinMath\Matrix.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="LinMath\DimensionException.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="fmt\format.cc">
+      <Filter>Source Files\fmt</Filter>
+    </ClCompile>
+    <ClCompile Include="OnePort\CurrentSource.cpp">
+      <Filter>Source Files\OnePort</Filter>
+    </ClCompile>
+    <ClCompile Include="OnePort\IOnePort.cpp">
+      <Filter>Source Files\OnePort</Filter>
+    </ClCompile>
+    <ClCompile Include="OnePort\Resistor.cpp">
+      <Filter>Source Files\OnePort</Filter>
+    </ClCompile>
+    <ClCompile Include="OnePort\VoltageSource.cpp">
+      <Filter>Source Files\OnePort</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Network.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\INetworkSolver.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\NetworkSolverDC.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fmt\core.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\format.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="fmt\format-inl.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="LinMath\LinearEquationSystem.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="LinMath\LinVector.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="LinMath\Matrix.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="LinMath\DimensionException.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Network.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="OnePort\CurrentSource.h">
+      <Filter>Header Files\OnePort</Filter>
+    </ClInclude>
+    <ClInclude Include="OnePort\IOnePort.h">
+      <Filter>Header Files\OnePort</Filter>
+    </ClInclude>
+    <ClInclude Include="OnePort\Resistor.h">
+      <Filter>Header Files\OnePort</Filter>
+    </ClInclude>
+    <ClInclude Include="OnePort\VoltageSource.h">
+      <Filter>Header Files\OnePort</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\INetworkSolver.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\NetworkSolverDC.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
