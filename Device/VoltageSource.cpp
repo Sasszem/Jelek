@@ -1,7 +1,7 @@
 #include "VoltageSource.h"
 #include "../fmt/core.h"
 
-VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V): IOnePort(id, port_plus, port_minus), voltage(V)
+VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V): IDevice(id, port_plus, port_minus), voltage(V)
 {
 }
 

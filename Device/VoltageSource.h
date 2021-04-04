@@ -1,7 +1,7 @@
 #pragma once
 #include "IDevice.h"
 class VoltageSource :
-    public IOnePort
+    public IDevice
 {
     double voltage;
 public:

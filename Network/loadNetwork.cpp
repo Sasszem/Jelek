@@ -92,7 +92,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		std::cout << type << std::endl;
 		std::cout << line << std::endl;
 
-		IOnePort* device = nullptr;
+		IDevice* device = nullptr;
 
 
 		if (type[0] == '$') {
@@ -139,7 +139,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 				throw std::runtime_error(fmt::format("Error: unknown device: '{}'", type));
 			}
 
-			network->addDevice(std::unique_ptr<IOnePort>(device));
+			network->addDevice(std::unique_ptr<IDevice>(device));
 		}
 	}
 

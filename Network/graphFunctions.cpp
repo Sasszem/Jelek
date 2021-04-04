@@ -100,21 +100,21 @@ std::unique_ptr<NetworkGraph> Analyzer::Network::findCycles(unsigned, unsigned, 
 
 		std::vector<int> path_a, path_b;
 
-		std::unique_ptr<IOnePort>& branch = branches[abs(br) - 1];
+		std::unique_ptr<IDevice>& branch = branches[abs(br) - 1];
 
 		auto a = branch->port_plus;
 		auto b = branch->port_minus;
 
 		// trace back path to root from A
 		while (parent[a - 1] != 0) {
-			std::unique_ptr<IOnePort>& parent_branch = branches[abs(parent[a - 1]) - 1];
+			std::unique_ptr<IDevice>& parent_branch = branches[abs(parent[a - 1]) - 1];
 			path_a.push_back(parent_branch->id * (parent_branch->sign(a)));
 			a = parent_branch->other_port(a);
 		}
 
 		// trace back path from B
 		while (parent[b - 1] != 0) {
-			std::unique_ptr<IOnePort>& parent_branch = branches[abs(parent[b - 1]) - 1];
+			std::unique_ptr<IDevice>& parent_branch = branches[abs(parent[b - 1]) - 1];
 			path_b.push_back(parent_branch->id * (parent_branch->sign(b)));
 			b = parent_branch->other_port(b);
 		}

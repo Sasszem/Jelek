@@ -1,7 +1,7 @@
 #include "Wire.h"
 #include "../fmt/core.h"
 
-Wire::Wire(unsigned id, unsigned port_plus, unsigned port_minus): IOnePort(id, port_plus, port_minus)
+Wire::Wire(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, port_plus, port_minus)
 {
 }
 

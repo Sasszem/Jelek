@@ -9,7 +9,7 @@
 namespace Analyzer {
 	namespace Network {
 		typedef std::vector<std::vector<int>> NetworkGraph;
-		typedef std::vector<std::unique_ptr<IOnePort>> Branches;
+		typedef std::vector<std::unique_ptr<IDevice>> Branches;
 
 		class Network
 		{
@@ -24,7 +24,7 @@ namespace Analyzer {
 			std::unique_ptr<INetworkSolver> solver;
 		public:
 			Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver>);
-			void addDevice(std::unique_ptr<IOnePort>);
+			void addDevice(std::unique_ptr<IDevice>);
 			void finishLoading();
 			LinMath::LinearEquationSystem getEquations();
 			LinMath::LinVector solve();

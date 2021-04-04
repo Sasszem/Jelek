@@ -1,20 +1,20 @@
 #include "IDevice.h"
 #include "../fmt/core.h"
-unsigned IOnePort::currentIndexFromId(unsigned id)
+unsigned IDevice::currentIndexFromId(unsigned id)
 {
 	return 2*id - 1;
 }
-unsigned IOnePort::voltageIndexFromId(unsigned id)
+unsigned IDevice::voltageIndexFromId(unsigned id)
 {
 	return 2*id - 2;
 }
-IOnePort::IOnePort(unsigned id, unsigned plus, unsigned minus): port_plus(plus), port_minus(minus), id(id)
+IDevice::IDevice(unsigned id, unsigned plus, unsigned minus): port_plus(plus), port_minus(minus), id(id)
 {
 }
 
 #include <stdexcept>
 
-unsigned IOnePort::other_port(unsigned port)
+unsigned IDevice::other_port(unsigned port)
 {
 	if (port == port_plus)
 		return port_minus;
@@ -23,21 +23,21 @@ unsigned IOnePort::other_port(unsigned port)
 	//throw new std::invalid_argument(fmt::format("Error: invalid arument for other_port(): {}, valid ports are: {} and {}", port, port_plus, port_minus));
 }
 
-int IOnePort::sign(unsigned port)
+int IDevice::sign(unsigned port)
 {
 	return port==port_plus ? 1 : -1;
 }
 
-unsigned IOnePort::currentIndex()
+unsigned IDevice::currentIndex()
 {
-	return IOnePort::currentIndexFromId(id);
+	return IDevice::currentIndexFromId(id);
 }
 
-unsigned IOnePort::voltageIndex()
+unsigned IDevice::voltageIndex()
 {
-	return IOnePort::voltageIndexFromId(id);
+	return IDevice::voltageIndexFromId(id);
 }
 
-IOnePort::~IOnePort()
+IDevice::~IDevice()
 {
 }

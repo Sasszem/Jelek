@@ -1,7 +1,7 @@
 #pragma once
 #include "IDevice.h"
 class Resistor :
-    public IOnePort
+    public IDevice
 {
     double resistance;
 public:

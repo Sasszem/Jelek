@@ -13,7 +13,7 @@ Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver)
 {
 }
 
-void Network::addDevice(std::unique_ptr<IOnePort> device)
+void Network::addDevice(std::unique_ptr<IDevice> device)
 {
 	// check if the ID is valid
 	if (device->id == 0 || device->id > B) {
@@ -21,7 +21,7 @@ void Network::addDevice(std::unique_ptr<IOnePort> device)
 	}
 
 	// check if the ID is not a duplicate one
-	if (std::any_of(branches.begin(), branches.end(), [&device](std::unique_ptr<IOnePort>& test) {return device->id == test->id; })) {
+	if (std::any_of(branches.begin(), branches.end(), [&device](std::unique_ptr<IDevice>& test) {return device->id == test->id; })) {
 		throw std::runtime_error(fmt::format("Device ID {} is already taken!", device->id));
 	}
 
@@ -41,7 +41,7 @@ void Network::addDevice(std::unique_ptr<IOnePort> device)
 
 void Network::finishLoading()
 {
-	std::sort(branches.begin(), branches.end(), [](std::unique_ptr<IOnePort>& a, std::unique_ptr<IOnePort>& b) {
+	std::sort(branches.begin(), branches.end(), [](std::unique_ptr<IDevice>& a, std::unique_ptr<IDevice>& b) {
 		return a->id > b->id; 
 	});
 }
@@ -102,7 +102,7 @@ LinMath::LinVector Network::solve() {
 	return solver->solve(eq);
 }
 
-const std::vector<std::unique_ptr<IOnePort>>& Network::getBranches()
+const std::vector<std::unique_ptr<IDevice>>& Network::getBranches()
 {
 	return branches;
 }

@@ -1,7 +1,7 @@
 #include "Resistor.h"
 #include "../fmt/core.h"
 
-Resistor::Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double R): IOnePort(id, port_plus, port_minus), resistance(R)
+Resistor::Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double R): IDevice(id, port_plus, port_minus), resistance(R)
 {
 }
 

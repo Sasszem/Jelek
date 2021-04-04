@@ -1,7 +1,7 @@
 #include "CurrentSource.h"
 #include "../fmt/core.h"
 
-CurrentSource::CurrentSource(unsigned id, unsigned port_plus, unsigned port_minus, double current) : IOnePort(id, port_plus, port_minus), current(current)
+CurrentSource::CurrentSource(unsigned id, unsigned port_plus, unsigned port_minus, double current) : IDevice(id, port_plus, port_minus), current(current)
 {
 }
 

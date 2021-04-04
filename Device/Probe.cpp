@@ -1,7 +1,7 @@
 #include "Probe.h"
 #include "../fmt/core.h"
 
-Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus): IOnePort(id, port_plus, port_minus)
+Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, port_plus, port_minus)
 {
 }
 

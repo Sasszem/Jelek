@@ -1,7 +1,7 @@
 #pragma once
 #include "IDevice.h"
 class CurrentSource :
-    public IOnePort
+    public IDevice
 {
     double current;
 public:

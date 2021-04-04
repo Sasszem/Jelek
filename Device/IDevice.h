@@ -2,7 +2,7 @@
 
 #include "../LinMath/LinVector.h"
 
-class IOnePort
+class IDevice
 {
 protected:
 	static unsigned currentIndexFromId(unsigned);
@@ -10,7 +10,7 @@ protected:
 public:
 	const unsigned port_plus, port_minus;
 	const unsigned id;
-	IOnePort(unsigned id, unsigned plus, unsigned minus);
+	IDevice(unsigned id, unsigned plus, unsigned minus);
 	unsigned other_port(unsigned);
 	int sign(unsigned);
 	virtual double equation(LinMath::LinVector&) = 0;
@@ -18,6 +18,6 @@ public:
 	unsigned voltageIndex();
 
 	virtual std::string print() = 0;
-	~IOnePort();
+	~IDevice();
 };
 
