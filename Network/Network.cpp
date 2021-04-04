@@ -4,18 +4,28 @@
 #include <stack>
 #include <sstream>
 
+#include "../fmt/core.h"
 #include "../LinMath/Matrix.h"
+#include <algorithm>
+#include "NetworkSolverDC.h"
+#include "NetworkSolverGen.h"
 
-Network::Network(unsigned N, unsigned B) : N(N), B(B), graph(N), branches(B), solver(nullptr)
+Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver) : N(N), B(B), graph(N), solver(std::move(solver))
 {
 }
 
-void Network::addDevice(IOnePort& device)
+void Network::addDevice(std::unique_ptr<IOnePort> device)
 {
-	auto deviceCopy = device.copy();
-	branches[device.id - 1] = deviceCopy;
-	graph[device.port_plus - 1].push_back(device.id);
-	graph[device.port_minus - 1].push_back(0-device.id);
+	graph[device->port_plus - 1].push_back(device->id);
+	graph[device->port_minus - 1].push_back(0-device->id);
+	branches.push_back(std::move(device));
+}
+
+void Network::finishLoading()
+{
+	std::sort(branches.begin(), branches.end(), [](std::unique_ptr<IOnePort>& a, std::unique_ptr<IOnePort>& b) {
+		return a->id > b->id; 
+	});
 }
 
 LinMath::LinearEquationSystem Network::getEquations() {
@@ -52,7 +62,7 @@ LinMath::LinearEquationSystem Network::getEquations() {
 	// going round in a loop, the sum of all voltages (with proper directions) is 0
 
 	auto cycles = findCycles(N, B, graph, branches);
-	for (auto& cycle : cycles) {
+	for (auto& cycle : *cycles) {
 		for (auto& b : cycle) {
 			eq.getMatrix()[idx][2 * abs(b) - 2] = (b > 0) ? 1 : -1;
 		}
@@ -71,22 +81,15 @@ LinMath::LinearEquationSystem Network::getEquations() {
 LinMath::LinVector Network::solve() {
 	auto eq = getEquations();
 
-	return eq.getMatrix().invert() * eq.getVector();
+	return solver->solve(eq);
 }
 
-const std::vector<IOnePort*>& Network::getBranches()
+const std::vector<std::unique_ptr<IOnePort>>& Network::getBranches()
 {
 	return branches;
 }
 
-
-Network::~Network()
-{
-	for (auto& elem : branches)
- 		delete elem;
-}
-
-void DFS(NetworkGraph graph, std::vector<IOnePort*>& branches, std::vector<int> &binding_branches, std::vector<int> &parent) {
+void DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& binding_branches, std::vector<int>& parent) {
 	/// <summary>
 	/// this dual purpose function is a DFS traversal for two jobs
 	/// it finds all binding branches of the spanning forest of the network graph
@@ -155,21 +158,47 @@ void DFS(NetworkGraph graph, std::vector<IOnePort*>& branches, std::vector<int> 
 #include "../OnePort/CurrentSource.h"
 #include "../OnePort/VoltageSource.h"
 
-Network* loadFromStream(std::istream& stream)
+std::unique_ptr<Network> loadFromStream(std::istream& stream)
 {
-	// stream must start with 2 numbers: N and B
 	unsigned N, B;
+	INetworkSolver* solver = nullptr;
+	std::string analysisType;
 
 	std::string line;
 	std::getline(stream, line);
 
 	std::istringstream iss(line);
 	if (!(iss >> N >> B)) { 
-		// TODO
+		throw std::runtime_error(fmt::format("Error: could not parse header N and B: '{}'", line));
 	}
 
-	Network* network = new Network(N, B);
+	iss >> analysisType;
+	if (iss) {
+		if (analysisType == "DC") {
+			solver = new NetworkSolverDC();
+		} else if (analysisType == "GEN") {
+			unsigned deviceid;
+			iss >> deviceid;
+			if (!iss) {
+				throw std::runtime_error(fmt::format("Error: could not parse GEN analysis parameters!"));
+			}
+			double R1 = NetworkSolverGen::R1_DEFAULT, R2 = NetworkSolverGen::R2_DEFAULT;
+			iss >> R1 >> R2;
+			solver = new NetworkSolverGen(deviceid, R1, R2);
 
+		} else if (analysisType == "TWOPORT") {
+
+		}
+	} else {
+		// default to DC
+		solver = new NetworkSolverDC();
+		std::cout << "No analysis was specified, defaulting to DC!" << std::endl;
+	}
+
+	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::unique_ptr<INetworkSolver>(solver)));
+
+
+	/*
 	bool run = true;
 	while (std::getline(stream, line) && run)
 	{
@@ -226,13 +255,14 @@ Network* loadFromStream(std::istream& stream)
 			}
 		}
 	}
-
+	*/
 
 	return network;
 }
 
-NetworkGraph findCycles(unsigned N, unsigned B, NetworkGraph& graph, std::vector<IOnePort*>& branches) {
-	NetworkGraph ret;
+std::unique_ptr<NetworkGraph> findCycles(unsigned, unsigned, NetworkGraph& graph, Branches& branches) {
+	std::unique_ptr<NetworkGraph> ret = std::make_unique<NetworkGraph>();	
+	unsigned N = graph.size();
 
 	// run traversal on graph and find tree branches and binding branches
 	// need to keep track of what nodes did we already visit
@@ -259,21 +289,21 @@ NetworkGraph findCycles(unsigned N, unsigned B, NetworkGraph& graph, std::vector
 
 		std::vector<int> path_a, path_b;
 		
-		auto branch = branches[abs(br) - 1];
+		std::unique_ptr<IOnePort>& branch = branches[abs(br) - 1];
 
 		auto a = branch->port_plus;
 		auto b = branch->port_minus;
 
 		// trace back path to root from A
 		while (parent[a - 1] != 0) {
-			auto parent_branch = branches[abs(parent[a - 1]) - 1];
+			std::unique_ptr<IOnePort>&  parent_branch = branches[abs(parent[a - 1]) - 1];
 			path_a.push_back(parent_branch->id * (parent_branch->sign(a)));
 			a = parent_branch->other_port(a);
 		}
 
 		// trace back path from B
 		while (parent[b - 1] != 0) {
-			auto parent_branch = branches[abs(parent[b - 1]) - 1];
+			std::unique_ptr<IOnePort>& parent_branch = branches[abs(parent[b - 1]) - 1];
 			path_b.push_back(parent_branch->id * (parent_branch->sign(b)));
 			b = parent_branch->other_port(b);
 		}
@@ -299,8 +329,8 @@ NetworkGraph findCycles(unsigned N, unsigned B, NetworkGraph& graph, std::vector
 		cycle.push_back(abs(br));
 
 		// add cycle
-		ret.push_back(cycle);
+		ret->push_back(cycle);
 	}
 
-	return ret;
+	return std::move(ret);
 };

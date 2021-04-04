@@ -5,10 +5,6 @@ CurrentSource::CurrentSource(unsigned id, unsigned port_plus, unsigned port_minu
 {
 }
 
-IOnePort* CurrentSource::copy() {
-	return new CurrentSource(*this);
-}
-
 double CurrentSource::equation(LinMath::LinVector& vec) {
 	vec[currentIndex()] = 1;
 	return current;

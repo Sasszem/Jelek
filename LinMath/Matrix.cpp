@@ -23,7 +23,7 @@ Matrix::~Matrix()
 		delete* i;
 }
 
-Matrix Matrix::invert()
+Matrix Matrix::invert() const
 {
 	// invert matrix by gaussian elimination with an identity matrix
 
@@ -88,6 +88,14 @@ Matrix Matrix::invert()
 }
 
 LinVector& Matrix::operator[](unsigned index)
+{
+	if (index >= rows) {
+		throw new DimensionException(fmt::format("Can't access row {} of a {}x{} matrix!", index, rows, columns));
+	}
+	return *data[index];
+}
+
+const LinVector& LinMath::Matrix::operator[](unsigned index) const
 {
 	if (index >= rows) {
 		throw new DimensionException(fmt::format("Can't access row {} of a {}x{} matrix!", index, rows, columns));

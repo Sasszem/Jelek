@@ -78,6 +78,9 @@
     <ClCompile Include="Network\NetworkSolverDC.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
+    <ClCompile Include="Network\NetworkSolverGen.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fmt\core.h">
@@ -122,5 +125,11 @@
     <ClInclude Include="Network\NetworkSolverDC.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
+    <ClInclude Include="Network\NetworkSolverGen.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

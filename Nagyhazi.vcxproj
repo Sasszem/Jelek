@@ -148,6 +148,7 @@
     <ClCompile Include="Network\INetworkSolver.cpp" />
     <ClCompile Include="Network\Network.cpp" />
     <ClCompile Include="Network\NetworkSolverDC.cpp" />
+    <ClCompile Include="Network\NetworkSolverGen.cpp" />
     <ClCompile Include="OnePort\CurrentSource.cpp" />
     <ClCompile Include="OnePort\IOnePort.cpp" />
     <ClCompile Include="OnePort\Resistor.cpp" />
@@ -164,10 +165,14 @@
     <ClInclude Include="Network\INetworkSolver.h" />
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\NetworkSolverDC.h" />
+    <ClInclude Include="Network\NetworkSolverGen.h" />
     <ClInclude Include="OnePort\CurrentSource.h" />
     <ClInclude Include="OnePort\IOnePort.h" />
     <ClInclude Include="OnePort\Resistor.h" />
     <ClInclude Include="OnePort\VoltageSource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,11 +14,10 @@ public:
 	unsigned other_port(unsigned);
 	int sign(unsigned);
 	virtual double equation(LinMath::LinVector&) = 0;
-	virtual IOnePort* copy() = 0;
-	virtual ~IOnePort();
 	unsigned currentIndex();
 	unsigned voltageIndex();
 
 	virtual void print(std::ostream&) = 0;
+	~IOnePort();
 };
 

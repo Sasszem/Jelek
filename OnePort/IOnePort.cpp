@@ -28,10 +28,6 @@ int IOnePort::sign(unsigned port)
 	return port==port_plus ? 1 : -1;
 }
 
-IOnePort::~IOnePort()
-{
-}
-
 unsigned IOnePort::currentIndex()
 {
 	return IOnePort::currentIndexFromId(id);
@@ -40,4 +36,8 @@ unsigned IOnePort::currentIndex()
 unsigned IOnePort::voltageIndex()
 {
 	return IOnePort::voltageIndexFromId(id);
+}
+
+IOnePort::~IOnePort()
+{
 }

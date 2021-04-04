@@ -13,8 +13,9 @@ namespace LinMath {
 		Matrix(unsigned rows, unsigned columns);
 		Matrix(const Matrix&);
 		~Matrix();
-		Matrix invert();
+		Matrix invert() const;
 		LinVector& operator[](unsigned index);
+		const LinVector& operator[](unsigned index) const;
 		LinVector operator*(LinVector rhs);
 	};
 }

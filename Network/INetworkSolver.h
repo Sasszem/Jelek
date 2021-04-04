@@ -1,8 +1,11 @@
 #pragma once
 
 #include "../LinMath/LinVector.h"
+#include "../LinMath/LinearEquationSystem.h"
+
 class INetworkSolver
 {
-	virtual LinMath::LinVector solve() = 0;
+public:
+	virtual LinMath::LinVector solve(LinMath::LinearEquationSystem&) const = 0;
 };
 

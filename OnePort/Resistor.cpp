@@ -12,10 +12,6 @@ double Resistor::equation(LinMath::LinVector& vector)
 	return 0.0;
 }
 
-IOnePort* Resistor::copy()
-{
-	return new Resistor(*this);
-}
 
 void Resistor::print(std::ostream& stream)
 {

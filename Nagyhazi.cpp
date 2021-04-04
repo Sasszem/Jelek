@@ -34,9 +34,9 @@ int main()
 
     n.printEquations();
     */
-    Network* net = loadFromStream(std::cin);
+    auto net = loadFromStream(std::cin);
     try {
-        auto solution = net->solveDC();
+        auto solution = net->solve();
 
         for (auto& br : net->getBranches()) {
             std::cout << "Device #" << br->id << ":" << std::endl;
@@ -46,7 +46,6 @@ int main()
     }
     catch (const std::runtime_error& error) {
         std::cout << "non-regular network!" << std::endl;
+        std::cout << error.what() << std::endl;
     }
-    
-    delete net;
 }

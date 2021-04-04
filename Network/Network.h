@@ -4,8 +4,10 @@
 #include <string>
 #include "../LinMath/LinearEquationSystem.h"
 #include "INetworkSolver.h"
+#include <memory>
 
 typedef std::vector<std::vector<int>> NetworkGraph;
+typedef std::vector<std::unique_ptr<IOnePort>> Branches;
 
 class Network
 {
@@ -15,22 +17,20 @@ class Network
 	// G[node] -> [ids]
 	// id is positive or negative depending on voltage and current direction
 	NetworkGraph graph;
-	std::vector<IOnePort*> branches;
+	Branches branches;
 
-	INetworkSolver* solver;
+	std::unique_ptr<INetworkSolver> solver;
 public:
-	Network(unsigned N, unsigned B);
-	void addDevice(IOnePort &device);
-	
+	Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver>);
+	void addDevice(std::unique_ptr<IOnePort>);
+	void finishLoading();
 	LinMath::LinearEquationSystem getEquations();
-	void setSolver(INetworkSolver* solver);
 	LinMath::LinVector solve();
-	const std::vector<IOnePort *>& getBranches();
-	~Network();
+	const Branches& getBranches();
 };
 
-Network* loadFromStream(std::istream&);
-NetworkGraph findCycles(unsigned, unsigned, NetworkGraph&, std::vector<IOnePort*>&);
-void DFS(NetworkGraph graph, std::vector<IOnePort*>& branches, std::vector<int>& binding_branches, std::vector<int>& parent);
+std::unique_ptr<Network> loadFromStream(std::istream&);
+std::unique_ptr<NetworkGraph> findCycles(unsigned, unsigned, NetworkGraph&, Branches&);
+void DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& binding_branches, std::vector<int>& parent);
 
 
