@@ -11,7 +11,7 @@ double VoltageSource::equation(LinMath::LinVector& vector)
 	return voltage;
 }
 
-void VoltageSource::print(std::ostream& stream)
+std::string VoltageSource::print()
 {
-	stream << fmt::format("VoltageSource(id={}, plus={}, minus={}, voltage={})", id, port_plus, port_minus, voltage) << std::endl;
+	return fmt::format("VoltageSource(id={}, plus={}, minus={}, voltage={})", id, port_plus, port_minus, voltage);
 }

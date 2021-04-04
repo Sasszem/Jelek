@@ -10,7 +10,7 @@ double CurrentSource::equation(LinMath::LinVector& vec) {
 	return current;
 }
 
-void CurrentSource::print(std::ostream& stream)
+std::string CurrentSource::print()
 {
-	stream << fmt::format("CurrentSource(id={}, plus={}, minus={}, current={})", id, port_plus, port_minus, current) << std::endl;
+	return fmt::format("CurrentSource(id={}, plus={}, minus={}, current={})", id, port_plus, port_minus, current);
 }

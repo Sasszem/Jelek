@@ -13,7 +13,7 @@ double Resistor::equation(LinMath::LinVector& vector)
 }
 
 
-void Resistor::print(std::ostream& stream)
+std::string Resistor::print()
 {
-	stream << fmt::format("Resistor(id={}, plus={}, minus={}, resistance={})", id, port_plus, port_minus, resistance) << std::endl;
+	return fmt::format("Resistor(id={}, plus={}, minus={}, resistance={})", id, port_plus, port_minus, resistance);
 }

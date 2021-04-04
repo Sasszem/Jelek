@@ -11,7 +11,7 @@ double Wire::equation(LinMath::LinVector& vec)
 	return 0.0;
 }
 
-void Wire::print(std::ostream& stream)
+std::string Wire::print()
 {
-	stream << fmt::format("Wire(id={}, plus={}, minus={})", id, port_plus, port_minus) << std::endl;
+	return fmt::format("Wire(id={}, plus={}, minus={})", id, port_plus, port_minus);
 }

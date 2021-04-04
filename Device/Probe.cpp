@@ -11,7 +11,7 @@ double Probe::equation(LinMath::LinVector& vector)
 	return 0.0;
 }
 
-void Probe::print(std::ostream& stream)
+std::string Probe::print()
 {
-	stream << fmt::format("Probe(id={}, plus={}, minus={})", id, port_plus, port_minus);
+	return fmt::format("Probe(id={}, plus={}, minus={})", id, port_plus, port_minus);
 }

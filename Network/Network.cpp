@@ -1,6 +1,6 @@
 #include "Network.h"
 #include "graphFunctions.h"
-
+#include "../fmt/core.h"
 #include <algorithm>
 
 
@@ -15,6 +15,25 @@ Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver)
 
 void Network::addDevice(std::unique_ptr<IOnePort> device)
 {
+	// check if the ID is valid
+	if (device->id == 0 || device->id > B) {
+		throw std::runtime_error(fmt::format("Device ID {} is outside of the allowed range 1..{}", device->id, B));
+	}
+
+	// check if the ID is not a duplicate one
+	if (std::any_of(branches.begin(), branches.end(), [&device](std::unique_ptr<IOnePort>& test) {return device->id == test->id; })) {
+		throw std::runtime_error(fmt::format("Device ID {} is already taken!", device->id));
+	}
+
+	// validate ports
+	if (device->port_minus == 0 || device->port_minus > N) {
+		throw std::runtime_error(fmt::format("Invalid minus port of device: {}", device->print()));
+	}
+
+	if (device->port_plus== 0 || device->port_plus > N) {
+		throw std::runtime_error(fmt::format("Invalid plus port of device: {}", device->print()));
+	}
+
 	graph[device->port_plus - 1].push_back(device->id);
 	graph[device->port_minus - 1].push_back(0-device->id);
 	branches.push_back(std::move(device));

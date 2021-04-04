@@ -17,7 +17,7 @@ public:
 	unsigned currentIndex();
 	unsigned voltageIndex();
 
-	virtual void print(std::ostream&) = 0;
+	virtual std::string print() = 0;
 	~IOnePort();
 };
 
