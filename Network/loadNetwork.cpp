@@ -1,7 +1,7 @@
 #include "Network.h"
 #include "../fmt/core.h"
 #include "../Device/devices.h"
-#include "Solvers/solvers.h"
+#include "Solver/solvers.h"
 
 
 #include <sstream>
