@@ -1,10 +1,11 @@
 #pragma once
 #include "INetworkSolver.h"
-class NetworkSolverDC :
+class NetworkSolverTwoport :
     public INetworkSolver
 {
+    const unsigned primary, secondary;
 public:
-    NetworkSolverDC();
+    NetworkSolverTwoport(unsigned, unsigned);
     LinMath::LinVector solve(LinMath::LinearEquationSystem&) const;
     std::string print() const;
 };

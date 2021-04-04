@@ -149,6 +149,7 @@
     <ClCompile Include="Network\Network.cpp" />
     <ClCompile Include="Network\NetworkSolverDC.cpp" />
     <ClCompile Include="Network\NetworkSolverGen.cpp" />
+    <ClCompile Include="Network\NetworkSolverTwoport.cpp" />
     <ClCompile Include="OnePort\CurrentSource.cpp" />
     <ClCompile Include="OnePort\IOnePort.cpp" />
     <ClCompile Include="OnePort\Resistor.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\NetworkSolverDC.h" />
     <ClInclude Include="Network\NetworkSolverGen.h" />
+    <ClInclude Include="Network\NetworkSolverTwoport.h" />
     <ClInclude Include="OnePort\CurrentSource.h" />
     <ClInclude Include="OnePort\IOnePort.h" />
     <ClInclude Include="OnePort\Resistor.h" />

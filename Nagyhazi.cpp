@@ -34,18 +34,28 @@ int main()
 
     n.printEquations();
     */
-    auto net = loadFromStream(std::cin);
     try {
-        auto solution = net->solve();
+        auto net = loadFromStream(std::cin);
 
-        for (auto& br : net->getBranches()) {
-            std::cout << "Device #" << br->id << ":" << std::endl;
-            std::cout << "  u = " << solution[br->voltageIndex()] << std::endl;
-            std::cout << "  i = " << solution[br->currentIndex()] << std::endl;
+        // uhh this ugly, need to implement load error and solve error subclasses...
+        try {
+            auto solution = net->solve();
+
+            for (auto& br : net->getBranches()) {
+                std::cout << "Device #" << br->id << ":" << std::endl;
+                std::cout << "  u = " << solution[br->voltageIndex()] << std::endl;
+                std::cout << "  i = " << solution[br->currentIndex()] << std::endl;
+            }
+        }
+        catch (const std::runtime_error& error) {
+            std::cout << "non-regular network!" << std::endl;
+            std::cout << error.what() << std::endl;
         }
     }
     catch (const std::runtime_error& error) {
-        std::cout << "non-regular network!" << std::endl;
+        std::cout << "Loading failed!" << std::endl;
         std::cout << error.what() << std::endl;
     }
+
+
 }

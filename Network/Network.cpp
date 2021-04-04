@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "NetworkSolverDC.h"
 #include "NetworkSolverGen.h"
+#include "NetworkSolverTwoport.h"
 
 Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver) : N(N), B(B), graph(N), solver(std::move(solver))
 {
@@ -180,20 +181,30 @@ std::unique_ptr<Network> loadFromStream(std::istream& stream)
 			unsigned deviceid;
 			iss >> deviceid;
 			if (!iss) {
-				throw std::runtime_error(fmt::format("Error: could not parse GEN analysis parameters!"));
+				throw std::runtime_error(fmt::format("Error: could not parse GEN analysis parameters: '{}'", line));
 			}
 			double R1 = NetworkSolverGen::R1_DEFAULT, R2 = NetworkSolverGen::R2_DEFAULT;
 			iss >> R1 >> R2;
 			solver = new NetworkSolverGen(deviceid, R1, R2);
 
-		} else if (analysisType == "TWOPORT") {
-
+		}
+		else if (analysisType == "TWOPORT") {
+			unsigned primaryId, secondaryId;
+			iss >> primaryId >> secondaryId;
+			if (!iss) {
+				throw std::runtime_error(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
+			}
+			solver = new NetworkSolverTwoport(primaryId, secondaryId);
+		} else {
+			throw std::runtime_error(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
 		}
 	} else {
 		// default to DC
 		solver = new NetworkSolverDC();
 		std::cout << "No analysis was specified, defaulting to DC!" << std::endl;
 	}
+
+	std::cout << "Solver: " << solver->print() << std::endl;
 
 	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::unique_ptr<INetworkSolver>(solver)));
 
