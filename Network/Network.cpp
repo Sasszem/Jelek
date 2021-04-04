@@ -11,6 +11,7 @@
 #include "NetworkSolverGen.h"
 #include "NetworkSolverTwoport.h"
 
+
 Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver) : N(N), B(B), graph(N), solver(std::move(solver))
 {
 }
@@ -155,9 +156,13 @@ void DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& bindin
 	}
 }
 
+
+// included here as this function will be moved to it's own file and split up
 #include "../OnePort/Resistor.h"
 #include "../OnePort/CurrentSource.h"
 #include "../OnePort/VoltageSource.h"
+#include "../OnePort/Wire.h"
+#include "../OnePort/Probe.h"
 
 std::unique_ptr<Network> loadFromStream(std::istream& stream)
 {
@@ -209,64 +214,78 @@ std::unique_ptr<Network> loadFromStream(std::istream& stream)
 	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::unique_ptr<INetworkSolver>(solver)));
 
 
-	/*
+	
 	bool run = true;
 	while (std::getline(stream, line) && run)
 	{
+		// ignore empty lines and comments
+		if (line.empty() || line[0] == '#')
+			continue;
+
+		// stop on 'END'
+		if (line == "END") {
+			if (B != network->getBranches().size()) {
+				throw std::runtime_error(fmt::format("Load error: END but less then B={} branches were added!", B));
+			}
+			run = false;
+			continue;
+		}
+
 		std::istringstream iss(line);
 		std::string type;
-		
+
 		iss >> type;
 		std::cout << type << std::endl;
 		std::cout << line << std::endl;
 		
-		if (type[0] == '$') {
-			unsigned id = 0, portPlus = 0, portMinus = 0;
-			iss >> id >> portPlus >> portMinus;
-			if (!iss) {
-				// TODO
-			}
-			double paramd = 0;
-			IOnePort* device = nullptr;
+		IOnePort* device = nullptr;
 
-			if (type == "$RES") {
-				iss >> paramd;
-				if (!iss) {
-					// TODO
-				}
-				device = new Resistor(id, portPlus, portMinus, paramd);
-			} else if (type == "$VOL") {
-				iss >> paramd;
-				if (!iss) {
-					// TODO
-				}
-				device = new VoltageSource(id, portPlus, portMinus, paramd);
-			} else if (type == "$CUR") {
-				iss >> paramd;
-				if (!iss) {
-					// TODO
-				}
-				device = new CurrentSource(id, portPlus, portMinus, paramd);
-			} else {
-				
+		
+		if (type[0] == '$') {
+			// coupled devices
+
+		} else if (type[0] == '!') {
+			// shorthand forms
+
+		} else {
+			// normal devices
+
+			unsigned id, pPlus, pMinus;
+			iss >> id >> pPlus >> pMinus;
+			if (!iss) {
+				throw std::runtime_error(fmt::format("Error: can not parse device base parameters: '{}'", line));
 			}
-			if (device) {
-				std::cout << "adding:" << std::endl;
-				device->print(std::cout);
-				network->addDevice(*device);
-				delete device;
+
+			double param = 0;
+			if (type == "RES" || type == "VOL" || type == "CUR") {
+				iss >> param;
+				if (!iss) {
+					throw std::runtime_error(fmt::format("Error: could not parse device parameter: '{}'", line));
+				}
+			}
+
+			if (type == "RES") {
+				device = new Resistor(id, pPlus, pMinus, param);
+			}
+			else if (type == "VOL") {
+				device = new VoltageSource(id, pPlus, pMinus, param);
+			}
+			else if (type == "CUR") {
+				device = new CurrentSource(id, pPlus, pMinus, param);
+			}
+			else if (type == "WIRE") {
+				device = new Wire(id, pPlus, pMinus);
+			}
+			else if (type == "PROBE") {
+				device = new Probe(id, pPlus, pMinus);
 			}
 			else {
-				// TODO
+				throw std::runtime_error(fmt::format("Error: unknown device: '{}'", type));
 			}
-		} else {
-			if (type == ".end") {
-				std::cout << "EOF!" << std::endl;
-				run = false;
-			}
+
+			network->addDevice(std::unique_ptr<IOnePort>(device));
 		}
 	}
-	*/
 
 	return network;
 }

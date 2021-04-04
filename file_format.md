@@ -57,7 +57,7 @@ GEN has the following parameters:
 ```
 
 - PRIMARYID: id of the primary port of the two-port network
-- SECONDARYID: id of the secndary port of the netwrok
+- SECONDARYID: id of the secondary port of the network
 
 Both devices will be removed, so setting them as a resistor is recommended
 
@@ -105,15 +105,17 @@ All devices have a type, an ID, and two connections (plus and minus) to nodes.
 
 These devices should come in pairs, but it's not enforced, so it's the responsibility of the creator of the file to ensure that.
 
+To make clear that a device is a coupled one, all coupled device types start with a dollar sign
+
 #### Current controlled current source
 
-- type string: `CCCS`
+- type string: `$CCCS`
 - parameters: source (id), current gain (double a)
 - equation: `a * i(id) - i = 0`
 
 #### Current controlled voltage source
 
-- type string: `CCVS`
+- type string: `$CCVS`
 - parameters: source(id), transfer resistance (double r)
 - equation: `r * i(id) - u = 0`
 
@@ -121,19 +123,19 @@ Since there's no gyrator component, two of these can be used instead easily
 
 #### Voltage controlled voltage source
 
-- type string: `VCVS`
+- type string: `$VCVS`
 - parameters: source(id), voltage gain (double g)
 - equation: `g * u(id) - u = 0`
 
 #### Voltage controlled current source
 
-- type string: `VCCS`
+- type string: `$VCCS`
 - parameters: source(id), transfer conductance (double g)
 - equation: `g * u(id) - i = 0`
 
 #### Nullator
 
-- type string: `NULL`
+- type string: `$NULL`
 - parameters: friend device (id)
 - equations: `u=0, i=0`
 - since every device can have only one equation, it overrides the equation of it's 'friend' device
@@ -143,31 +145,33 @@ Since there's no gyrator component, two of these can be used instead easily
 
 ### Coupled pair shorthand
 
-When a line starts with a dollar sign, it's a shorthand for a coupled device pair
+These pseudo-devices are actually two normal devices used to build a common coupled pair. Since they are still two devices, they take the given ID and the next one.
+
+To make clear that a device is a pair shorthand, all type strings start with an exclamation mark.
 
 ```
-$ <type: string> <id> <plus1: node> <minus1: node> <plus2: node> <minus2: node> <param: double>
+<type: string> <id> <plus1: node> <minus1: node> <plus2: node> <minus2: node> <param: double>
 ```
 
 Don't forget that they still count as 2 devices, taking `id` and `id+1`!
 
 #### ideal transformer
 
-- type string: `TRAN`
+- type string: `!TRAN`
 - parameter is ratio between first and second device
-- synthetised with a CCCS and VCVS
+- synthetized with a CCCS and VCVS
 
 #### gyrator
 
-- type string: `GYR`
+- type string: `!GYR`
 - parameter is gyration resistance
-- syntethised with two CCVS-es
+- synthetized with two CCVS-es
 
 #### Ideal amplifier
 
-- type string: `AMP`
+- type string: `!AMP`
 - no parameters
-- syntethised with a nullator and a short (replaced with a norator)
+- synthetized with a nullator and a short (replaced with a norator)
 
 
 ## Empty lines, comments or EOF

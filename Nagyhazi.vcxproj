@@ -152,8 +152,10 @@
     <ClCompile Include="Network\NetworkSolverTwoport.cpp" />
     <ClCompile Include="OnePort\CurrentSource.cpp" />
     <ClCompile Include="OnePort\IOnePort.cpp" />
+    <ClCompile Include="OnePort\Probe.cpp" />
     <ClCompile Include="OnePort\Resistor.cpp" />
     <ClCompile Include="OnePort\VoltageSource.cpp" />
+    <ClCompile Include="OnePort\Wire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fmt\core.h" />
@@ -170,8 +172,10 @@
     <ClInclude Include="Network\NetworkSolverTwoport.h" />
     <ClInclude Include="OnePort\CurrentSource.h" />
     <ClInclude Include="OnePort\IOnePort.h" />
+    <ClInclude Include="OnePort\Probe.h" />
     <ClInclude Include="OnePort\Resistor.h" />
     <ClInclude Include="OnePort\VoltageSource.h" />
+    <ClInclude Include="OnePort\Wire.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
