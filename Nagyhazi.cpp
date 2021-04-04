@@ -35,7 +35,7 @@ int main()
     n.printEquations();
     */
     try {
-        auto net = loadFromStream(std::cin);
+        auto net = Analyzer::Network::loadFromStream(std::cin);
 
         // uhh this ugly, need to implement load error and solve error subclasses...
         try {

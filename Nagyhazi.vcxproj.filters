@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Device">
       <UniqueIdentifier>{b127c2af-1a8b-46d0-b326-fb375fe52614}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Network\Solver">
+      <UniqueIdentifier>{b39420e8-2a42-47a8-9c4c-b06d41f0389e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network\Solver">
+      <UniqueIdentifier>{cab1768f-e2d9-46a5-ac02-a70cbbf646d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Nagyhazi.cpp">
@@ -57,38 +63,41 @@
     <ClCompile Include="fmt\format.cc">
       <Filter>Source Files\fmt</Filter>
     </ClCompile>
-    <ClCompile Include="OnePort\CurrentSource.cpp">
-      <Filter>Source Files\Device</Filter>
+    <ClCompile Include="Network\Solver\NetworkSolverGen.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
     </ClCompile>
-    <ClCompile Include="OnePort\IOnePort.cpp">
-      <Filter>Source Files\Device</Filter>
+    <ClCompile Include="Network\Solver\NetworkSolverDC.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
     </ClCompile>
-    <ClCompile Include="OnePort\Resistor.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="OnePort\VoltageSource.cpp">
-      <Filter>Source Files\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\Network.cpp">
-      <Filter>Source Files\Network</Filter>
+    <ClCompile Include="Network\Solver\NetworkSolverTwoport.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
     </ClCompile>
     <ClCompile Include="Network\INetworkSolver.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="Network\NetworkSolverDC.cpp">
+    <ClCompile Include="Network\Network.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="Network\NetworkSolverGen.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="Network\NetworkSolverTwoport.cpp">
-      <Filter>Source Files\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="OnePort\Wire.cpp">
+    <ClCompile Include="Device\VoltageSource.cpp">
       <Filter>Source Files\Device</Filter>
     </ClCompile>
-    <ClCompile Include="OnePort\Probe.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Device\Wire.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Resistor.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Probe.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\CurrentSource.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\IDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\loadNetwork.cpp">
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,38 +122,44 @@
     <ClInclude Include="LinMath\DimensionException.h">
       <Filter>Header Files\LinMath</Filter>
     </ClInclude>
-    <ClInclude Include="Network\Network.h">
-      <Filter>Header Files\Network</Filter>
+    <ClInclude Include="Network\Solver\NetworkSolverDC.h">
+      <Filter>Header Files\Network\Solver</Filter>
     </ClInclude>
-    <ClInclude Include="OnePort\CurrentSource.h">
-      <Filter>Header Files\Device</Filter>
+    <ClInclude Include="Network\Solver\NetworkSolverGen.h">
+      <Filter>Header Files\Network\Solver</Filter>
     </ClInclude>
-    <ClInclude Include="OnePort\IOnePort.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="OnePort\Resistor.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="OnePort\VoltageSource.h">
-      <Filter>Header Files\Device</Filter>
+    <ClInclude Include="Network\Solver\NetworkSolverTwoport.h">
+      <Filter>Header Files\Network\Solver</Filter>
     </ClInclude>
     <ClInclude Include="Network\INetworkSolver.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\NetworkSolverDC.h">
+    <ClInclude Include="Network\Network.h">
       <Filter>Header Files\Network</Filter>
     </ClInclude>
-    <ClInclude Include="Network\NetworkSolverGen.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="Network\NetworkSolverTwoport.h">
-      <Filter>Header Files\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="OnePort\Wire.h">
+    <ClInclude Include="Device\CurrentSource.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
-    <ClInclude Include="OnePort\Probe.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Device\Probe.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Resistor.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\VoltageSource.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Wire.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\IDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\devices.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Solvers\solvers.h">
+      <Filter>Header Files\Network\Solver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,73 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Network">
-    <Position X="8.75" Y="7.25" Width="4.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAABCAAAAAABABWIEAA=</HashCode>
-      <FileName>Network\Network.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Resistor" Collapsed="true">
-    <Position X="8" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAwAAAAAAAAAAAAAAAAQAAAAAAAABAIAAAAAAAAAAAA=</HashCode>
-      <FileName>OnePort\Resistor.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="VoltageSource" Collapsed="true">
-    <Position X="10" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAABAAAAAAAAAAAAAQAIAAAAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>OnePort\VoltageSource.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NetworkSolverDC" Collapsed="true">
-    <Position X="3.25" Y="2.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Network\NetworkSolverDC.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="IOnePort">
-    <Position X="7.5" Y="1" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAACAAAAQAAIAAECCAAIAACIAAgAAAgA=</HashCode>
-      <FileName>OnePort\IOnePort.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="INetworkSolver">
-    <Position X="3.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAA=</HashCode>
-      <FileName>Network\INetworkSolver.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CurrentSource" Collapsed="true">
-    <Position X="5.75" Y="5.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAABAQAAAAgAAAAAIAAAAAAAAAAAA=</HashCode>
-      <FileName>OnePort\CurrentSource.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="LinMath::LinVector">
-    <Position X="2" Y="4.25" Width="2.5" />
+  <Class Name="LinMath::LinVector" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAACAgAAAAAAAAAQAAAAEAAIAAAAAwAAAAAAA=</HashCode>
       <FileName>LinMath\LinVector.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LinMath::Matrix">
-    <Position X="4.75" Y="7.25" Width="2.75" />
+  <Class Name="LinMath::Matrix" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAABAAAAAAABAAAAAAAEgAAAACAAwAAAAAAA=</HashCode>
       <FileName>LinMath\Matrix.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LinMath::LinearEquationSystem">
-    <Position X="0.5" Y="1.75" Width="2.5" />
+  <Class Name="LinMath::LinearEquationSystem" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAQAAACAAAAAAAAgAAEAAAAAAAAA=</HashCode>
       <FileName>LinMath\LinearEquationSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetworkSolverDC" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Network\Solver\NetworkSolverDC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CurrentSource" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAABAQAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Device\CurrentSource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Probe" Collapsed="true">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Device\Probe.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resistor" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Device\Resistor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VoltageSource" Collapsed="true">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Device\VoltageSource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wire" Collapsed="true">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Device\Wire.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IOnePort">
+    <Position X="4.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAACAAAAQAAIAAECCAAAAACIAAgAAAgA=</HashCode>
+      <FileName>Device\IDevice.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

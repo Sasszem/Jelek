@@ -1,5 +1,5 @@
 #pragma once
-#include "IOnePort.h"
+#include "IDevice.h"
 class CurrentSource :
     public IOnePort
 {

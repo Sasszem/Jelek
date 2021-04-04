@@ -139,6 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Device\CurrentSource.cpp" />
+    <ClCompile Include="Device\IDevice.cpp" />
+    <ClCompile Include="Device\Probe.cpp" />
+    <ClCompile Include="Device\Resistor.cpp" />
+    <ClCompile Include="Device\VoltageSource.cpp" />
+    <ClCompile Include="Device\Wire.cpp" />
     <ClCompile Include="fmt\format.cc" />
     <ClCompile Include="LinMath\DimensionException.cpp" />
     <ClCompile Include="LinMath\LinearEquationSystem.cpp" />
@@ -146,18 +152,20 @@
     <ClCompile Include="LinMath\Matrix.cpp" />
     <ClCompile Include="Nagyhazi.cpp" />
     <ClCompile Include="Network\INetworkSolver.cpp" />
+    <ClCompile Include="Network\loadNetwork.cpp" />
     <ClCompile Include="Network\Network.cpp" />
-    <ClCompile Include="Network\NetworkSolverDC.cpp" />
-    <ClCompile Include="Network\NetworkSolverGen.cpp" />
-    <ClCompile Include="Network\NetworkSolverTwoport.cpp" />
-    <ClCompile Include="OnePort\CurrentSource.cpp" />
-    <ClCompile Include="OnePort\IOnePort.cpp" />
-    <ClCompile Include="OnePort\Probe.cpp" />
-    <ClCompile Include="OnePort\Resistor.cpp" />
-    <ClCompile Include="OnePort\VoltageSource.cpp" />
-    <ClCompile Include="OnePort\Wire.cpp" />
+    <ClCompile Include="Network\Solver\NetworkSolverDC.cpp" />
+    <ClCompile Include="Network\Solver\NetworkSolverGen.cpp" />
+    <ClCompile Include="Network\Solver\NetworkSolverTwoport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Device\CurrentSource.h" />
+    <ClInclude Include="Device\devices.h" />
+    <ClInclude Include="Device\IDevice.h" />
+    <ClInclude Include="Device\Probe.h" />
+    <ClInclude Include="Device\Resistor.h" />
+    <ClInclude Include="Device\VoltageSource.h" />
+    <ClInclude Include="Device\Wire.h" />
     <ClInclude Include="fmt\core.h" />
     <ClInclude Include="fmt\format-inl.h" />
     <ClInclude Include="fmt\format.h" />
@@ -167,15 +175,10 @@
     <ClInclude Include="LinMath\Matrix.h" />
     <ClInclude Include="Network\INetworkSolver.h" />
     <ClInclude Include="Network\Network.h" />
-    <ClInclude Include="Network\NetworkSolverDC.h" />
-    <ClInclude Include="Network\NetworkSolverGen.h" />
-    <ClInclude Include="Network\NetworkSolverTwoport.h" />
-    <ClInclude Include="OnePort\CurrentSource.h" />
-    <ClInclude Include="OnePort\IOnePort.h" />
-    <ClInclude Include="OnePort\Probe.h" />
-    <ClInclude Include="OnePort\Resistor.h" />
-    <ClInclude Include="OnePort\VoltageSource.h" />
-    <ClInclude Include="OnePort\Wire.h" />
+    <ClInclude Include="Network\Solvers\solvers.h" />
+    <ClInclude Include="Network\Solver\NetworkSolverDC.h" />
+    <ClInclude Include="Network\Solver\NetworkSolverGen.h" />
+    <ClInclude Include="Network\Solver\NetworkSolverTwoport.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

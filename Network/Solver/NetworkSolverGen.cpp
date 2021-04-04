@@ -1,5 +1,7 @@
 #include "NetworkSolverGen.h"
-#include "../fmt/core.h"
+#include "../../fmt/core.h"
+
+using Analyzer::Network::Solvers::NetworkSolverGen;
 
 NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2): R1(R1), R2(R2), deviceId(deviceId)
 {

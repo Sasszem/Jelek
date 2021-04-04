@@ -1,10 +1,10 @@
 #pragma once
-#include "IOnePort.h"
-class Wire :
+#include "IDevice.h"
+class Probe :
     public IOnePort
 {
 public:
-    Wire(unsigned id, unsigned port_plus, unsigned port_minus);
+    Probe(unsigned id, unsigned port_plus, unsigned port_minus);
     double equation(LinMath::LinVector&);
     void print(std::ostream&);
 };

@@ -1,5 +1,7 @@
 #include "NetworkSolverTwoport.h"
-#include "../fmt/core.h"
+#include "../../fmt/core.h"
+
+using Analyzer::Network::Solvers::NetworkSolverTwoport;
 
 NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondaryID): primary(primaryID), secondary(secondaryID)
 {
