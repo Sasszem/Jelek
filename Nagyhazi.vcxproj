@@ -151,6 +151,7 @@
     <ClCompile Include="LinMath\LinVector.cpp" />
     <ClCompile Include="LinMath\Matrix.cpp" />
     <ClCompile Include="Nagyhazi.cpp" />
+    <ClCompile Include="Network\graphFunctions.cpp" />
     <ClCompile Include="Network\INetworkSolver.cpp" />
     <ClCompile Include="Network\loadNetwork.cpp" />
     <ClCompile Include="Network\Network.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="LinMath\LinearEquationSystem.h" />
     <ClInclude Include="LinMath\LinVector.h" />
     <ClInclude Include="LinMath\Matrix.h" />
+    <ClInclude Include="Network\graphFunctions.h" />
     <ClInclude Include="Network\INetworkSolver.h" />
     <ClInclude Include="Network\Network.h" />
     <ClInclude Include="Network\Solvers\solvers.h" />

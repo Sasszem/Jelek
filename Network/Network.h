@@ -32,9 +32,6 @@ namespace Analyzer {
 		};
 
 		std::unique_ptr<Network> loadFromStream(std::istream&);
-		std::unique_ptr<NetworkGraph> findCycles(unsigned, unsigned, NetworkGraph&, Branches&);
-		void DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& binding_branches, std::vector<int>& parent);
-
 	}
 }
 
