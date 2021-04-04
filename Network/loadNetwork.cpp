@@ -97,6 +97,32 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 
 		if (type[0] == '$') {
 			// coupled devices
+			unsigned id, pPlus, pMinus, coupledId;
+			iss >> id >> pPlus >> pMinus >> coupledId;
+			if (!iss) {
+				throw std::runtime_error(fmt::format("Error: can not parse coupled device base parameters: '{}'", line));
+			}
+
+			double param = 0;
+			if (type == "$CCVS" || type == "$CCCS" || type == "$VCVS" || type == "$VCCS") {
+				iss >> param;
+				if (!iss) {
+					throw std::runtime_error(fmt::format("Error: could not parse coupled device parameter: '{}'", line));
+				}
+			}
+
+			if (type == "$CCCS") {
+				device = new CCCS(id, pPlus, pMinus, coupledId, param);
+			}
+			else if (type == "$CCVS") {
+				device = new CCVS(id, pPlus, pMinus, coupledId, param);
+			}
+			else if (type == "$VCVS") {
+				device = new VCVS(id, pPlus, pMinus, coupledId, param);
+			}
+			else if (type == "$VCCS") {
+				device = new VCCS(id, pPlus, pMinus, coupledId, param);
+			}
 
 		}
 		else if (type[0] == '!') {
