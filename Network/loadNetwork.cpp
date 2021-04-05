@@ -14,6 +14,7 @@ using Analyzer::Network::INetworkSolver;
 using Analyzer::Network::Solvers::NetworkSolverDC;
 using Analyzer::Network::Solvers::NetworkSolverGen;
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
+using Analyzer::Network::Solvers::EquationSystemSolver;
 
 
 std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
@@ -53,6 +54,9 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 				throw std::runtime_error(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
 			}
 			solver = new NetworkSolverTwoport(primaryId, secondaryId);
+		}
+		else if (analysisType == "EQ") {
+			solver = new EquationSystemSolver();
 		}
 		else {
 			throw std::runtime_error(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));

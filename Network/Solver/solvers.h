@@ -1,5 +1,6 @@
 #pragma once
 
-#include "Solver/NetworkSolverDC.h"
-#include "Solver/NetworkSolverGen.h"
-#include "Solver/NetworkSolverTwoport.h"
+#include "NetworkSolverDC.h"
+#include "NetworkSolverGen.h"
+#include "NetworkSolverTwoport.h"
+#include "EquationSystemSolver.h"
