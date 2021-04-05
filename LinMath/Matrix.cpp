@@ -131,6 +131,16 @@ Matrix LinMath::Matrix::operator*(const Matrix& rhs)
 	return result;
 }
 
+Matrix Matrix::subMatrix(unsigned startRow, unsigned startColumn, unsigned height, unsigned width) {
+	Matrix res(height, width);
+	for (unsigned r = 0; r < height; r++) {
+		for (unsigned c = 0; c < width; c++) {
+			res(r, c) = (*this)(startRow + r, startColumn + c);
+		}
+	}
+	return res;
+}
+
 namespace LinMath {
 	std::ostream& operator<<(std::ostream& stream, LinMath::Matrix& m)
 	{
@@ -144,5 +154,4 @@ namespace LinMath {
 		stream << "]" << std::endl;
 		return stream;
 	}
-
 }

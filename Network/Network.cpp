@@ -46,9 +46,9 @@ void Network::finishLoading()
 	});
 }
 
-LinMath::LinearEquationSystem Network::getEquations() {
+LinMath::Matrix Network::getEquations() {
 	this->finishLoading();
-	LinMath::LinearEquationSystem eq(2 * B);
+	LinMath::Matrix eq(2 * B, 2*B + 1);
 
 	// unknowns: u0, i0, u1, i1, ... 
 
@@ -56,7 +56,7 @@ LinMath::LinearEquationSystem Network::getEquations() {
 
 	// characteristic equations of nodes
 	for (auto& branch : branches) {
-		eq.getVector()(branch->id-1, 0) = branch->equation(eq.getMatrix());
+		eq(branch->id-1, 2*B) = branch->equation(eq);
 	}
 	// node equations
 	// basicly KIRCHOFF's NODE LAWS
@@ -74,7 +74,7 @@ LinMath::LinearEquationSystem Network::getEquations() {
 	for (unsigned i = 0; i < N; i++) {
 		if (parent[i] != 0) {
 			for (auto it = graph[i].begin(); it != graph[i].end(); it++) {
-				eq.getMatrix()(idx, 2 * abs(*it) - 1) = (*it > 0) ? 1 : -1;
+				eq(idx, 2 * abs(*it) - 1) = (*it > 0) ? 1 : -1;
 			}
 			idx++;
 		}
@@ -87,7 +87,7 @@ LinMath::LinearEquationSystem Network::getEquations() {
 	auto cycles = findCycles(N, B, graph, branches);
 	for (auto& cycle : *cycles) {
 		for (auto& b : cycle) {
-			eq.getMatrix()(idx, 2 * abs(b) - 2) = (b > 0) ? 1 : -1;
+			eq(idx, 2 * abs(b) - 2) = (b > 0) ? 1 : -1;
 		}
 		idx++;
 	}

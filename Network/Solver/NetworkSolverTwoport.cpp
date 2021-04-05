@@ -8,7 +8,7 @@ NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondar
 {
 }
 
-LinMath::Matrix NetworkSolverTwoport::solve(LinMath::LinearEquationSystem&) const
+LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix&) const
 {
 	std::cout << "Two port analysis not implemented yet!" << std::endl;
 	return LinMath::Matrix(0, 0);

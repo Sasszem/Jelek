@@ -11,7 +11,7 @@ namespace Analyzer {
                 const unsigned deviceId;
             public:
                 NetworkSolverGen(unsigned, double, double);
-                LinMath::Matrix solve(LinMath::LinearEquationSystem&) const;
+                LinMath::Matrix solve(LinMath::Matrix&) const;
                 std::string print() const;
                 const static double R1_DEFAULT;
                 const static double R2_DEFAULT;

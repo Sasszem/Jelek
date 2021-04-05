@@ -14,6 +14,7 @@ namespace LinMath {
 		double& operator()(unsigned row, unsigned column);
 		const double& operator()(unsigned row, unsigned column) const;
 		Matrix operator*(const Matrix& rhs);
+		Matrix subMatrix(unsigned, unsigned, unsigned, unsigned);
 		friend std::ostream& operator<<(std::ostream&, Matrix&);
 	};
 }

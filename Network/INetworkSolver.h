@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../LinMath/LinearEquationSystem.h"
 #include <string>
+#include "../LinMath/Matrix.h"
 
 namespace Analyzer {
 	namespace Network {
 		class INetworkSolver
 		{
 		public:
-			virtual LinMath::Matrix solve(LinMath::LinearEquationSystem&) const = 0;
+			virtual LinMath::Matrix solve(LinMath::Matrix&) const = 0;
 			virtual std::string print() const = 0;
 		};
 	}

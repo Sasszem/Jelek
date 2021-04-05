@@ -1,6 +1,5 @@
 #pragma once
 #include "../Device/IDevice.h"
-#include "../LinMath/LinearEquationSystem.h"
 #include "INetworkSolver.h"
 
 #include <vector>
@@ -26,7 +25,7 @@ namespace Analyzer {
 			Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver>);
 			void addDevice(std::unique_ptr<IDevice>);
 			void finishLoading();
-			LinMath::LinearEquationSystem getEquations();
+			LinMath::Matrix getEquations();
 			LinMath::Matrix solve();
 			const Branches& getBranches();
 		};

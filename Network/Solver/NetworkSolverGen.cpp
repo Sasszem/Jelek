@@ -8,7 +8,7 @@ NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2): R1(
 {
 }
 
-LinMath::Matrix NetworkSolverGen::solve(LinMath::LinearEquationSystem&) const
+LinMath::Matrix NetworkSolverGen::solve(LinMath::Matrix&) const
 {
 	std::cout << "generator solving not implemented yet!" << std::endl;
 	return LinMath::Matrix(0, 0);
