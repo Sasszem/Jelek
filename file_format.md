@@ -28,6 +28,7 @@ possible values:
 - DC - solves for all voltages and currents
 - GEN - solves for equivalent generator (Thevenin and Norton) parameters
 - TWOPORT - solves for all possible two-port characteristic matrices
+- EQ - diagnostic printing of the extended matrix of the equation system
 
 If omitted, it defaults to DC
 
@@ -60,6 +61,10 @@ GEN has the following parameters:
 - SECONDARYID: id of the secondary port of the network
 
 Both devices will be removed, so setting them as a resistor is recommended
+
+#### EQ
+
+Has no parameters
 
 ## devices
 
@@ -138,6 +143,7 @@ Since there's no gyrator component, two of these can be used instead easily
 - type string: `$NULL`
 - parameters: friend device (id)
 - equations: `u=0, i=0`
+- **FRIEND DEVICE ID MUST BE LOWER THEN ID!**
 - since every device can have only one equation, it overrides the equation of it's 'friend' device
 - this means the other device effectively becomes a norator, and the two devices together form a nullor, or an ideal amplifier
 - the writer of a file must be careful with the friend devices!
