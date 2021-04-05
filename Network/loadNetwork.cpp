@@ -108,7 +108,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 				throw std::runtime_error(fmt::format("Error: can not parse coupled device base parameters: '{}'", line));
 			}
 
-			if (coupledId == 0 || coupledId > N) {
+			if (coupledId == 0 || coupledId > B) {
 				throw std::runtime_error(fmt::format("Error: invalid coupled device ID {}: '{}'", coupledId, line));
 			}
 
@@ -131,6 +131,12 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			}
 			else if (type == "$VCCS") {
 				device = new VCCS(id, pPlus, pMinus, coupledId, param);
+			}
+			else if (type == "$NULL") {
+				if (coupledId >= id) {
+					throw std::runtime_error(fmt::format("Error: Nullator friend id can not be higher than own id: '{}'", line));
+				}
+				device = new Nullator(id, pPlus, pMinus, coupledId);
 			}
 			else {
 				throw std::runtime_error(fmt::format("Error: unknown coupled device: '{}'", type));

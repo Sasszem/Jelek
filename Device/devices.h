@@ -9,3 +9,4 @@
 #include "../Device/CCVS.h"
 #include "../Device/VCVS.h"
 #include "../Device/VCCS.h"
+#include "../Device/Nullator.h"
