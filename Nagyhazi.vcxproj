@@ -139,10 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Device\CCCS.cpp" />
+    <ClCompile Include="Device\CCVS.cpp" />
     <ClCompile Include="Device\CurrentSource.cpp" />
+    <ClCompile Include="Device\ICoupledDevice.cpp" />
     <ClCompile Include="Device\IDevice.cpp" />
     <ClCompile Include="Device\Probe.cpp" />
     <ClCompile Include="Device\Resistor.cpp" />
+    <ClCompile Include="Device\VCCS.cpp" />
+    <ClCompile Include="Device\VCVS.cpp" />
     <ClCompile Include="Device\VoltageSource.cpp" />
     <ClCompile Include="Device\Wire.cpp" />
     <ClCompile Include="fmt\format.cc" />
@@ -160,11 +165,16 @@
     <ClCompile Include="Network\Solver\NetworkSolverTwoport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Device\CCCS.h" />
+    <ClInclude Include="Device\CCVS.h" />
     <ClInclude Include="Device\CurrentSource.h" />
     <ClInclude Include="Device\devices.h" />
+    <ClInclude Include="Device\ICoupledDevice.h" />
     <ClInclude Include="Device\IDevice.h" />
     <ClInclude Include="Device\Probe.h" />
     <ClInclude Include="Device\Resistor.h" />
+    <ClInclude Include="Device\VCCS.h" />
+    <ClInclude Include="Device\VCVS.h" />
     <ClInclude Include="Device\VoltageSource.h" />
     <ClInclude Include="Device\Wire.h" />
     <ClInclude Include="fmt\core.h" />
@@ -177,10 +187,10 @@
     <ClInclude Include="Network\graphFunctions.h" />
     <ClInclude Include="Network\INetworkSolver.h" />
     <ClInclude Include="Network\Network.h" />
-    <ClInclude Include="Network\Solvers\solvers.h" />
     <ClInclude Include="Network\Solver\NetworkSolverDC.h" />
     <ClInclude Include="Network\Solver\NetworkSolverGen.h" />
     <ClInclude Include="Network\Solver\NetworkSolverTwoport.h" />
+    <ClInclude Include="Network\Solver\solvers.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

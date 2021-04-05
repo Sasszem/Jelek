@@ -102,6 +102,21 @@
     <ClCompile Include="Network\graphFunctions.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
+    <ClCompile Include="Device\ICoupledDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\CCCS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\CCVS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\VCVS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\VCCS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fmt\core.h">
@@ -161,11 +176,26 @@
     <ClInclude Include="Device\devices.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
-    <ClInclude Include="Network\Solvers\solvers.h">
-      <Filter>Header Files\Network\Solver</Filter>
-    </ClInclude>
     <ClInclude Include="Network\graphFunctions.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\CCCS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\ICoupledDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Solver\solvers.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\CCVS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\VCVS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\VCCS.h">
+      <Filter>Header Files\Device</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

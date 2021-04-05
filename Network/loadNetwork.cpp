@@ -15,6 +15,7 @@ using Analyzer::Network::Solvers::NetworkSolverDC;
 using Analyzer::Network::Solvers::NetworkSolverGen;
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 
+
 std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 {
 	unsigned N, B;
@@ -103,6 +104,10 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 				throw std::runtime_error(fmt::format("Error: can not parse coupled device base parameters: '{}'", line));
 			}
 
+			if (coupledId == 0 || coupledId > N) {
+				throw std::runtime_error(fmt::format("Error: invalid coupled device ID {}: '{}'", coupledId, line));
+			}
+
 			double param = 0;
 			if (type == "$CCVS" || type == "$CCCS" || type == "$VCVS" || type == "$VCCS") {
 				iss >> param;
@@ -123,7 +128,11 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			else if (type == "$VCCS") {
 				device = new VCCS(id, pPlus, pMinus, coupledId, param);
 			}
+			else {
+				throw std::runtime_error(fmt::format("Error: unknown coupled device: '{}'", type));
+			}
 
+			network->addDevice(std::unique_ptr<IDevice>(device));
 		}
 		else if (type[0] == '!') {
 			// shorthand forms
