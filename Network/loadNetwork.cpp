@@ -3,7 +3,7 @@
 #include "../Device/devices.h"
 #include "Solver/solvers.h"
 
-
+#include <iostream>
 #include <sstream>
 
 

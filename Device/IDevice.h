@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../LinMath/LinVector.h"
+#include "../LinMath/Matrix.h"
+#include <string>
 
 class IDevice
 {
@@ -13,7 +14,7 @@ public:
 	IDevice(unsigned id, unsigned plus, unsigned minus);
 	unsigned other_port(unsigned);
 	int sign(unsigned);
-	virtual double equation(LinMath::LinVector&) = 0;
+	virtual double equation(LinMath::Matrix&) = 0;
 	unsigned currentIndex();
 	unsigned voltageIndex();
 

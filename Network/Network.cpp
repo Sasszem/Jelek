@@ -2,7 +2,7 @@
 #include "graphFunctions.h"
 #include "../fmt/core.h"
 #include <algorithm>
-
+#include <stdexcept>
 
 using Analyzer::Network::Network;
 using Analyzer::Network::NetworkGraph;
@@ -42,17 +42,22 @@ void Network::addDevice(std::unique_ptr<IDevice> device)
 void Network::finishLoading()
 {
 	std::sort(branches.begin(), branches.end(), [](std::unique_ptr<IDevice>& a, std::unique_ptr<IDevice>& b) {
-		return a->id > b->id; 
+		return a->id < b->id; 
 	});
 }
 
 LinMath::LinearEquationSystem Network::getEquations() {
+	this->finishLoading();
 	LinMath::LinearEquationSystem eq(2 * B);
 
 	// unknowns: u0, i0, u1, i1, ... 
 
-	unsigned idx = 0;
+	unsigned idx = B;
 
+	// characteristic equations of nodes
+	for (auto& branch : branches) {
+		eq.getVector()(branch->id-1, 0) = branch->equation(eq.getMatrix());
+	}
 	// node equations
 	// basicly KIRCHOFF's NODE LAWS
 	// so current going into a node equals the current going out
@@ -69,7 +74,7 @@ LinMath::LinearEquationSystem Network::getEquations() {
 	for (unsigned i = 0; i < N; i++) {
 		if (parent[i] != 0) {
 			for (auto it = graph[i].begin(); it != graph[i].end(); it++) {
-				eq.getMatrix()[idx][2 * abs(*it) - 1] = (*it > 0) ? 1 : -1;
+				eq.getMatrix()(idx, 2 * abs(*it) - 1) = (*it > 0) ? 1 : -1;
 			}
 			idx++;
 		}
@@ -82,23 +87,16 @@ LinMath::LinearEquationSystem Network::getEquations() {
 	auto cycles = findCycles(N, B, graph, branches);
 	for (auto& cycle : *cycles) {
 		for (auto& b : cycle) {
-			eq.getMatrix()[idx][2 * abs(b) - 2] = (b > 0) ? 1 : -1;
+			eq.getMatrix()(idx, 2 * abs(b) - 2) = (b > 0) ? 1 : -1;
 		}
-		idx++;
-	}
-
-	// characteristic equations of nodes
-	for (auto& branch : branches) {
-		eq.getVector()[idx] = branch->equation(eq.getMatrix()[idx]);
 		idx++;
 	}
 
 	return eq;
 }
 
-LinMath::LinVector Network::solve() {
+LinMath::Matrix Network::solve() {
 	auto eq = getEquations();
-
 	return solver->solve(eq);
 }
 

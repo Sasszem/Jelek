@@ -5,10 +5,10 @@ CCVS::CCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double tr
 {
 }
 
-double CCVS::equation(LinMath::LinVector& vec)
+double CCVS::equation(LinMath::Matrix& vec)
 {
-	vec[currentIndexFromId(coupledId)] = transferRes;
-	vec[voltageIndex()] = -1.0;
+	vec(id-1, currentIndexFromId(coupledId)) = transferRes;
+	vec(id-1, voltageIndex()) = -1.0;
 	return 0.0;
 }
 

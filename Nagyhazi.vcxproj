@@ -153,7 +153,6 @@
     <ClCompile Include="fmt\format.cc" />
     <ClCompile Include="LinMath\DimensionException.cpp" />
     <ClCompile Include="LinMath\LinearEquationSystem.cpp" />
-    <ClCompile Include="LinMath\LinVector.cpp" />
     <ClCompile Include="LinMath\Matrix.cpp" />
     <ClCompile Include="Nagyhazi.cpp" />
     <ClCompile Include="Network\graphFunctions.cpp" />
@@ -182,7 +181,6 @@
     <ClInclude Include="fmt\format.h" />
     <ClInclude Include="LinMath\DimensionException.h" />
     <ClInclude Include="LinMath\LinearEquationSystem.h" />
-    <ClInclude Include="LinMath\LinVector.h" />
     <ClInclude Include="LinMath\Matrix.h" />
     <ClInclude Include="Network\graphFunctions.h" />
     <ClInclude Include="Network\INetworkSolver.h" />

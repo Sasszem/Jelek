@@ -6,7 +6,7 @@ class Resistor :
     double resistance;
 public:
     Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double R);
-    double equation(LinMath::LinVector&);
+    double equation(LinMath::Matrix&);
     std::string print();
 };
 

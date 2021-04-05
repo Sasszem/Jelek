@@ -1,21 +1,19 @@
 #pragma once
 
-#include "LinVector.h"
-#include <vector>
-
+#include <memory>
 
 namespace LinMath {
 	class Matrix
 	{
-		const unsigned rows, columns;
-		std::vector<LinVector*> data;
+		std::unique_ptr<double[]> data;
 	public:
+		const unsigned rows, columns;
 		Matrix(unsigned rows, unsigned columns);
 		Matrix(const Matrix&);
-		~Matrix();
 		Matrix invert() const;
-		LinVector& operator[](unsigned index);
-		const LinVector& operator[](unsigned index) const;
-		LinVector operator*(LinVector rhs);
+		double& operator()(unsigned row, unsigned column);
+		const double& operator()(unsigned row, unsigned column) const;
+		Matrix operator*(const Matrix& rhs);
+		friend std::ostream& operator<<(std::ostream&, Matrix&);
 	};
 }

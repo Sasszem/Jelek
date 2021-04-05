@@ -5,10 +5,10 @@ VCCS::VCCS(unsigned id, unsigned plus, unsigned minus, unsigned other, double tr
 {
 }
 
-double VCCS::equation(LinMath::LinVector& vec)
+double VCCS::equation(LinMath::Matrix& vec)
 {
-	vec[voltageIndexFromId(coupledId)] = transferConductance;
-	vec[currentIndex()] = -1.0;
+	vec(id-1, voltageIndexFromId(coupledId)) = transferConductance;
+	vec(id-1, currentIndex()) = -1.0;
 	return 0.0;
 }
 

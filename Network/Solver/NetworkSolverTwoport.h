@@ -10,7 +10,7 @@ namespace Analyzer {
                 const unsigned primary, secondary;
             public:
                 NetworkSolverTwoport(unsigned, unsigned);
-                LinMath::LinVector solve(LinMath::LinearEquationSystem&) const;
+                LinMath::Matrix solve(LinMath::LinearEquationSystem&) const;
                 std::string print() const;
             };
         }

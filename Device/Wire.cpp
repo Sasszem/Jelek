@@ -5,9 +5,9 @@ Wire::Wire(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, po
 {
 }
 
-double Wire::equation(LinMath::LinVector& vec)
+double Wire::equation(LinMath::Matrix& vec)
 {
-	vec[voltageIndex()] = 1.0;
+	vec(id-1, voltageIndex()) = 1.0;
 	return 0.0;
 }
 

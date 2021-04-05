@@ -5,10 +5,10 @@ CCCS::CCCS(unsigned id, unsigned plus, unsigned minus, unsigned other, double ga
 {
 }
 
-double CCCS::equation(LinMath::LinVector& vec)
+double CCCS::equation(LinMath::Matrix& vec)
 {
-	vec[currentIndexFromId(coupledId)] = currGain;
-	vec[currentIndex()] = -1.0;
+	vec(id-1, currentIndexFromId(coupledId)) = currGain;
+	vec(id-1, currentIndex()) = -1.0;
 	return 0.0;
 }
 

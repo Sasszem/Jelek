@@ -1,5 +1,4 @@
 #pragma once
-#include "LinVector.h"
 #include "Matrix.h"
 
 namespace LinMath {
@@ -7,11 +6,11 @@ namespace LinMath {
 	{
 	private:
 		Matrix matrix;
-		LinVector freeVector;
+		Matrix freeVector;
 	public:
 		LinearEquationSystem(unsigned);
 		Matrix& getMatrix();
-		LinVector& getVector();
+		Matrix& getVector();
 	};
 }
 

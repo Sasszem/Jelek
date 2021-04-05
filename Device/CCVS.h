@@ -6,6 +6,6 @@ class CCVS :
     const double transferRes;
 public:
     CCVS(unsigned, unsigned, unsigned, unsigned, double);
-    double equation(LinMath::LinVector& vec);
+    double equation(LinMath::Matrix& vec);
     std::string print();
 };

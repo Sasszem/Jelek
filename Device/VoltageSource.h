@@ -6,7 +6,7 @@ class VoltageSource :
     double voltage;
 public:
     VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V);
-    double equation(LinMath::LinVector&);
+    double equation(LinMath::Matrix&);
     std::string print();
 };
 

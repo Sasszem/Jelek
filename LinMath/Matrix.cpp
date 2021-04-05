@@ -2,25 +2,22 @@
 #include "DimensionException.h"
 #include "../fmt/core.h"
 #include <algorithm>
+#include <iostream>
 
 using namespace LinMath;
 
-Matrix::Matrix(unsigned rows, unsigned columns) : rows(rows), columns(columns)
+Matrix::Matrix(unsigned rows, unsigned columns) : rows(rows), columns(columns), data(new double[rows*columns])
 {
-	for (unsigned r = 0; r < rows; r++)
-		data.push_back(new LinVector(columns));
+	for (unsigned row = 0; row < rows; row++)
+		for (unsigned col = 0; col < columns; col++)
+			(*this)(row, col) = 0.0;
 }
 
-Matrix::Matrix(const Matrix& other): rows(other.rows), columns(other.columns)
+Matrix::Matrix(const Matrix& other): rows(other.rows), columns(other.columns), data(new double[other.rows * other.columns])
 {
-	for (auto it = other.data.begin(); it != other.data.end(); it++)
-		data.push_back(new LinVector(**it));
-}
-
-Matrix::~Matrix()
-{
-	for (auto i = data.begin(); i != data.end(); i++)
-		delete* i;
+	for (unsigned row = 0; row < rows; row++)
+		for (unsigned col = 0; col < columns; col++)
+			(*this)(row, col) = other(row, col);
 }
 
 Matrix Matrix::invert() const
@@ -37,11 +34,10 @@ Matrix Matrix::invert() const
 	for (unsigned r = 0; r < rows; r++)
 		for (unsigned c = 0; c < columns; c++)
 		{
-			m[r][c] = (*this)[r][c];
-			m[r][c + columns] = r == c ? 1.0 : 0.0;
+			m(r, c) = (*this)(r, c);
+			m(r, c + columns) = r == c ? 1.0 : 0.0;
 		}
 	
-
 	// aussian elimination column by column
 	// 1. find a row r in i..rows such as m[r][i]!=0
 	// 2. swap that row to be the ith row
@@ -53,7 +49,7 @@ Matrix Matrix::invert() const
 		bool found = false;
 		unsigned r = 0;
 		for (unsigned rc = i; rc < rows; rc++) {
-			if (m[rc][i] != 0) {
+			if (m(rc, i) != 0) {
 				r = rc;
 				found = true;
 				break;
@@ -65,16 +61,28 @@ Matrix Matrix::invert() const
 		}
 
 		// swap that with line i
-		if (r!=i)
-			std::iter_swap(m.data.begin() + r, m.data.begin() + i);
+		if (r != i) {
+			for (unsigned c = 0; c < columns * 2; c++) {
+				double tmp = m(r, c);
+				m(r, c) = m(i, c);
+				m(i, c) = tmp;
+			}
+		}
 		
 		// normalize row
-		m[i] *= (1 / m[i][i]);
+		for (unsigned c = columns * 2 - 1; c>i; c--)
+			m(i,c) *= (1 / m(i, i));
+		m(i, i) = 1.0;
 
 		// kill every other row
-		for (unsigned rc = 0; rc < rows; rc++)
-			if (rc!= i)
-				m[rc] -= m[i] * m[rc][i];
+		for (unsigned rc = 0; rc < rows; rc++) {
+			if (rc != i) {
+				double mul = m(rc, i);
+				for (unsigned c = 0; c < columns *2; c++)
+					m(rc, c) -= m(i, c) * mul;
+			}
+		}
+
 	}
 
 	// copy the result matrix into it's own
@@ -82,38 +90,59 @@ Matrix Matrix::invert() const
 
 	for (unsigned r = 0; r < rows; r++)
 		for (unsigned c = 0; c < rows; c++)
-			resultMatrix[r][c] = m[r][c + rows];
+			resultMatrix(r, c) = m(r, c + rows);
 
 	return resultMatrix;
 }
 
-LinVector& Matrix::operator[](unsigned index)
+double& LinMath::Matrix::operator()(unsigned row, unsigned column)
 {
-	if (index >= rows) {
-		throw new DimensionException(fmt::format("Can't access row {} of a {}x{} matrix!", index, rows, columns));
+	if (row >= rows || column >= columns) {
+		throw DimensionException(fmt::format("Can not get element ({}, {}) of a {}x{} matrix!", row, column, rows, columns));
 	}
-	return *data[index];
+	return data[row * columns +  column];
 }
 
-const LinVector& LinMath::Matrix::operator[](unsigned index) const
+const double& LinMath::Matrix::operator()(unsigned row, unsigned column) const
 {
-	if (index >= rows) {
-		throw new DimensionException(fmt::format("Can't access row {} of a {}x{} matrix!", index, rows, columns));
+	if (row >= rows || column >= columns) {
+		throw DimensionException(fmt::format("Can not get element ({}, {}) of a {}x{} matrix!", row, column, rows, columns));
 	}
-	return *data[index];
+	return data[row * columns + column];
 }
 
-LinVector LinMath::Matrix::operator*(LinVector rhs)
+Matrix LinMath::Matrix::operator*(const Matrix& rhs)
 {
-	if (rhs.getDim() != columns) {
-		throw new DimensionException(fmt::format("Can't multiply a {}x{} matrix with a {} dimensional vector!", rows, columns, rhs.getDim()));
+	if (rhs.rows != columns) {
+		throw DimensionException(fmt::format("Can not multiply {}x{} and {}x{} matrices!", rows, columns, rhs.rows, rhs.columns));
 	}
 
-	LinVector resVec(rows);
-
-	for (unsigned i = 0; i < rows; i++) {
-		resVec[i] = (*this)[i] * rhs;
+	Matrix result(rows, rhs.columns);
+	for (unsigned r = 0; r < rows; r++) {
+		for (unsigned c = 0; c < rhs.columns; c++) {
+			double dotP = 0.0;
+			for (unsigned x = 0; x < columns; x++) {
+				dotP += (*this)(r, x) * rhs(x, c);
+			}
+			result(r, c) = dotP;
+		}
 	}
 
-	return resVec;
+	return result;
+}
+
+namespace LinMath {
+	std::ostream& operator<<(std::ostream& stream, LinMath::Matrix& m)
+	{
+		stream << "[" << std::endl;
+		for (unsigned r = 0; r < m.rows; r++) {
+			for (unsigned c = 0; c < m.columns; c++) {
+				stream << "\t" << m(r, c);
+			}
+			stream << std::endl;
+		}
+		stream << "]" << std::endl;
+		return stream;
+	}
+
 }

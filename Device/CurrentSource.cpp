@@ -5,8 +5,8 @@ CurrentSource::CurrentSource(unsigned id, unsigned port_plus, unsigned port_minu
 {
 }
 
-double CurrentSource::equation(LinMath::LinVector& vec) {
-	vec[currentIndex()] = 1;
+double CurrentSource::equation(LinMath::Matrix& vec) {
+	vec(id-1, currentIndex()) = 1;
 	return current;
 }
 

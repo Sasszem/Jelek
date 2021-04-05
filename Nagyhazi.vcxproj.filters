@@ -51,9 +51,6 @@
     <ClCompile Include="LinMath\LinearEquationSystem.cpp">
       <Filter>Source Files\LinMath</Filter>
     </ClCompile>
-    <ClCompile Include="LinMath\LinVector.cpp">
-      <Filter>Source Files\LinMath</Filter>
-    </ClCompile>
     <ClCompile Include="LinMath\Matrix.cpp">
       <Filter>Source Files\LinMath</Filter>
     </ClCompile>
@@ -129,9 +126,6 @@
       <Filter>Header Files\fmt</Filter>
     </ClInclude>
     <ClInclude Include="LinMath\LinearEquationSystem.h">
-      <Filter>Header Files\LinMath</Filter>
-    </ClInclude>
-    <ClInclude Include="LinMath\LinVector.h">
       <Filter>Header Files\LinMath</Filter>
     </ClInclude>
     <ClInclude Include="LinMath\Matrix.h">

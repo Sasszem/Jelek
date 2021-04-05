@@ -9,7 +9,7 @@ namespace Analyzer {
             {
             public:
                 NetworkSolverDC();
-                LinMath::LinVector solve(LinMath::LinearEquationSystem&) const;
+                LinMath::Matrix solve(LinMath::LinearEquationSystem&) const;
                 std::string print() const;
             };
         }

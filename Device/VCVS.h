@@ -6,7 +6,7 @@ class VCVS :
     const double voltageGain;
 public:
     VCVS(unsigned, unsigned, unsigned, unsigned, double);
-    double equation(LinMath::LinVector& vec);
+    double equation(LinMath::Matrix& vec);
     std::string print();
 };
 

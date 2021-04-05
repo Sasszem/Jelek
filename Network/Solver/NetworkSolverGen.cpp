@@ -1,16 +1,17 @@
 #include "NetworkSolverGen.h"
 #include "../../fmt/core.h"
 
+#include <iostream>
 using Analyzer::Network::Solvers::NetworkSolverGen;
 
 NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2): R1(R1), R2(R2), deviceId(deviceId)
 {
 }
 
-LinMath::LinVector NetworkSolverGen::solve(LinMath::LinearEquationSystem&) const
+LinMath::Matrix NetworkSolverGen::solve(LinMath::LinearEquationSystem&) const
 {
 	std::cout << "generator solving not implemented yet!" << std::endl;
-	return LinMath::LinVector(0);
+	return LinMath::Matrix(0, 0);
 }
 
 std::string NetworkSolverGen::print() const

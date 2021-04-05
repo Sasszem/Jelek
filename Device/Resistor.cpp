@@ -5,10 +5,10 @@ Resistor::Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double 
 {
 }
 
-double Resistor::equation(LinMath::LinVector& vector)
+double Resistor::equation(LinMath::Matrix& vector)
 {
-	vector[voltageIndex()] = -1.0;
-	vector[currentIndex()] = resistance;
+	vector(id-1, voltageIndex()) = -1.0;
+	vector(id-1, currentIndex()) = resistance;
 	return 0.0;
 }
 

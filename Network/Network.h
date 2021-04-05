@@ -27,7 +27,7 @@ namespace Analyzer {
 			void addDevice(std::unique_ptr<IDevice>);
 			void finishLoading();
 			LinMath::LinearEquationSystem getEquations();
-			LinMath::LinVector solve();
+			LinMath::Matrix solve();
 			const Branches& getBranches();
 		};
 

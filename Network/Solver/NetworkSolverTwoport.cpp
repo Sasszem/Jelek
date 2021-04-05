@@ -1,5 +1,6 @@
 #include "NetworkSolverTwoport.h"
 #include "../../fmt/core.h"
+#include <iostream>
 
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 
@@ -7,10 +8,10 @@ NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondar
 {
 }
 
-LinMath::LinVector NetworkSolverTwoport::solve(LinMath::LinearEquationSystem&) const
+LinMath::Matrix NetworkSolverTwoport::solve(LinMath::LinearEquationSystem&) const
 {
 	std::cout << "Two port analysis not implemented yet!" << std::endl;
-	return LinMath::LinVector(0);
+	return LinMath::Matrix(0, 0);
 }
 
 std::string NetworkSolverTwoport::print() const
