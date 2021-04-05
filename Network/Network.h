@@ -12,8 +12,6 @@ namespace Analyzer {
 
 		class Network
 		{
-			const unsigned N, B;
-
 			// storage
 			// G[node] -> [ids]
 			// id is positive or negative depending on voltage and current direction
@@ -22,6 +20,7 @@ namespace Analyzer {
 
 			std::unique_ptr<INetworkSolver> solver;
 		public:
+			const unsigned N, B;
 			Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver>);
 			void addDevice(std::unique_ptr<IDevice>);
 			void finishLoading();
