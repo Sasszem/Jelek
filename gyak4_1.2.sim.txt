@@ -1,0 +1,34 @@
+9 14 DC
+
+# R = 42
+# Rs = 111
+# Rg = 666
+
+# marked voltages
+VOL 1 2 1 5
+VOL 2 9 1 10
+
+RES 3 6 1 42
+RES 4 9 8 111
+
+# amplifier
+$NULL 6 6 8 5
+WIRE 5 7 1
+
+RES 7 3 2 111
+
+$NULL 9 3 5 8
+WIRE 8 4 1
+
+RES 10 5 4 42
+
+RES 11 5 6 666
+RES 12 6 7 42
+RES 13 5 7 42
+
+# marked output
+
+PROBE 14 4 1
+
+END
+
