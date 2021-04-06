@@ -12,11 +12,7 @@ int main()
 
         auto solution = net->solve();
 
-        for (auto& br : net->getBranches()) {
-            std::cout << "Device #" << br->id << ":" << std::endl;
-            std::cout << "  u = " << solution(br->voltageIndex(), 0) << std::endl;
-            std::cout << "  i = " << solution(br->currentIndex(), 0) << std::endl;
-        }
+        std::cout << solution;
     }
     catch (Analyzer::Network::LoadException error) {
         std::cout << "Loading failed!" << std::endl;
