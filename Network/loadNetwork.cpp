@@ -68,10 +68,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 	else {
 		// default to DC
 		solver = new NetworkSolverDC();
-		std::cout << "No analysis was specified, defaulting to DC!" << std::endl;
 	}
-
-	std::cout << "Solver: " << solver->print() << std::endl;
 
 	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::unique_ptr<INetworkSolver>(solver)));
 
@@ -97,8 +94,6 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		std::string type;
 
 		iss >> type;
-		std::cout << type << std::endl;
-		std::cout << line << std::endl;
 
 		IDevice* device = nullptr;
 
