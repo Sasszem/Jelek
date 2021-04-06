@@ -7,7 +7,7 @@ class CCCS :
     const double currGain;
 public:
     CCCS(unsigned, unsigned, unsigned, unsigned, double);
-    double equation(LinMath::Matrix& vec);
+    double equation(LinMath::Matrix& eq);
     std::string print();
 };
 

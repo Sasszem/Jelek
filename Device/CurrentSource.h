@@ -6,7 +6,7 @@ class CurrentSource :
     double current;
 public:
     CurrentSource(unsigned, unsigned, unsigned, double);
-    double equation(LinMath::Matrix& vec);
+    double equation(LinMath::Matrix& eq);
     std::string print();
 };
 

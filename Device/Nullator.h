@@ -5,7 +5,7 @@ class Nullator :
 {
 public:
     Nullator(unsigned, unsigned, unsigned, unsigned);
-    double equation(LinMath::Matrix& vec);
+    double equation(LinMath::Matrix& eq);
     std::string print();
 };
 

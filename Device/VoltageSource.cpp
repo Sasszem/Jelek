@@ -5,9 +5,9 @@ VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minu
 {
 }
 
-double VoltageSource::equation(LinMath::Matrix& vector)
+double VoltageSource::equation(LinMath::Matrix& eq)
 {
-	vector(id-1, voltageIndex()) = 1.0;
+	eq(id-1, voltageIndex()) = 1.0;
 	return voltage;
 }
 

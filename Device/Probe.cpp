@@ -5,9 +5,9 @@ Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, 
 {
 }
 
-double Probe::equation(LinMath::Matrix& vector)
+double Probe::equation(LinMath::Matrix& eq)
 {
-	vector(id-1, currentIndex()) = 1.0;
+	eq(id-1, currentIndex()) = 1.0;
 	return 0.0;
 }
 

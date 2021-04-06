@@ -5,10 +5,10 @@ VCVS::VCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double ga
 {
 }
 
-double VCVS::equation(LinMath::Matrix& vec)
+double VCVS::equation(LinMath::Matrix& eq)
 {
-	vec(id-1, voltageIndexFromId(coupledId)) = voltageGain;
-	vec(id-1, voltageIndex()) = -1.0;
+	eq(id-1, voltageIndexFromId(coupledId)) = voltageGain;
+	eq(id-1, voltageIndex()) = -1.0;
 	return 0.0;
 }
 
