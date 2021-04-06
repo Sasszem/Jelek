@@ -1,10 +1,11 @@
 #pragma once
 #include <stdexcept>
-class DimensionException: public std::exception
-{
-	std::string message;
-public:
-	DimensionException(std::string message);
-	const char* what() const;
-};
+
+namespace LinMath {
+	class DimensionException : public std::exception
+	{
+	public:
+		DimensionException(std::string message);
+	};
+}
 

@@ -1,11 +1,5 @@
 #include "DimensionException.h"
 
-DimensionException::DimensionException(std::string msg)
+LinMath::DimensionException::DimensionException(std::string msg): std::exception(msg.c_str())
 {
-	this->message = msg;
-}
-
-const char* DimensionException::what() const
-{
-	return message.c_str();
 }

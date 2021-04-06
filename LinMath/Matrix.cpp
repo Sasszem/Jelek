@@ -1,5 +1,4 @@
-#include "Matrix.h"
-#include "DimensionException.h"
+#include "math.h"
 #include "../fmt/core.h"
 #include <algorithm>
 #include <iostream>
@@ -57,7 +56,7 @@ Matrix Matrix::invert() const
 		}
 		if (!found) {
 			// matrix can not be inverted
-			throw std::runtime_error(fmt::format("Error: matrix can not be inverted!"));
+			throw InvertException();
 		}
 
 		// swap that with line i

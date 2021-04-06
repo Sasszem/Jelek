@@ -2,11 +2,10 @@
 #include "../fmt/core.h"
 #include "../Device/devices.h"
 #include "Solver/solvers.h"
+#include "LoadException.h"
 
 #include <iostream>
 #include <sstream>
-
-
 
 
 using Analyzer::Network::Network;
@@ -15,6 +14,7 @@ using Analyzer::Network::Solvers::NetworkSolverDC;
 using Analyzer::Network::Solvers::NetworkSolverGen;
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 using Analyzer::Network::Solvers::EquationSystemSolver;
+using Analyzer::Network::LoadException;
 
 void parseDevice(std::string, std::unique_ptr<Network>&);
 void parseCoupledDevice(std::string, std::unique_ptr<Network>&);
@@ -31,7 +31,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 
 	std::istringstream iss(line);
 	if (!(iss >> N >> B)) {
-		throw std::runtime_error(fmt::format("Error: could not parse header N and B: '{}'", line));
+		throw LoadException(fmt::format("Error: could not parse header N and B: '{}'", line));
 	}
 
 	iss >> analysisType;
@@ -43,7 +43,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			unsigned deviceid;
 			iss >> deviceid;
 			if (!iss) {
-				throw std::runtime_error(fmt::format("Error: could not parse GEN analysis parameters: '{}'", line));
+				throw LoadException(fmt::format("Error: could not parse GEN analysis parameters: '{}'", line));
 			}
 			double R1 = NetworkSolverGen::R1_DEFAULT, R2 = NetworkSolverGen::R2_DEFAULT;
 			iss >> R1 >> R2;
@@ -54,7 +54,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			unsigned primaryId, secondaryId;
 			iss >> primaryId >> secondaryId;
 			if (!iss) {
-				throw std::runtime_error(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
+				throw LoadException(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
 			}
 			solver = new NetworkSolverTwoport(primaryId, secondaryId);
 		}
@@ -62,7 +62,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			solver = new EquationSystemSolver();
 		}
 		else {
-			throw std::runtime_error(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
+			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
 		}
 	}
 	else {
@@ -87,7 +87,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		// stop on 'END'
 		if (line == "END") {
 			if (B != network->getBranches().size()) {
-				throw std::runtime_error(fmt::format("Load error: END but less then B={} branches were added!", B));
+				throw LoadException(fmt::format("Load error: END but less then B={} branches were added!", B));
 			}
 			run = false;
 			continue;
@@ -131,14 +131,14 @@ void parseDevice(std::string line, std::unique_ptr<Network>& network) {
 	unsigned id, pPlus, pMinus;
 	iss >> id >> pPlus >> pMinus;
 	if (!iss) {
-		throw std::runtime_error(fmt::format("Error: can not parse device base parameters: '{}'", line));
+		throw LoadException(fmt::format("Error: can not parse device base parameters: '{}'", line));
 	}
 
 	double param = 0;
 	if (type == "RES" || type == "VOL" || type == "CUR") {
 		iss >> param;
 		if (!iss) {
-			throw std::runtime_error(fmt::format("Error: could not parse device parameter: '{}'", line));
+			throw LoadException(fmt::format("Error: could not parse device parameter: '{}'", line));
 		}
 	}
 
@@ -158,7 +158,7 @@ void parseDevice(std::string line, std::unique_ptr<Network>& network) {
 		device = new Probe(id, pPlus, pMinus);
 	}
 	else {
-		throw std::runtime_error(fmt::format("Error: unknown device: '{}'", type));
+		throw LoadException(fmt::format("Error: unknown device: '{}'", type));
 	}
 
 	network->addDevice(std::unique_ptr<IDevice>(device));
@@ -174,18 +174,18 @@ void parseCoupledDevice(std::string line, std::unique_ptr<Network>& network) {
 	unsigned id, pPlus, pMinus, coupledId;
 	iss >> id >> pPlus >> pMinus >> coupledId;
 	if (!iss) {
-		throw std::runtime_error(fmt::format("Error: can not parse coupled device base parameters: '{}'", line));
+		throw LoadException(fmt::format("Error: can not parse coupled device base parameters: '{}'", line));
 	}
 
 	if (coupledId == 0 || coupledId > network->B) {
-		throw std::runtime_error(fmt::format("Error: invalid coupled device ID {}: '{}'", coupledId, line));
+		throw LoadException(fmt::format("Error: invalid coupled device ID {}: '{}'", coupledId, line));
 	}
 
 	double param = 0;
 	if (type == "$CCVS" || type == "$CCCS" || type == "$VCVS" || type == "$VCCS") {
 		iss >> param;
 		if (!iss) {
-			throw std::runtime_error(fmt::format("Error: could not parse coupled device parameter: '{}'", line));
+			throw LoadException(fmt::format("Error: could not parse coupled device parameter: '{}'", line));
 		}
 	}
 
@@ -203,12 +203,12 @@ void parseCoupledDevice(std::string line, std::unique_ptr<Network>& network) {
 	}
 	else if (type == "$NULL") {
 		if (coupledId >= id) {
-			throw std::runtime_error(fmt::format("Error: Nullator friend id can not be higher than own id: '{}'", line));
+			throw LoadException(fmt::format("Error: Nullator friend id can not be higher than own id: '{}'", line));
 		}
 		device = new Nullator(id, pPlus, pMinus, coupledId);
 	}
 	else {
-		throw std::runtime_error(fmt::format("Error: unknown coupled device: '{}'", type));
+		throw LoadException(fmt::format("Error: unknown coupled device: '{}'", type));
 	}
 
 	network->addDevice(std::unique_ptr<IDevice>(device));
@@ -226,14 +226,14 @@ void parseShorthand(std::string line, std::unique_ptr<Network>& network) {
 	unsigned id, plus1, minus1, plus2, minus2;
 	iss >> id >> plus1 >> minus1 >> plus2 >> minus2;
 	if (!iss) {
-		throw std::runtime_error(fmt::format("Error: can not parse shorthand base parameters: '{}'", line));
+		throw LoadException(fmt::format("Error: can not parse shorthand base parameters: '{}'", line));
 	}
 
 	double param = 0;
 	if (type == "!TRAN" || type == "!GYR") {
 		iss >> param;
 		if (!iss) {
-			throw std::runtime_error(fmt::format("Error: could not parse shorthand parameter: '{}'", line));
+			throw LoadException(fmt::format("Error: could not parse shorthand parameter: '{}'", line));
 		}
 	}
 
@@ -250,7 +250,7 @@ void parseShorthand(std::string line, std::unique_ptr<Network>& network) {
 		device2 = new CCCS(id + 1, plus2, minus2, id, - param);
 	}
 	else {
-		throw std::runtime_error(fmt::format("Error: unknown coupled device: '{}'", type));
+		throw LoadException(fmt::format("Error: unknown coupled device: '{}'", type));
 	}
 
 	network->addDevice(std::unique_ptr<IDevice>(device1));

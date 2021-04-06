@@ -3,11 +3,14 @@
 #include "../fmt/core.h"
 #include <algorithm>
 #include <stdexcept>
+#include "SolveException.h"
+#include "LoadException.h"
 
 using Analyzer::Network::Network;
 using Analyzer::Network::NetworkGraph;
 using Analyzer::Network::Branches;
 using Analyzer::Network::DFS;
+using Analyzer::Network::SolveException;
 
 Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver) : N(N), B(B), graph(N), solver(std::move(solver))
 {
@@ -17,21 +20,21 @@ void Network::addDevice(std::unique_ptr<IDevice> device)
 {
 	// check if the ID is valid
 	if (device->id == 0 || device->id > B) {
-		throw std::runtime_error(fmt::format("Device ID {} is outside of the allowed range 1..{}", device->id, B));
+		throw LoadException(fmt::format("Device ID {} is outside of the allowed range 1..{}", device->id, B));
 	}
 
 	// check if the ID is not a duplicate one
 	if (std::any_of(branches.begin(), branches.end(), [&device](std::unique_ptr<IDevice>& test) {return device->id == test->id; })) {
-		throw std::runtime_error(fmt::format("Device ID {} is already taken!", device->id));
+		throw LoadException(fmt::format("Device ID {} is already taken!", device->id));
 	}
 
 	// validate ports
 	if (device->port_minus == 0 || device->port_minus > N) {
-		throw std::runtime_error(fmt::format("Invalid minus port of device: {}", device->print()));
+		throw LoadException(fmt::format("Invalid minus port of device: {}", device->print()));
 	}
 
 	if (device->port_plus== 0 || device->port_plus > N) {
-		throw std::runtime_error(fmt::format("Invalid plus port of device: {}", device->print()));
+		throw LoadException(fmt::format("Invalid plus port of device: {}", device->print()));
 	}
 
 	graph[device->port_plus - 1].push_back(device->id);
@@ -96,8 +99,13 @@ LinMath::Matrix Network::getEquations() {
 }
 
 LinMath::Matrix Network::solve() {
-	auto eq = getEquations();
-	return solver->solve(eq);
+	try {
+		auto eq = getEquations();
+		return solver->solve(eq);
+	}
+	catch (const std::exception& e) {
+		throw SolveException(e.what());
+	}
 }
 
 const std::vector<std::unique_ptr<IDevice>>& Network::getBranches()
