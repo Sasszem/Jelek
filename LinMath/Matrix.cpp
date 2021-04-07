@@ -110,7 +110,7 @@ const double& LinMath::Matrix::operator()(unsigned row, unsigned column) const
 	return data[row * columns + column];
 }
 
-Matrix LinMath::Matrix::operator*(const Matrix& rhs)
+Matrix LinMath::Matrix::operator*(const Matrix& rhs) const
 {
 	if (rhs.rows != columns) {
 		throw DimensionException(fmt::format("Can not multiply {}x{} and {}x{} matrices!", rows, columns, rhs.rows, rhs.columns));
@@ -130,7 +130,7 @@ Matrix LinMath::Matrix::operator*(const Matrix& rhs)
 	return result;
 }
 
-Matrix Matrix::subMatrix(unsigned startRow, unsigned startColumn, unsigned height, unsigned width) {
+Matrix Matrix::subMatrix(unsigned startRow, unsigned startColumn, unsigned height, unsigned width) const {
 	Matrix res(height, width);
 	for (unsigned r = 0; r < height; r++) {
 		for (unsigned c = 0; c < width; c++) {
@@ -140,8 +140,40 @@ Matrix Matrix::subMatrix(unsigned startRow, unsigned startColumn, unsigned heigh
 	return res;
 }
 
+Matrix Matrix::transpose() const {
+	Matrix result(columns, rows);
+	for (unsigned r = 0; r < rows; r++)
+		for (unsigned c = 0; c < columns; c++)
+			result(c, r) = (*this)(r, c);
+	return result;
+}
+
+Matrix Matrix::operator+(const Matrix& rhs) const {
+	if (rhs.rows != rows || rhs.columns != columns) {
+		throw DimensionException(fmt::format("Can not add or subtract {}x{} and {}x{} matrices", rows, columns, rhs.rows, rhs.columns));
+	}
+
+	Matrix result(rows, columns);
+	for (unsigned r = 0; r < rows; r++)
+		for (unsigned c = 0; c < columns; c++)
+			result(r, c) = (*this)(r, c) + rhs(r, c);
+	return result;
+}
+
+Matrix Matrix::operator*(double scalar) const {
+	Matrix result(rows, columns);
+	for (unsigned r = 0; r < rows; r++)
+		for (unsigned c = 0; c < columns; c++)
+			result(r, c) = scalar * (*this)(r, c);
+	return result;
+}
+
+Matrix Matrix::operator-(const Matrix& rhs) const {
+	return (*this) +  rhs * (-1.0);
+}
+
 namespace LinMath {
-	std::ostream& operator<<(std::ostream& stream, LinMath::Matrix& m)
+	std::ostream& operator<<(std::ostream& stream, const LinMath::Matrix& m)
 	{
 		stream << "[" << std::endl;
 		for (unsigned r = 0; r < m.rows; r++) {

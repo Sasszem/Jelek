@@ -13,8 +13,12 @@ namespace LinMath {
 		Matrix invert() const;
 		double& operator()(unsigned row, unsigned column);
 		const double& operator()(unsigned row, unsigned column) const;
-		Matrix operator*(const Matrix& rhs);
-		Matrix subMatrix(unsigned, unsigned, unsigned, unsigned);
-		friend std::ostream& operator<<(std::ostream&, Matrix&);
+		Matrix operator*(const Matrix& rhs) const;
+		Matrix subMatrix(unsigned, unsigned, unsigned, unsigned) const;
+		Matrix transpose() const;
+		Matrix operator+(const Matrix&) const;
+		Matrix operator*(double) const;
+		Matrix operator-(const Matrix&) const;
+		friend std::ostream& operator<<(std::ostream&, const Matrix&);
 	};
 }
