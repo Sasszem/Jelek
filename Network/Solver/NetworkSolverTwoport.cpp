@@ -1,7 +1,10 @@
 #include "NetworkSolverTwoport.h"
+
+#include "../../LinMath/InvertException.h"
 #include "../../fmt/core.h"
 #include <iostream>
 #include <algorithm>
+#include <limits>
 
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 
@@ -11,6 +14,8 @@ NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondar
 
 LinMath::Matrix permuteMatrix(unsigned n, LinMath::Matrix targets);
 LinMath::Matrix solve_for(unsigned, unsigned, unsigned, unsigned, LinMath::Matrix&);
+void copy_matrix(LinMath::Matrix&, LinMath::Matrix&, unsigned);
+LinMath::Matrix solve_or_nan(unsigned, unsigned, unsigned, unsigned, LinMath::Matrix&);
 
 LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 {
@@ -30,33 +35,17 @@ LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 
 	LinMath::Matrix result(12, 2);
 
-	auto impedance = solve_for(2 * primary - 2, 2 * secondary - 2, 2 * primary - 1, 2 * secondary - 1, eq).subMatrix(0,0,2,2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r, c) = impedance(r, c);
-		}
-	} // this could be 1 line shorter if I unrolled the loop by hand...
+	auto impedance = solve_or_nan(2 * primary - 2, 2 * secondary - 2, 2 * primary - 1, 2 * secondary - 1, eq).subMatrix(0,0,2,2);
+	copy_matrix(impedance, result, 0);
 
-	auto conductance = solve_for(2 * primary - 1, 2 * secondary - 1, 2 * primary - 2, 2 * secondary - 2, eq).subMatrix(0, 0, 2, 2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r + 2, c) = conductance(r, c);
-		}
-	}
+	auto conductance = solve_or_nan(2 * primary - 1, 2 * secondary - 1, 2 * primary - 2, 2 * secondary - 2, eq).subMatrix(0, 0, 2, 2);
+	copy_matrix(conductance, result, 2);
 
-	auto hybrid = solve_for(2 * primary - 2, 2 * secondary - 1, 2 * primary - 1, 2 * secondary - 2, eq).subMatrix(0, 0, 2, 2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r + 4, c) = hybrid(r, c);
-		}
-	}
+	auto hybrid = solve_or_nan(2 * primary - 2, 2 * secondary - 1, 2 * primary - 1, 2 * secondary - 2, eq).subMatrix(0, 0, 2, 2);
+	copy_matrix(hybrid, result, 4);
 
-	auto invhybrid = solve_for(2 * primary - 1, 2 * secondary - 2, 2 * primary - 2, 2 * secondary - 1, eq).subMatrix(0, 0, 2, 2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r + 6, c) = invhybrid(r, c);
-		}
-	}
+	auto invhybrid = solve_or_nan(2 * primary - 1, 2 * secondary - 2, 2 * primary - 2, 2 * secondary - 1, eq).subMatrix(0, 0, 2, 2);
+	copy_matrix(invhybrid, result, 6);
 
 
 	// chain type characteristics use a differenc reference direction for i2
@@ -64,19 +53,11 @@ LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 		eq(r, 2 * secondary - 1) *= -1.0;
 	}
 
-	auto chain = solve_for(2 * primary - 2, 2 * primary - 1, 2 * secondary - 2, 2 * secondary - 1, eq).subMatrix(0, 0, 2, 2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r + 8, c) = chain(r, c);
-		}
-	}
+	auto chain = solve_or_nan(2 * primary - 2, 2 * primary - 1, 2 * secondary - 2, 2 * secondary - 1, eq).subMatrix(0, 0, 2, 2);
+	copy_matrix(chain, result, 8);
 
-	auto invchain = solve_for(2 * secondary - 2, 2 * secondary - 1, 2 * primary - 2, 2 * primary - 1, eq).subMatrix(0, 0, 2, 2);
-	for (unsigned r = 0; r < 2; r++) {
-		for (unsigned c = 0; c < 2; c++) {
-			result(r + 10, c) = invchain(r, c);
-		}
-	}
+	auto invchain = solve_or_nan(2 * secondary - 2, 2 * secondary - 1, 2 * primary - 2, 2 * primary - 1, eq).subMatrix(0, 0, 2, 2);
+	copy_matrix(invchain, result, 10);
 
 	std::cout << "Two port analysis is not fully implemented yet!" << std::endl;
 	return result;
@@ -133,4 +114,28 @@ LinMath::Matrix permuteMatrix(unsigned n, LinMath::Matrix targets) {
 		}
 	}
 	return m;
+}
+
+void copy_matrix(LinMath::Matrix& from, LinMath::Matrix& to, unsigned row) {
+	for (unsigned r = 0; r < 2; r++) {
+		for (unsigned c = 0; c < 2; c++) {
+			to(r + row, c) = from(r, c);
+		}
+	}
+	// this could be 1 line shorter if I unrolled the loop by hand...
+}
+
+LinMath::Matrix solve_or_nan(unsigned for1, unsigned for2, unsigned from1, unsigned from2, LinMath::Matrix& eq) {
+	try {
+		LinMath::Matrix m = solve_for(for1, for2, from1, from2, eq);
+		return m;
+	}
+	catch (const LinMath::InvertException& ex) {
+		LinMath::Matrix m(2,2);
+		m(0, 0) = std::numeric_limits<double>::quiet_NaN(); 
+		m(1, 0) = std::numeric_limits<double>::quiet_NaN();
+		m(0, 1) = std::numeric_limits<double>::quiet_NaN();
+		m(1, 1) = std::numeric_limits<double>::quiet_NaN();
+		return m;
+	}
 }
