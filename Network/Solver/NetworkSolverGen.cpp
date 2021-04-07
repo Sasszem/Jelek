@@ -62,7 +62,7 @@ LinMath::Matrix NetworkSolverGen::solve(LinMath::Matrix& eqOrig) const
 	i0 = u0 / R;
 	
 	// handle pathological case of R=inf
-	if (u0 == INFINITY && (R == -INFINITY || R) == INFINITY))
+	if (u0 == INFINITY && (R == -INFINITY || R == INFINITY))
 		i0 = i2;
 
 	LinMath::Matrix generatorParameters(3, 1);
