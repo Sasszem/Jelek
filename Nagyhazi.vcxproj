@@ -165,6 +165,7 @@
     <ClCompile Include="Network\Solver\EquationSystemSolver.cpp" />
     <ClCompile Include="Network\Solver\NetworkSolverDC.cpp" />
     <ClCompile Include="Network\Solver\NetworkSolverGen.cpp" />
+    <ClCompile Include="Network\Solver\NetworkSolverResistance.cpp" />
     <ClCompile Include="Network\Solver\NetworkSolverTwoport.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +198,7 @@
     <ClInclude Include="Network\Solver\EquationSystemSolver.h" />
     <ClInclude Include="Network\Solver\NetworkSolverDC.h" />
     <ClInclude Include="Network\Solver\NetworkSolverGen.h" />
+    <ClInclude Include="Network\Solver\NetworkSolverResistance.h" />
     <ClInclude Include="Network\Solver\NetworkSolverTwoport.h" />
     <ClInclude Include="Network\Solver\solvers.h" />
   </ItemGroup>

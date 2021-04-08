@@ -29,16 +29,19 @@ possible values:
 - GEN - solves for equivalent generator (Thevenin and Norton) parameters
 - TWOPORT - solves for all possible two-port characteristic matrices
 - EQ - diagnostic printing of the extended matrix of the equation system
+- RES - equivalent resistor parameters
 
 If omitted, it defaults to DC
 
-### Analysis parameters
+### Analysis modes and parameters
 
 Additional analysis parameters might follow after the mode
 
 #### DC
 
 DC has no parameters, anything after mode will be ignored
+
+Return will be a column vector with every device's voltage and current, sorted by id, so `u1, i1, u2, i2, ...`
 
 #### GEN
 
@@ -51,6 +54,8 @@ GEN has the following parameters:
 - DEVICEID: unsigned integer id of a device that will be used as "output". It's equation will be replaced, so it can be anything but a resistor is recommended
 - R1, R2: resistance values to terminate the network with. Default is 1 and 1M
 
+Result will be a 3x1 column vector `[u, i, r]`
+
 #### TWOPORT
 
 ```
@@ -60,11 +65,30 @@ GEN has the following parameters:
 - PRIMARYID: id of the primary port of the two-port network
 - SECONDARYID: id of the secondary port of the network
 
-Both devices will be removed, so setting them as a resistor is recommended
+Both devices will be removed, so setting them as a resistor or wire is recommended
+
+Result will be a 12x2 matrix, where 2x2 blocks are the R, G, H, K, A and B matrices in this order from top to bottom.
+
+**WARNING:** I got some funny results when NOT using device 1 and 2 as the ports, witch I'll look furter into later.
+
 
 #### EQ
 
 Has no parameters
+
+Result is the extended matrix of the equation system.
+
+#### RES
+
+```
+port: device
+```
+
+- PORT: id of the device identifying the ports
+
+The equation of the device specified will be erased! If it was already erased by a nullor, the answer will be wrong! 
+
+Result is a 1x1 matrix with the resistance value.
 
 ## devices
 
@@ -92,19 +116,21 @@ All devices have a type, an ID, and two connections (plus and minus) to nodes.
 - parameter: current (double)
 - equation: `i = iset`
 
+Caveat: it's a current SINK, so current will flow from + to -! (it follows the normal directions for voltage and current)
+
 ### Short / wire
 
 - type string: `WIRE`
 - no parameters
 - equation: `u = 0`
-- useful for current-controlled devices
+- useful for current-controlled devices or dummy devices in TWOPORT or RESISTOR analysis
 
 ### Break / probe
 
 - type string: `PROBE`
 - no parameters
 - equation: `i = 0`
-- useful for voltage-controlled devices
+- useful for voltage-controlled devices or as dummy devices
 
 ### Coupled devices
 
@@ -186,3 +212,4 @@ Don't forget that they still count as 2 devices, taking `id` and `id+1`!
 - also every line starting with hashtag (#) is ignored
 - (due to the way parsing is implemented any extra info written after a line is also ignored IF NO PARAMETERS CAN FOLLOW)
 - parsing terminates without error when EOF is reached or a line contains `END`
+- don't press CTRL-C, because it throws and exception.
