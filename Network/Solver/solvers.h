@@ -4,3 +4,4 @@
 #include "NetworkSolverGen.h"
 #include "NetworkSolverTwoport.h"
 #include "EquationSystemSolver.h"
+#include "NetworkSolverResistance.h"

@@ -14,6 +14,7 @@ using Analyzer::Network::Solvers::NetworkSolverDC;
 using Analyzer::Network::Solvers::NetworkSolverGen;
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 using Analyzer::Network::Solvers::EquationSystemSolver;
+using Analyzer::Network::Solvers::NetworkSolverResistance;
 using Analyzer::Network::LoadException;
 
 void parseDevice(std::string, std::unique_ptr<Network>&);
@@ -60,6 +61,14 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		}
 		else if (analysisType == "EQ") {
 			solver = new EquationSystemSolver();
+		}
+		else if (analysisType == "RES") {
+			unsigned port;
+			iss >> port;
+			if (!iss) {
+				throw LoadException(fmt::format("Error: could not parse RES device id: '{}'", line));
+			}
+			solver = new NetworkSolverResistance(port);
 		}
 		else {
 			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
