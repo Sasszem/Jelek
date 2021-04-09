@@ -59,7 +59,6 @@ LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 	auto invchain = solve_or_nan(2 * secondary - 2, 2 * secondary - 1, 2 * primary - 2, 2 * primary - 1, eq).subMatrix(0, 0, 2, 2);
 	copy_matrix(invchain, result, 10);
 
-	std::cout << "Two port analysis is not fully implemented yet!" << std::endl;
 	return result;
 }
 
@@ -85,8 +84,6 @@ LinMath::Matrix solve_for(unsigned for1, unsigned for2, unsigned from1, unsigned
 	auto pM = permuteMatrix(mat.columns, ptarget).transpose();
 	auto matPermuted = mat * pM;
 
-	std::cout << "Equation matrix with swapped columns: " << std::endl;
-	std::cout << matPermuted;
 	auto m1 = matPermuted.subMatrix(0, 0, mat.rows, 2);
 	auto m2 = matPermuted.subMatrix(0, 2, mat.rows, mat.columns - 2);
 
@@ -100,7 +97,7 @@ LinMath::Matrix permuteMatrix(unsigned n, LinMath::Matrix targets) {
 		m(i, targets(i, 0)) = 1;
 	}
 	unsigned r = targets.rows;
-	for (unsigned c = targets.rows; c < n; c++) {
+	for (unsigned c = 0; c < n; c++) {
 		// write ONLY IF not in targets
 		bool contains = false;
 		for (unsigned i = 0; i < targets.rows; i++) {
