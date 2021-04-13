@@ -34,25 +34,25 @@ void Network::addDevice(std::unique_ptr<IDevice> device)
 		throw LoadException(fmt::format("Invalid minus port of device: {}", device->print()));
 	}
 
-	if (device->port_plus== 0 || device->port_plus > N) {
+	if (device->port_plus == 0 || device->port_plus > N) {
 		throw LoadException(fmt::format("Invalid plus port of device: {}", device->print()));
 	}
 
 	graph[device->port_plus - 1].push_back(device->id);
-	graph[device->port_minus - 1].push_back(0-device->id);
+	graph[device->port_minus - 1].push_back(0 - device->id);
 	branches.push_back(std::move(device));
 }
 
 void Network::finishLoading()
 {
 	std::sort(branches.begin(), branches.end(), [](std::unique_ptr<IDevice>& a, std::unique_ptr<IDevice>& b) {
-		return a->id < b->id; 
-	});
+		return a->id < b->id;
+		});
 }
 
 LinMath::Matrix Network::getEquations() {
 	this->finishLoading();
-	LinMath::Matrix eq(2 * B, 2*B + 1);
+	LinMath::Matrix eq(2 * B, 2 * B + 1);
 
 	// unknowns: u0, i0, u1, i1, ... 
 
@@ -60,7 +60,7 @@ LinMath::Matrix Network::getEquations() {
 
 	// characteristic equations of nodes
 	for (auto& branch : branches) {
-		eq(branch->id-1, 2*B) = branch->equation(eq);
+		eq(branch->id - 1, 2 * B) = branch->equation(eq);
 	}
 	// node equations
 	// basicly KIRCHOFF's NODE LAWS

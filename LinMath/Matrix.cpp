@@ -5,14 +5,14 @@
 
 using namespace LinMath;
 
-Matrix::Matrix(unsigned rows, unsigned columns) : rows(rows), columns(columns), data(new double[rows*columns])
+Matrix::Matrix(unsigned rows, unsigned columns) : rows(rows), columns(columns), data(new double[rows * columns])
 {
 	for (unsigned row = 0; row < rows; row++)
 		for (unsigned col = 0; col < columns; col++)
 			(*this)(row, col) = 0.0;
 }
 
-Matrix::Matrix(const Matrix& other): rows(other.rows), columns(other.columns), data(new double[other.rows * other.columns])
+Matrix::Matrix(const Matrix& other) : rows(other.rows), columns(other.columns), data(new double[other.rows * other.columns])
 {
 	for (unsigned row = 0; row < rows; row++)
 		for (unsigned col = 0; col < columns; col++)
@@ -36,7 +36,7 @@ Matrix Matrix::invert() const
 			m(r, c) = (*this)(r, c);
 			m(r, c + columns) = r == c ? 1.0 : 0.0;
 		}
-	
+
 	// aussian elimination column by column
 	// 1. find a row r in i..rows such as m[r][i]!=0
 	// 2. swap that row to be the ith row
@@ -67,17 +67,17 @@ Matrix Matrix::invert() const
 				m(i, c) = tmp;
 			}
 		}
-		
+
 		// normalize row
-		for (unsigned c = columns * 2 - 1; c>i; c--)
-			m(i,c) *= (1 / m(i, i));
+		for (unsigned c = columns * 2 - 1; c > i; c--)
+			m(i, c) *= (1 / m(i, i));
 		m(i, i) = 1.0;
 
 		// kill every other row
 		for (unsigned rc = 0; rc < rows; rc++) {
 			if (rc != i) {
 				double mul = m(rc, i);
-				for (unsigned c = 0; c < columns *2; c++)
+				for (unsigned c = 0; c < columns * 2; c++)
 					m(rc, c) -= m(i, c) * mul;
 			}
 		}
@@ -99,7 +99,7 @@ double& LinMath::Matrix::operator()(unsigned row, unsigned column)
 	if (row >= rows || column >= columns) {
 		throw DimensionException(fmt::format("Can not get element ({}, {}) of a {}x{} matrix!", row, column, rows, columns));
 	}
-	return data[row * columns +  column];
+	return data[row * columns + column];
 }
 
 const double& LinMath::Matrix::operator()(unsigned row, unsigned column) const
@@ -169,7 +169,7 @@ Matrix Matrix::operator*(double scalar) const {
 }
 
 Matrix Matrix::operator-(const Matrix& rhs) const {
-	return (*this) +  rhs * (-1.0);
+	return (*this) + rhs * (-1.0);
 }
 
 namespace LinMath {

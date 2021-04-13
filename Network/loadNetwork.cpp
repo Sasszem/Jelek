@@ -119,7 +119,7 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		else {
 			// normal devices
 			parseDevice(line, network);
-			
+
 		}
 	}
 
@@ -222,7 +222,7 @@ void parseCoupledDevice(std::string line, std::unique_ptr<Network>& network) {
 void parseShorthand(std::string line, std::unique_ptr<Network>& network) {
 	std::istringstream iss(line);
 	std::string type;
-	
+
 	iss >> type;
 
 	IDevice* device1;
@@ -252,7 +252,7 @@ void parseShorthand(std::string line, std::unique_ptr<Network>& network) {
 	}
 	else if (type == "!TRAN") {
 		device1 = new VCVS(id, plus1, minus1, id + 1, param);
-		device2 = new CCCS(id + 1, plus2, minus2, id, - param);
+		device2 = new CCCS(id + 1, plus2, minus2, id, -param);
 	}
 	else {
 		throw LoadException(fmt::format("Error: unknown coupled device: '{}'", type));

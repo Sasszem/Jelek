@@ -5,7 +5,7 @@
 
 using Analyzer::Device::CurrentSource;
 
-Analyzer::Network::Solvers::NetworkSolverResistance::NetworkSolverResistance(unsigned device): port(device)
+Analyzer::Network::Solvers::NetworkSolverResistance::NetworkSolverResistance(unsigned device) : port(device)
 {
 }
 
@@ -28,9 +28,9 @@ LinMath::Matrix Analyzer::Network::Solvers::NetworkSolverResistance::solve(LinMa
 
 
 	// voltage response of the network to a 1A stimulus is the resistance
-	
+
 	// take into care the direction of the current
-	CurrentSource gen(port, 0, 0, - 1.0);
+	CurrentSource gen(port, 0, 0, -1.0);
 	eq(port - 1, eq.columns - 1) = gen.equation(eq);
 	double res = (eq.subMatrix(0, 0, eq.rows, eq.columns - 1).invert() * eq.subMatrix(0, eq.columns - 1, eq.rows, 1))(2 * port - 2, 0);
 

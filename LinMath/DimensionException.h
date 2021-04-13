@@ -8,4 +8,3 @@ namespace LinMath {
 		DimensionException(std::string message);
 	};
 }
-

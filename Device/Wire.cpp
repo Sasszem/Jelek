@@ -4,13 +4,13 @@
 using Analyzer::Device::Wire;
 using Analyzer::Device::IDevice;
 
-Wire::Wire(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, port_plus, port_minus)
+Wire::Wire(unsigned id, unsigned port_plus, unsigned port_minus) : IDevice(id, port_plus, port_minus)
 {
 }
 
 double Wire::equation(LinMath::Matrix& eq)
 {
-	eq(id-1, voltageIndex()) = 1.0;
+	eq(id - 1, voltageIndex()) = 1.0;
 	return 0.0;
 }
 

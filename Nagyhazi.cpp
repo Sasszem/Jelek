@@ -7,20 +7,20 @@
 
 int main()
 {
-    try {
-        auto net = Analyzer::Network::loadFromStream(std::cin);
+	try {
+		auto net = Analyzer::Network::loadFromStream(std::cin);
 
-        auto solution = net->solve();
+		auto solution = net->solve();
 
-        std::cout << solution;
-    }
-    catch (Analyzer::Network::LoadException error) {
-        std::cout << "Loading failed!" << std::endl;
-        std::cout << error.what() << std::endl;
-    }
-    catch (Analyzer::Network::SolveException error) {
-        std::cout << "Could not solve network!" << std::endl;
-        std::cout << error.what() << std::endl;
-    }
-    return 0;
+		std::cout << solution;
+	}
+	catch (Analyzer::Network::LoadException error) {
+		std::cout << "Loading failed!" << std::endl;
+		std::cout << error.what() << std::endl;
+	}
+	catch (Analyzer::Network::SolveException error) {
+		std::cout << "Could not solve network!" << std::endl;
+		std::cout << error.what() << std::endl;
+	}
+	return 0;
 }

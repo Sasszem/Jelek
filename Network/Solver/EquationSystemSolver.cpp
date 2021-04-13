@@ -9,7 +9,7 @@ LinMath::Matrix Analyzer::Network::Solvers::EquationSystemSolver::solve(LinMath:
 {
 	std::cout << "Extended matrix:" << std::endl;
 	std::cout << eq;
-	return LinMath::Matrix(0,0);
+	return LinMath::Matrix(0, 0);
 }
 
 std::string Analyzer::Network::Solvers::EquationSystemSolver::print() const

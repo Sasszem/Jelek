@@ -2,17 +2,17 @@
 #include "../INetworkSolver.h"
 
 namespace Analyzer {
-    namespace Network {
-        namespace Solvers {
-            class NetworkSolverTwoport :
-                public INetworkSolver
-            {
-                const unsigned primary, secondary;
-            public:
-                NetworkSolverTwoport(unsigned, unsigned);
-                LinMath::Matrix solve(LinMath::Matrix&) const;
-                std::string print() const;
-            };
-        }
-    }
+	namespace Network {
+		namespace Solvers {
+			class NetworkSolverTwoport :
+				public INetworkSolver
+			{
+				const unsigned primary, secondary;
+			public:
+				NetworkSolverTwoport(unsigned, unsigned);
+				LinMath::Matrix solve(LinMath::Matrix&) const;
+				std::string print() const;
+			};
+		}
+	}
 }

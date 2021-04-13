@@ -5,13 +5,13 @@ using Analyzer::Device::IDevice;
 
 unsigned IDevice::currentIndexFromId(unsigned id)
 {
-	return 2*id - 1;
+	return 2 * id - 1;
 }
 unsigned IDevice::voltageIndexFromId(unsigned id)
 {
-	return 2*id - 2;
+	return 2 * id - 2;
 }
-IDevice::IDevice(unsigned id, unsigned plus, unsigned minus): port_plus(plus), port_minus(minus), id(id)
+IDevice::IDevice(unsigned id, unsigned plus, unsigned minus) : port_plus(plus), port_minus(minus), id(id)
 {
 }
 
@@ -26,7 +26,7 @@ unsigned IDevice::other_port(unsigned port)
 
 int IDevice::sign(unsigned port)
 {
-	return port==port_plus ? 1 : -1;
+	return port == port_plus ? 1 : -1;
 }
 
 unsigned IDevice::currentIndex()

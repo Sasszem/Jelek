@@ -4,13 +4,13 @@
 using Analyzer::Device::VoltageSource;
 using Analyzer::Device::IDevice;
 
-VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V): IDevice(id, port_plus, port_minus), voltage(V)
+VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V) : IDevice(id, port_plus, port_minus), voltage(V)
 {
 }
 
 double VoltageSource::equation(LinMath::Matrix& eq)
 {
-	eq(id-1, voltageIndex()) = 1.0;
+	eq(id - 1, voltageIndex()) = 1.0;
 	return voltage;
 }
 

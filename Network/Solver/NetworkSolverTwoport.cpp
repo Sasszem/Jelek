@@ -8,7 +8,7 @@
 
 using Analyzer::Network::Solvers::NetworkSolverTwoport;
 
-NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondaryID): primary(primaryID), secondary(secondaryID)
+NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondaryID) : primary(primaryID), secondary(secondaryID)
 {
 }
 
@@ -26,7 +26,7 @@ LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 
 	auto pM = permuteMatrix(eqOrig.rows, target);
 
-	LinMath::Matrix eq = (pM * eqOrig).subMatrix(2, 0, eqOrig.rows - 2, eqOrig.columns);	
+	LinMath::Matrix eq = (pM * eqOrig).subMatrix(2, 0, eqOrig.rows - 2, eqOrig.columns);
 
 	for (unsigned r = 0; r < eq.rows; r++) {
 		eq(r, 2 * primary - 1) *= -1.0;
@@ -35,7 +35,7 @@ LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 
 	LinMath::Matrix result(12, 2);
 
-	auto impedance = solve_or_nan(2 * primary - 2, 2 * secondary - 2, 2 * primary - 1, 2 * secondary - 1, eq).subMatrix(0,0,2,2);
+	auto impedance = solve_or_nan(2 * primary - 2, 2 * secondary - 2, 2 * primary - 1, 2 * secondary - 1, eq).subMatrix(0, 0, 2, 2);
 	copy_matrix(impedance, result, 0);
 
 	auto conductance = solve_or_nan(2 * primary - 1, 2 * secondary - 1, 2 * primary - 2, 2 * secondary - 2, eq).subMatrix(0, 0, 2, 2);
@@ -94,7 +94,7 @@ LinMath::Matrix solve_for(unsigned for1, unsigned for2, unsigned from1, unsigned
 LinMath::Matrix permuteMatrix(unsigned n, LinMath::Matrix targets) {
 	LinMath::Matrix m(n, n);
 	for (unsigned i = 0; i < targets.rows; i++) {
-		m(i, targets(i, 0)) = 1;
+		m(i, (unsigned)targets(i, 0)) = 1.0;
 	}
 	unsigned r = targets.rows;
 	for (unsigned c = 0; c < n; c++) {
@@ -127,9 +127,9 @@ LinMath::Matrix solve_or_nan(unsigned for1, unsigned for2, unsigned from1, unsig
 		LinMath::Matrix m = solve_for(for1, for2, from1, from2, eq);
 		return m;
 	}
-	catch (const LinMath::InvertException& ex) {
-		LinMath::Matrix m(2,2);
-		m(0, 0) = std::numeric_limits<double>::quiet_NaN(); 
+	catch (const LinMath::InvertException&) {
+		LinMath::Matrix m(2, 2);
+		m(0, 0) = std::numeric_limits<double>::quiet_NaN();
 		m(1, 0) = std::numeric_limits<double>::quiet_NaN();
 		m(0, 1) = std::numeric_limits<double>::quiet_NaN();
 		m(1, 1) = std::numeric_limits<double>::quiet_NaN();

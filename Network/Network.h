@@ -32,4 +32,3 @@ namespace Analyzer {
 		std::unique_ptr<Network> loadFromStream(std::istream&);
 	}
 }
-

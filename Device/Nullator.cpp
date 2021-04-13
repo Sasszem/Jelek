@@ -4,7 +4,7 @@
 using Analyzer::Device::Nullator;
 using Analyzer::Device::ICoupledDevice;
 
-Nullator::Nullator(unsigned id, unsigned pPlus, unsigned pMinus, unsigned noratorID): ICoupledDevice(id, pPlus, pMinus, noratorID)
+Nullator::Nullator(unsigned id, unsigned pPlus, unsigned pMinus, unsigned noratorID) : ICoupledDevice(id, pPlus, pMinus, noratorID)
 {
 }
 

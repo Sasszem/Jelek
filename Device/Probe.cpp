@@ -4,13 +4,13 @@
 using Analyzer::Device::Probe;
 using Analyzer::Device::IDevice;
 
-Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, port_plus, port_minus)
+Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus) : IDevice(id, port_plus, port_minus)
 {
 }
 
 double Probe::equation(LinMath::Matrix& eq)
 {
-	eq(id-1, currentIndex()) = 1.0;
+	eq(id - 1, currentIndex()) = 1.0;
 	return 0.0;
 }
 

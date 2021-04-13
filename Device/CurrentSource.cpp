@@ -9,7 +9,7 @@ CurrentSource::CurrentSource(unsigned id, unsigned port_plus, unsigned port_minu
 }
 
 double CurrentSource::equation(LinMath::Matrix& eq) {
-	eq(id-1, currentIndex()) = 1;
+	eq(id - 1, currentIndex()) = 1;
 	return current;
 }
 

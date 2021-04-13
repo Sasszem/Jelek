@@ -7,16 +7,16 @@
 using Analyzer::Network::Solvers::NetworkSolverGen;
 using Analyzer::Device::Resistor;
 
-NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2): R1(R1), R2(R2), deviceId(deviceId)
+NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2) : R1(R1), R2(R2), deviceId(deviceId)
 {
 }
 
 LinMath::Matrix NetworkSolverGen::solve(LinMath::Matrix& eqOrig) const
 {
 	// return 3 numbers: V I R
-	
+
 	LinMath::Matrix eq = eqOrig;
-	
+
 	Resistor r1(deviceId, 0, 0, R1);
 	Resistor r2(deviceId, 0, 0, R2);
 
@@ -34,11 +34,11 @@ LinMath::Matrix NetworkSolverGen::solve(LinMath::Matrix& eqOrig) const
 	i1 = result1(2 * deviceId - 1, 0);
 
 	r2.equation(eq);
-	
+
 	LinMath::Matrix result2 = eq.subMatrix(0, 0, eq.rows, eq.columns - 1).invert() * eq.subMatrix(0, eq.columns - 1, eq.rows, 1);
 	u2 = result2(2 * deviceId - 2, 0);
 	i2 = result2(2 * deviceId - 1, 0);
-	
+
 
 	// now we have 2 datapoints: (u1, i1) and (u2, i2)
 	// we need to fit a line on them
@@ -61,7 +61,7 @@ LinMath::Matrix NetworkSolverGen::solve(LinMath::Matrix& eqOrig) const
 
 	// i0 = U0 / R
 	i0 = u0 / R;
-	
+
 	// handle pathological case of R=inf
 	if (u0 == INFINITY && (R == -INFINITY || R == INFINITY))
 		i0 = i2;
