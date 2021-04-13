@@ -28,7 +28,6 @@ namespace Analyzer {
 			LinMath::Matrix solve();
 			const Branches& getBranches();
 		};
-
-		std::unique_ptr<Network> loadFromStream(std::istream&);
+		std::unique_ptr<Network> loadFromFile(std::string);
 	}
 }

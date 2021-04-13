@@ -1,29 +1,39 @@
-#include "Network.h"
+#include "net.h"
 #include "../fmt/core.h"
 #include "../Device/devices.h"
 #include "Solver/solvers.h"
-#include "LoadException.h"
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
-
-using Analyzer::Network::Network;
-using Analyzer::Network::INetworkSolver;
-using Analyzer::Network::Solvers::NetworkSolverDC;
-using Analyzer::Network::Solvers::NetworkSolverGen;
-using Analyzer::Network::Solvers::NetworkSolverTwoport;
-using Analyzer::Network::Solvers::EquationSystemSolver;
-using Analyzer::Network::Solvers::NetworkSolverResistance;
-using Analyzer::Network::LoadException;
+using namespace Analyzer::Network;
+using namespace Analyzer::Network::Solvers;
 using namespace Analyzer::Device;
 
 void parseDevice(std::string, std::unique_ptr<Network>&);
 void parseCoupledDevice(std::string, std::unique_ptr<Network>&);
 void parseShorthand(std::string, std::unique_ptr<Network>&);
 std::unique_ptr<Network> parseHeader(std::string);
+std::unique_ptr<Network> loadFromStream(std::istream& stream);
 
-std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
+
+std::unique_ptr<Network> Analyzer::Network::loadFromFile(std::string fname) {
+	if (fname == "-") {
+		return loadFromStream(std::cin);
+	}
+	else {
+		std::ifstream fileStream(fname);
+		if (!fileStream) {
+			char buff[200];
+			strerror_s(buff, 200);
+			throw LoadException(fmt::format("Error opening file '{}': {}", fname, buff));
+		}
+		return loadFromStream(fileStream);
+	}
+}
+
+std::unique_ptr<Network> loadFromStream(std::istream& stream)
 {
 	std::string line;
 	while (!line.length() || line[0] == '#')
