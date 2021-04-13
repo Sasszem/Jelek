@@ -61,6 +61,12 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 			solver = new NetworkSolverTwoport(primaryId, secondaryId);
 		}
 		else if (analysisType == "EQ") {
+			unsigned mode;
+			iss >> mode;
+			if (!iss) {
+				mode = EquationSystemSolver::MODE_DEFAULT;
+			}
+			solver = new EquationSystemSolver(mode);
 		}
 		else if (analysisType == "RES") {
 			unsigned port;

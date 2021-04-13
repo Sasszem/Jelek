@@ -19,6 +19,7 @@ The header must consist of 2 unsigned integers N and B
 ### Analysis mode
 
 ```
+<mode: DC | GEN | TWOPORT | EQ | RES >
 ```
 
 The header must continue with a word specifying the analysis mode.
@@ -73,13 +74,22 @@ Result will be a 12x2 matrix, where 2x2 blocks are the R, G, H, K, A and B matri
 
 #### EQ
 
+```
+[printType: 1 | 2]
+```
 
+Parameters
+- `printType`. 1 for human-readable, 2 for matlab-code. Defaults to 1 (human-readable)
+
+Result is the extended matrix of the equation system or matlab code declarinig matrix and vector of the equation system
 
 #### RES
 
 ```
 port: device
 ```
+
+Calculates equivalent resistor value. Does a basic sanity check with 0-current stimulus to check if it's really a resistor.
 
 - PORT: id of the device identifying the ports
 

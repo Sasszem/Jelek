@@ -11,7 +11,8 @@ int main()
 		auto net = Analyzer::Network::loadFromStream(std::cin);
 
 		auto solution = net->solve();
-			std::cout << solution;
+		if (solution.rows && solution.columns)
+		std::cout << solution;
 	}
 	catch (Analyzer::Network::LoadException error) {
 		std::cout << "Loading failed!" << std::endl;
