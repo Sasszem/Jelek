@@ -1,6 +1,9 @@
 #include "Probe.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::Probe;
+using Analyzer::Device::IDevice;
+
 Probe::Probe(unsigned id, unsigned port_plus, unsigned port_minus): IDevice(id, port_plus, port_minus)
 {
 }

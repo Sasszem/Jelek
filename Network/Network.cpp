@@ -11,6 +11,7 @@ using Analyzer::Network::NetworkGraph;
 using Analyzer::Network::Branches;
 using Analyzer::Network::DFS;
 using Analyzer::Network::SolveException;
+using Analyzer::Device::IDevice;
 
 Network::Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver) : N(N), B(B), graph(N), solver(std::move(solver))
 {

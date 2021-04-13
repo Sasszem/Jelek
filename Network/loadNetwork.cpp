@@ -16,6 +16,7 @@ using Analyzer::Network::Solvers::NetworkSolverTwoport;
 using Analyzer::Network::Solvers::EquationSystemSolver;
 using Analyzer::Network::Solvers::NetworkSolverResistance;
 using Analyzer::Network::LoadException;
+using namespace Analyzer::Device;
 
 void parseDevice(std::string, std::unique_ptr<Network>&);
 void parseCoupledDevice(std::string, std::unique_ptr<Network>&);

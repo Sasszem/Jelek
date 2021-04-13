@@ -1,6 +1,9 @@
 #include "VoltageSource.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::VoltageSource;
+using Analyzer::Device::IDevice;
+
 VoltageSource::VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V): IDevice(id, port_plus, port_minus), voltage(V)
 {
 }

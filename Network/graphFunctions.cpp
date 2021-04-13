@@ -4,6 +4,7 @@
 
 using Analyzer::Network::NetworkGraph;
 using Analyzer::Network::Branches;
+using Analyzer::Device::IDevice;
 
 void Analyzer::Network::DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& binding_branches, std::vector<int>& parent) {
 	/// <summary>

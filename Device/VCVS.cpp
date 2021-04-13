@@ -1,6 +1,9 @@
 #include "VCVS.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::VCVS;
+using Analyzer::Device::ICoupledDevice;
+
 VCVS::VCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double gain) : ICoupledDevice(id, plus, minus, other), voltageGain(gain)
 {
 }

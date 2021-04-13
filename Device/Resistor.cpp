@@ -1,6 +1,9 @@
 #include "Resistor.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::Resistor;
+using Analyzer::Device::IDevice;
+
 Resistor::Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double R): IDevice(id, port_plus, port_minus), resistance(R)
 {
 }

@@ -1,6 +1,9 @@
 #include "VCCS.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::VCCS;
+using Analyzer::Device::ICoupledDevice;
+
 VCCS::VCCS(unsigned id, unsigned plus, unsigned minus, unsigned other, double transConductance) : ICoupledDevice(id, plus, minus, other), transferConductance(transConductance)
 {
 }

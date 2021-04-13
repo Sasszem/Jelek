@@ -3,6 +3,8 @@
 #include "../../Device/CurrentSource.h"
 #include "../SolveException.h"
 
+using Analyzer::Device::CurrentSource;
+
 Analyzer::Network::Solvers::NetworkSolverResistance::NetworkSolverResistance(unsigned device): port(device)
 {
 }

@@ -5,6 +5,7 @@
 
 #include <iostream>
 using Analyzer::Network::Solvers::NetworkSolverGen;
+using Analyzer::Device::Resistor;
 
 NetworkSolverGen::NetworkSolverGen(unsigned deviceId, double R1, double R2): R1(R1), R2(R2), deviceId(deviceId)
 {

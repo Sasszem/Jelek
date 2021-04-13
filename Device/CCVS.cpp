@@ -1,6 +1,9 @@
 #include "CCVS.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::CCVS;
+using Analyzer::Device::ICoupledDevice;
+
 CCVS::CCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double transferRes) : ICoupledDevice(id, plus, minus, other), transferRes(transferRes)
 {
 }

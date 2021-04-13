@@ -1,6 +1,9 @@
 #include "CCCS.h"
 #include "../fmt/core.h"
 
+using Analyzer::Device::CCCS;
+using Analyzer::Device::ICoupledDevice;
+
 CCCS::CCCS(unsigned id, unsigned plus, unsigned minus, unsigned other, double gain) : ICoupledDevice(id, plus, minus, other), currGain(gain)
 {
 }

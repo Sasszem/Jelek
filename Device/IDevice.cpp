@@ -1,5 +1,8 @@
 #include "IDevice.h"
 #include "../fmt/core.h"
+
+using Analyzer::Device::IDevice;
+
 unsigned IDevice::currentIndexFromId(unsigned id)
 {
 	return 2*id - 1;
@@ -12,15 +15,13 @@ IDevice::IDevice(unsigned id, unsigned plus, unsigned minus): port_plus(plus), p
 {
 }
 
-#include <stdexcept>
-
 unsigned IDevice::other_port(unsigned port)
 {
 	if (port == port_plus)
 		return port_minus;
 	if (port == port_minus)
 		return port_plus;
-	//throw new std::invalid_argument(fmt::format("Error: invalid arument for other_port(): {}, valid ports are: {} and {}", port, port_plus, port_minus));
+	return 0;
 }
 
 int IDevice::sign(unsigned port)
