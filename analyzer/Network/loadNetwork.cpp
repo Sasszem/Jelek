@@ -21,78 +21,14 @@ using namespace Analyzer::Device;
 void parseDevice(std::string, std::unique_ptr<Network>&);
 void parseCoupledDevice(std::string, std::unique_ptr<Network>&);
 void parseShorthand(std::string, std::unique_ptr<Network>&);
+std::unique_ptr<Network> parseHeader(std::string);
 
 std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 {
-	unsigned N, B;
-	INetworkSolver* solver = nullptr;
-	std::string analysisType;
-
 	std::string line;
-	std::getline(stream, line);
-
-	std::istringstream iss(line);
-	if (!(iss >> N >> B)) {
-		throw LoadException(fmt::format("Error: could not parse header N and B: '{}'", line));
-	}
-
-	iss >> analysisType;
-	if (iss) {
-		if (analysisType == "DC") {
-			solver = new NetworkSolverDC();
-		}
-		else if (analysisType == "GEN") {
-			unsigned deviceid;
-			iss >> deviceid;
-			if (!iss) {
-				throw LoadException(fmt::format("Error: could not parse GEN analysis parameters: '{}'", line));
-			}
-			double R1 = NetworkSolverGen::R1_DEFAULT, R2 = NetworkSolverGen::R2_DEFAULT;
-			iss >> R1 >> R2;
-			solver = new NetworkSolverGen(deviceid, R1, R2);
-
-		}
-		else if (analysisType == "TWOPORT") {
-			unsigned primaryId, secondaryId;
-			iss >> primaryId >> secondaryId;
-			if (!iss) {
-				throw LoadException(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
-			}
-			solver = new NetworkSolverTwoport(primaryId, secondaryId);
-		}
-		else if (analysisType == "EQ") {
-			unsigned mode;
-			iss >> mode;
-			if (!iss) {
-				mode = EquationSystemSolver::MODE_DEFAULT;
-			}
-			solver = new EquationSystemSolver(mode);
-		}
-		else if (analysisType == "RES") {
-			unsigned port;
-			iss >> port;
-			if (!iss) {
-				throw LoadException(fmt::format("Error: could not parse RES device id: '{}'", line));
-			}
-			solver = new NetworkSolverResistance(port);
-		}
-		else {
-			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
-		}
-	}
-	else {
-		// default to DC
-		solver = new NetworkSolverDC();
-	}
-
-	std::unique_ptr<INetworkSolver> solverPtr(solver);
-
-	if (solver->validate(N, B).length()) {
-		throw LoadException(fmt::format("Error: network solver validation failed: '{}'", solver->validate(N, B)));
-	}
-
-	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::move(solverPtr)));
-
+	while (!line.length() || line[0] == '#')
+		std::getline(stream, line);
+	auto network = parseHeader(line);
 
 
 	bool run = true;
@@ -104,8 +40,8 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 
 		// stop on 'END'
 		if (line == "END") {
-			if (B != network->getBranches().size()) {
-				throw LoadException(fmt::format("Load error: END but less then B={} branches were added!", B));
+			if (network->B != network->getBranches().size()) {
+				throw LoadException(fmt::format("Load error: END but less then B={} branches were added!", network->B));
 			}
 			run = false;
 			continue;
@@ -271,4 +207,72 @@ void parseShorthand(std::string line, std::unique_ptr<Network>& network) {
 
 	network->addDevice(std::unique_ptr<IDevice>(device1));
 	network->addDevice(std::unique_ptr<IDevice>(device2));
+}
+
+std::unique_ptr<Network> parseHeader(std::string line) {
+	unsigned N, B;
+	INetworkSolver* solver = nullptr;
+	std::string analysisType;
+
+	std::istringstream iss(line);
+	if (!(iss >> N >> B)) {
+		throw LoadException(fmt::format("Error: could not parse header N and B: '{}'", line));
+	}
+
+	iss >> analysisType;
+	if (iss) {
+		if (analysisType == "DC") {
+			solver = new NetworkSolverDC();
+		}
+		else if (analysisType == "GEN") {
+			unsigned deviceid;
+			iss >> deviceid;
+			if (!iss) {
+				throw LoadException(fmt::format("Error: could not parse GEN analysis parameters: '{}'", line));
+			}
+			double R1 = NetworkSolverGen::R1_DEFAULT, R2 = NetworkSolverGen::R2_DEFAULT;
+			iss >> R1 >> R2;
+			solver = new NetworkSolverGen(deviceid, R1, R2);
+
+		}
+		else if (analysisType == "TWOPORT") {
+			unsigned primaryId, secondaryId;
+			iss >> primaryId >> secondaryId;
+			if (!iss) {
+				throw LoadException(fmt::format("Error: could not parse TWOPORT analysis parameters: '{}'", line));
+			}
+			solver = new NetworkSolverTwoport(primaryId, secondaryId);
+		}
+		else if (analysisType == "EQ") {
+			unsigned mode;
+			iss >> mode;
+			if (!iss) {
+				mode = EquationSystemSolver::MODE_DEFAULT;
+			}
+			solver = new EquationSystemSolver(mode);
+		}
+		else if (analysisType == "RES") {
+			unsigned port;
+			iss >> port;
+			if (!iss) {
+				throw LoadException(fmt::format("Error: could not parse RES device id: '{}'", line));
+			}
+			solver = new NetworkSolverResistance(port);
+		}
+		else {
+			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
+		}
+	}
+	else {
+		// default to DC
+		solver = new NetworkSolverDC();
+	}
+
+	std::unique_ptr<INetworkSolver> solverPtr(solver);
+
+	if (solver->validate(N, B).length()) {
+		throw LoadException(fmt::format("Error: network solver validation failed: '{}'", solver->validate(N, B)));
+	}
+
+	return std::unique_ptr<Network>(new Network(N, B, std::move(solverPtr)));
 }
