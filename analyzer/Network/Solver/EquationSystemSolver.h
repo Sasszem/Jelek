@@ -12,6 +12,7 @@ namespace Analyzer {
 				const static unsigned MODE_DEFAULT = 1;
 				EquationSystemSolver(unsigned mode);
 				LinMath::Matrix solve(LinMath::Matrix&) const;
+				std::string validate(unsigned N, unsigned B);
 				std::string print() const;
 			};
 		}

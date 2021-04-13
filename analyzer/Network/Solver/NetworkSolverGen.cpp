@@ -80,5 +80,16 @@ std::string NetworkSolverGen::print() const
 	return fmt::format("NetworkSolverGen(device={}, R1={}, R2={})", deviceId, R1, R2);
 }
 
+std::string Analyzer::Network::Solvers::NetworkSolverGen::validate(unsigned N, unsigned B)
+{
+	if (deviceId == 0 || deviceId > B) {
+		return fmt::format("device {} is invalid!", deviceId);
+	}
+	if (R1 < 0.0 || R2 < 0.0 || R1 == R2) {
+		return fmt::format("gen parameters {} and {} are invalid, they must be two different positive numbers!", R1, R2);
+	}
+	return "";
+}
+
 const double NetworkSolverGen::R1_DEFAULT = 1.0;
 const double NetworkSolverGen::R2_DEFAULT = 1000000.0;

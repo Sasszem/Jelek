@@ -45,3 +45,11 @@ std::string Analyzer::Network::Solvers::NetworkSolverResistance::print() const
 	return fmt::format("NetworkSolverResistance(port={})", port);
 }
 
+std::string Analyzer::Network::Solvers::NetworkSolverResistance::validate(unsigned N, unsigned B)
+{
+	if (port == 0 || port > B) {
+		return fmt::format("device {} is invalid!", port);
+	}
+	return "";
+}
+

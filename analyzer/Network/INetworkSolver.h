@@ -10,6 +10,7 @@ namespace Analyzer {
 		public:
 			virtual LinMath::Matrix solve(LinMath::Matrix&) const = 0;
 			virtual std::string print() const = 0;
+			virtual std::string validate(unsigned N, unsigned B) = 0;
 		};
 	}
 }

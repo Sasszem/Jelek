@@ -17,3 +17,8 @@ std::string NetworkSolverDC::print() const
 {
 	return "NetworkSolverDC()";
 }
+
+std::string Analyzer::Network::Solvers::NetworkSolverDC::validate(unsigned N, unsigned B)
+{
+	return "";
+}

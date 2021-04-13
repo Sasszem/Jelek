@@ -11,6 +11,7 @@ namespace Analyzer {
 				NetworkSolverDC();
 				LinMath::Matrix solve(LinMath::Matrix&) const;
 				std::string print() const;
+				std::string validate(unsigned N, unsigned B);
 			};
 		}
 	}

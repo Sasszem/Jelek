@@ -85,7 +85,13 @@ std::unique_ptr<Network> Analyzer::Network::loadFromStream(std::istream& stream)
 		solver = new NetworkSolverDC();
 	}
 
-	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::unique_ptr<INetworkSolver>(solver)));
+	std::unique_ptr<INetworkSolver> solverPtr(solver);
+
+	if (solver->validate(N, B).length()) {
+		throw LoadException(fmt::format("Error: network solver validation failed: '{}'", solver->validate(N, B)));
+	}
+
+	std::unique_ptr<Network> network = std::unique_ptr<Network>(new Network(N, B, std::move(solverPtr)));
 
 
 

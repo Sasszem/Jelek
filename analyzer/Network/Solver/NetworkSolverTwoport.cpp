@@ -67,6 +67,20 @@ std::string NetworkSolverTwoport::print() const
 	return fmt::format("NetworkSolverTwoport(primary={}, secondary={})", primary, secondary);
 }
 
+std::string Analyzer::Network::Solvers::NetworkSolverTwoport::validate(unsigned N, unsigned B)
+{
+	if (primary == 0 || primary > B) {
+		return fmt::format("primary device {} is invalid!", primary);
+	}
+	if (secondary == 0 || secondary > B) {
+		return fmt::format("secondary device {} is invalid!", secondary);
+	}
+	if (primary == secondary) {
+		return fmt::format("TWOPORT's ports can't be the same!");
+	}
+	return "";
+}
+
 LinMath::Matrix solve_for(unsigned for1, unsigned for2, unsigned from1, unsigned from2, LinMath::Matrix& eq) {
 	// swap in lines, chop up matrix, invert and multiply
 

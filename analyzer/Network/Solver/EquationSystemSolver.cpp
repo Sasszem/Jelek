@@ -1,7 +1,8 @@
 #include "EquationSystemSolver.h"
 #include <iostream>
+#include "../../fmt/format.h"
 
-Analyzer::Network::Solvers::EquationSystemSolver::EquationSystemSolver(unsigned mode) : printMode(mode <= 2 && mode >= 1 ? mode : 1)
+Analyzer::Network::Solvers::EquationSystemSolver::EquationSystemSolver(unsigned mode) : printMode(mode)
 {
 }
 
@@ -42,6 +43,14 @@ LinMath::Matrix Analyzer::Network::Solvers::EquationSystemSolver::solve(LinMath:
 	else if (printMode == 2)
 		printMatlab(eq);
 	return LinMath::Matrix(0, 0);
+}
+
+std::string Analyzer::Network::Solvers::EquationSystemSolver::validate(unsigned N, unsigned B)
+{
+	if (printMode > 2 || printMode < 1) {
+		return fmt::format("print mode {} is invalid, valid options are 1 or 2!", printMode);
+	}
+	return "";
 }
 
 std::string Analyzer::Network::Solvers::EquationSystemSolver::print() const
