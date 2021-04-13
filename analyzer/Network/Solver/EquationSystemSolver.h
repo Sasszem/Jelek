@@ -8,7 +8,6 @@ namespace Analyzer {
 				public INetworkSolver
 			{
 			public:
-				EquationSystemSolver();
 				LinMath::Matrix solve(LinMath::Matrix&) const;
 				std::string print() const;
 			};

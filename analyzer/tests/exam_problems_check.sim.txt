@@ -1,0 +1,29 @@
+# 2 problems from my exam today
+# I finished early, so used this to check my answers after giving in
+# they look correct, this was not a hard exam
+
+4 7 TWOPORT 1 2
+
+WIRE 1 2 1
+WIRE 2 3 1
+
+RES 3 2 1 0.650
+RES 4 2 4 1.3
+RES 5 4 1 1.3
+
+$CCCS 6 4 3 3 0.9
+
+RES 7 2 3 2.6
+
+END
+
+# other exam problem
+4 6 TWOPORT 1 2
+
+WIRE 1 2 1
+WIRE 2 3 1
+RES 3 2 4 10
+RES 4 4 3 2.3
+!AMP 5 4 1 3 1
+
+END

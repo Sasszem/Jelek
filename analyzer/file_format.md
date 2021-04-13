@@ -19,7 +19,6 @@ The header must consist of 2 unsigned integers N and B
 ### Analysis mode
 
 ```
-<mode: DC | GEN | TWOPORT>
 ```
 
 The header must continue with a word specifying the analysis mode.
@@ -74,9 +73,7 @@ Result will be a 12x2 matrix, where 2x2 blocks are the R, G, H, K, A and B matri
 
 #### EQ
 
-Has no parameters
 
-Result is the extended matrix of the equation system.
 
 #### RES
 
