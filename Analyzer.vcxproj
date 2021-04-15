@@ -24,6 +24,7 @@
     <ProjectGuid>{aad57950-c933-4590-916e-2d0fa3f81f41}</ProjectGuid>
     <RootNamespace>Nagyhazi</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Analyzer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,71 +140,86 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Device\CCCS.cpp" />
-    <ClCompile Include="Device\CCVS.cpp" />
-    <ClCompile Include="Device\CurrentSource.cpp" />
-    <ClCompile Include="Device\ICoupledDevice.cpp" />
-    <ClCompile Include="Device\IDevice.cpp" />
-    <ClCompile Include="Device\Nullator.cpp" />
-    <ClCompile Include="Device\Probe.cpp" />
-    <ClCompile Include="Device\Resistor.cpp" />
-    <ClCompile Include="Device\VCCS.cpp" />
-    <ClCompile Include="Device\VCVS.cpp" />
-    <ClCompile Include="Device\VoltageSource.cpp" />
-    <ClCompile Include="Device\Wire.cpp" />
-    <ClCompile Include="fmt\format.cc" />
-    <ClCompile Include="LinMath\DimensionException.cpp" />
-    <ClCompile Include="LinMath\InvertException.cpp" />
-    <ClCompile Include="LinMath\Matrix.cpp" />
-    <ClCompile Include="Nagyhazi.cpp" />
-    <ClCompile Include="Network\graphFunctions.cpp" />
-    <ClCompile Include="Network\INetworkSolver.cpp" />
-    <ClCompile Include="Network\LoadException.cpp" />
-    <ClCompile Include="Network\loadNetwork.cpp" />
-    <ClCompile Include="Network\Network.cpp" />
-    <ClCompile Include="Network\SolveException.cpp" />
-    <ClCompile Include="Network\Solver\EquationSystemSolver.cpp" />
-    <ClCompile Include="Network\Solver\NetworkSolverDC.cpp" />
-    <ClCompile Include="Network\Solver\NetworkSolverGen.cpp" />
-    <ClCompile Include="Network\Solver\NetworkSolverResistance.cpp" />
-    <ClCompile Include="Network\Solver\NetworkSolverTwoport.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Device\CCCS.h" />
-    <ClInclude Include="Device\CCVS.h" />
-    <ClInclude Include="Device\CurrentSource.h" />
-    <ClInclude Include="Device\devices.h" />
-    <ClInclude Include="Device\ICoupledDevice.h" />
-    <ClInclude Include="Device\IDevice.h" />
-    <ClInclude Include="Device\Nullator.h" />
-    <ClInclude Include="Device\Probe.h" />
-    <ClInclude Include="Device\Resistor.h" />
-    <ClInclude Include="Device\VCCS.h" />
-    <ClInclude Include="Device\VCVS.h" />
-    <ClInclude Include="Device\VoltageSource.h" />
-    <ClInclude Include="Device\Wire.h" />
-    <ClInclude Include="fmt\core.h" />
-    <ClInclude Include="fmt\format-inl.h" />
-    <ClInclude Include="fmt\format.h" />
-    <ClInclude Include="LinMath\DimensionException.h" />
-    <ClInclude Include="LinMath\InvertException.h" />
-    <ClInclude Include="LinMath\math.h" />
-    <ClInclude Include="LinMath\Matrix.h" />
-    <ClInclude Include="Network\graphFunctions.h" />
-    <ClInclude Include="Network\INetworkSolver.h" />
-    <ClInclude Include="Network\LoadException.h" />
-    <ClInclude Include="Network\net.h" />
-    <ClInclude Include="Network\Network.h" />
-    <ClInclude Include="Network\SolveException.h" />
-    <ClInclude Include="Network\Solver\EquationSystemSolver.h" />
-    <ClInclude Include="Network\Solver\NetworkSolverDC.h" />
-    <ClInclude Include="Network\Solver\NetworkSolverGen.h" />
-    <ClInclude Include="Network\Solver\NetworkSolverResistance.h" />
-    <ClInclude Include="Network\Solver\NetworkSolverTwoport.h" />
-    <ClInclude Include="Network\Solver\solvers.h" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="analyzer\file_format.md" />
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="analyzer\Device\CCCS.cpp" />
+    <ClCompile Include="analyzer\Device\CCVS.cpp" />
+    <ClCompile Include="analyzer\Device\CurrentSource.cpp" />
+    <ClCompile Include="analyzer\Device\ICoupledDevice.cpp" />
+    <ClCompile Include="analyzer\Device\IDevice.cpp" />
+    <ClCompile Include="analyzer\Device\Nullator.cpp" />
+    <ClCompile Include="analyzer\Device\Probe.cpp" />
+    <ClCompile Include="analyzer\Device\Resistor.cpp" />
+    <ClCompile Include="analyzer\Device\VCCS.cpp" />
+    <ClCompile Include="analyzer\Device\VCVS.cpp" />
+    <ClCompile Include="analyzer\Device\VoltageSource.cpp" />
+    <ClCompile Include="analyzer\Device\Wire.cpp" />
+    <ClCompile Include="analyzer\fmt\format.cc" />
+    <ClCompile Include="analyzer\LinMath\DimensionException.cpp" />
+    <ClCompile Include="analyzer\LinMath\InvertException.cpp" />
+    <ClCompile Include="analyzer\LinMath\Matrix.cpp" />
+    <ClCompile Include="analyzer\main.cpp" />
+    <ClCompile Include="analyzer\Network\graphFunctions.cpp" />
+    <ClCompile Include="analyzer\Network\INetworkSolver.cpp" />
+    <ClCompile Include="analyzer\Network\LoadException.cpp" />
+    <ClCompile Include="analyzer\Network\loadNetwork.cpp" />
+    <ClCompile Include="analyzer\Network\Network.cpp" />
+    <ClCompile Include="analyzer\Network\SolveException.cpp" />
+    <ClCompile Include="analyzer\Network\Solver\EquationSystemSolver.cpp" />
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverDC.cpp" />
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverGen.cpp" />
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverResistance.cpp" />
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverTwoport.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="analyzer\Device\CCCS.h" />
+    <ClInclude Include="analyzer\Device\CCVS.h" />
+    <ClInclude Include="analyzer\Device\CurrentSource.h" />
+    <ClInclude Include="analyzer\Device\devices.h" />
+    <ClInclude Include="analyzer\Device\ICoupledDevice.h" />
+    <ClInclude Include="analyzer\Device\IDevice.h" />
+    <ClInclude Include="analyzer\Device\Nullator.h" />
+    <ClInclude Include="analyzer\Device\Probe.h" />
+    <ClInclude Include="analyzer\Device\Resistor.h" />
+    <ClInclude Include="analyzer\Device\VCCS.h" />
+    <ClInclude Include="analyzer\Device\VCVS.h" />
+    <ClInclude Include="analyzer\Device\VoltageSource.h" />
+    <ClInclude Include="analyzer\Device\Wire.h" />
+    <ClInclude Include="analyzer\fmt\core.h" />
+    <ClInclude Include="analyzer\fmt\format-inl.h" />
+    <ClInclude Include="analyzer\fmt\format.h" />
+    <ClInclude Include="analyzer\LinMath\DimensionException.h" />
+    <ClInclude Include="analyzer\LinMath\InvertException.h" />
+    <ClInclude Include="analyzer\LinMath\math.h" />
+    <ClInclude Include="analyzer\LinMath\Matrix.h" />
+    <ClInclude Include="analyzer\Network\graphFunctions.h" />
+    <ClInclude Include="analyzer\Network\INetworkSolver.h" />
+    <ClInclude Include="analyzer\Network\LoadException.h" />
+    <ClInclude Include="analyzer\Network\net.h" />
+    <ClInclude Include="analyzer\Network\Network.h" />
+    <ClInclude Include="analyzer\Network\SolveException.h" />
+    <ClInclude Include="analyzer\Network\Solver\EquationSystemSolver.h" />
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverDC.h" />
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverGen.h" />
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverResistance.h" />
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverTwoport.h" />
+    <ClInclude Include="analyzer\Network\Solver\solvers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="analyzer\tests\amp_test.png" />
+    <Image Include="analyzer\tests\ideal_transformer_test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="analyzer\tests\amp_test.sim.txt" />
+    <Text Include="analyzer\tests\exam_problems_check.sim.txt" />
+    <Text Include="analyzer\tests\gyak4_1.2.sim.txt" />
+    <Text Include="analyzer\tests\gyak4_1.3.sim.txt" />
+    <Text Include="analyzer\tests\hazim_twoporttest.sim.txt" />
+    <Text Include="analyzer\tests\ideal_transformer_test.sim.txt" />
+    <Text Include="analyzer\tests\rm_twoport.sim.txt" />
+    <Text Include="analyzer\tests\vaea_twoport.sim.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

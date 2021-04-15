@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\fmt">
+      <UniqueIdentifier>{0fc62ebf-afb6-470e-a9ec-4271868afc49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LinMath">
+      <UniqueIdentifier>{6f499573-4aaa-43a4-bb91-f8bce4938dba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LinMath">
+      <UniqueIdentifier>{d2f64c19-421b-4d3b-bcc6-50ee29f3c592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fmt">
+      <UniqueIdentifier>{fa9778a0-6c04-4345-aa53-3bc898335e29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{10335c8f-dea5-4778-8fa4-caa0c2cf3a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{b14fd0af-263c-405a-8be6-d21d698e269a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Device">
+      <UniqueIdentifier>{66036b0e-32c0-4375-a257-a3c7095bf36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Device">
+      <UniqueIdentifier>{b127c2af-1a8b-46d0-b326-fb375fe52614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network\Solver">
+      <UniqueIdentifier>{b39420e8-2a42-47a8-9c4c-b06d41f0389e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network\Solver">
+      <UniqueIdentifier>{cab1768f-e2d9-46a5-ac02-a70cbbf646d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{cbaf9c30-ddb6-4673-86e9-0ade009f2a79}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="analyzer\file_format.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="analyzer\Device\CCVS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\CCCS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\CurrentSource.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\ICoupledDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\IDevice.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\Nullator.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\Probe.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\Resistor.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\VCVS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\VCCS.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\VoltageSource.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Device\Wire.cpp">
+      <Filter>Source Files\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\fmt\format.cc">
+      <Filter>Source Files\fmt</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\LinMath\DimensionException.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\LinMath\InvertException.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\LinMath\Matrix.cpp">
+      <Filter>Source Files\LinMath</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Solver\EquationSystemSolver.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverDC.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverGen.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverResistance.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Solver\NetworkSolverTwoport.cpp">
+      <Filter>Source Files\Network\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\graphFunctions.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\INetworkSolver.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\LoadException.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\loadNetwork.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\Network.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\Network\SolveException.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="analyzer\Device\CCVS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\CCCS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\CurrentSource.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\devices.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\ICoupledDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\IDevice.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\Nullator.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\Probe.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\Resistor.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\VCVS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\VCCS.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\VoltageSource.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\Wire.h">
+      <Filter>Header Files\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\fmt\core.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\fmt\format.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\fmt\format-inl.h">
+      <Filter>Header Files\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\LinMath\DimensionException.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\LinMath\InvertException.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\LinMath\math.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\LinMath\Matrix.h">
+      <Filter>Header Files\LinMath</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\EquationSystemSolver.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverDC.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverGen.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverResistance.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\NetworkSolverTwoport.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Solver\solvers.h">
+      <Filter>Header Files\Network\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\graphFunctions.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\INetworkSolver.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\LoadException.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\net.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\Network.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Network\SolveException.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="analyzer\tests\amp_test.png">
+      <Filter>tests</Filter>
+    </Image>
+    <Image Include="analyzer\tests\ideal_transformer_test.png">
+      <Filter>tests</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="analyzer\tests\amp_test.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\exam_problems_check.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\gyak4_1.2.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\gyak4_1.3.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\hazim_twoporttest.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\ideal_transformer_test.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\rm_twoport.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+    <Text Include="analyzer\tests\vaea_twoport.sim.txt">
+      <Filter>tests</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
