@@ -1,7 +1,7 @@
 #include "NetworkSolverTwoport.h"
 
-#include "../../LinMath/InvertException.h"
-#include "../../fmt/core.h"
+#include <LinMath/InvertException.h>
+#include <fmt/core.h>
 #include <iostream>
 #include <algorithm>
 #include <limits>

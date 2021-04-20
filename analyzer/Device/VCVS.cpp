@@ -1,5 +1,5 @@
 #include "VCVS.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::VCVS;
 using Analyzer::Device::ICoupledDevice;

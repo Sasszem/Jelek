@@ -1,5 +1,5 @@
-#include "math.h"
-#include "../fmt/core.h"
+#include <LinMath/math.h>
+#include <fmt/core.h>
 #include <algorithm>
 #include <iostream>
 
@@ -131,6 +131,9 @@ Matrix LinMath::Matrix::operator*(const Matrix& rhs) const
 }
 
 Matrix Matrix::subMatrix(unsigned startRow, unsigned startColumn, unsigned height, unsigned width) const {
+	if (startRow >= rows || startColumn >= columns || startRow + height > rows || startColumn + width > columns) {
+		throw DimensionException(fmt::format("Error: could not extract {}x{} rectangle starting at row {} and column {} from a {}x{} matrix!", height, width, startRow, startColumn, rows, columns));
+	}
 	Matrix res(height, width);
 	for (unsigned r = 0; r < height; r++) {
 		for (unsigned c = 0; c < width; c++) {

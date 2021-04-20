@@ -1,5 +1,5 @@
 #include "Resistor.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::Resistor;
 using Analyzer::Device::IDevice;

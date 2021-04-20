@@ -1,5 +1,5 @@
 #include "CCCS.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::CCCS;
 using Analyzer::Device::ICoupledDevice;

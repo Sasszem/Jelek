@@ -1,6 +1,6 @@
 #include "EquationSystemSolver.h"
 #include <iostream>
-#include "../../fmt/format.h"
+#include <fmt/format.h>
 
 Analyzer::Network::Solvers::EquationSystemSolver::EquationSystemSolver(unsigned mode) : printMode(mode)
 {

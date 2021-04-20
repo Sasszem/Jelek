@@ -1,7 +1,7 @@
 #include "net.h"
-#include "../fmt/core.h"
-#include "../Device/devices.h"
-#include "Solver/solvers.h"
+#include <fmt/core.h>
+#include <Device/devices.h>
+#include <Network/Solver/solvers.h>
 
 #include <iostream>
 #include <sstream>
@@ -50,7 +50,7 @@ std::unique_ptr<Network> loadFromStream(std::istream& stream)
 
 		// stop on 'END'
 		if (line == "END") {
-			if (network->B != network->getBranches().size()) {
+			if (network->B != network->getBranchCount()) {
 				throw LoadException(fmt::format("Load error: END but less then B={} branches were added!", network->B));
 			}
 			run = false;

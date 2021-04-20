@@ -1,5 +1,5 @@
 #include "IDevice.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::IDevice;
 

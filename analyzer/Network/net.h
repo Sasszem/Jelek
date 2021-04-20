@@ -1,5 +1,12 @@
 #pragma once
 
-#include "Network.h"
-#include "SolveException.h"
-#include "LoadException.h"
+/**
+ * \file
+ * 
+ * Batch import of Network classes
+ * 
+ */
+
+#include <Network/Network.h>
+#include <Network/SolveException.h>
+#include <Network/LoadException.h>

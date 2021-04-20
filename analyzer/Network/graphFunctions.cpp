@@ -7,17 +7,6 @@ using Analyzer::Network::Branches;
 using Analyzer::Device::IDevice;
 
 void Analyzer::Network::DFS(NetworkGraph& graph, const Branches& branches, std::vector<int>& binding_branches, std::vector<int>& parent) {
-	/// <summary>
-	/// this dual purpose function is a DFS traversal for two jobs
-	/// it finds all binding branches of the spanning forest of the network graph
-	///	and also records for each node the branch it was reached from
-	///	and that will be used to trace paths
-	/// </summary>
-	/// <param name="graph">the network graph</param>
-	/// <param name="branches">branches of the graph</param>
-	/// <param name="binding_branches">returns the binding branches found</param>
-	/// <param name="parent">returns the recoded parent branches</param>
-
 	unsigned N = graph.size();
 
 	auto seen = std::vector<bool>(N);
@@ -72,7 +61,7 @@ void Analyzer::Network::DFS(NetworkGraph& graph, const Branches& branches, std::
 }
 
 
-std::unique_ptr<NetworkGraph> Analyzer::Network::findCycles(unsigned, unsigned, NetworkGraph& graph, Branches& branches) {
+std::unique_ptr<NetworkGraph> Analyzer::Network::findCycles(NetworkGraph& graph, Branches& branches) {
 	std::unique_ptr<NetworkGraph> ret = std::make_unique<NetworkGraph>();
 	unsigned N = graph.size();
 

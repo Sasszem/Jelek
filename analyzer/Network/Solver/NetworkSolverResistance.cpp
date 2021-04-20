@@ -1,7 +1,7 @@
 #include "NetworkSolverResistance.h"
-#include "../../fmt/core.h"
-#include "../../Device/CurrentSource.h"
-#include "../SolveException.h"
+#include <fmt/core.h>
+#include <Device/CurrentSource.h>
+#include <Network/SolveException.h>
 
 using Analyzer::Device::CurrentSource;
 

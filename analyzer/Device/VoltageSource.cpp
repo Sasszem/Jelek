@@ -1,5 +1,5 @@
 #include "VoltageSource.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::VoltageSource;
 using Analyzer::Device::IDevice;

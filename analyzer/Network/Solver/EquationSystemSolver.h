@@ -1,18 +1,53 @@
 #pragma once
-#include "../INetworkSolver.h"
+#include <Network/INetworkSolver.h>
 
 namespace Analyzer {
 	namespace Network {
 		namespace Solvers {
+			/**
+			 * Network "solver" for printing the equations.
+			 * 
+			 * Can print in a human-readable format or as matlab code
+			 */
 			class EquationSystemSolver :
 				public INetworkSolver
 			{
+				/// mode to print in. 1 is human-readable, 2 is matlab
 				const unsigned printMode;
 			public:
+				/// default mode (human readable)
 				const static unsigned MODE_DEFAULT = 1;
+
+				/**
+				 * Initialize with mode.
+				 * 
+				 * \param mode
+				 */
 				EquationSystemSolver(unsigned mode);
-				LinMath::Matrix solve(LinMath::Matrix&) const;
+				/**
+				 * "Solve" the network (print equation system).
+				 * 
+				 * \param eq
+				 * \return an empty (0x0) matrix
+				 */
+				LinMath::Matrix solve(LinMath::Matrix& eq) const;
+
+				/**
+				 * Validate solver.
+				 * 
+				 * Validates mode only
+				 * 
+				 * \param N
+				 * \param B
+				 * \return the error string or empty string
+				 */
 				std::string validate(unsigned N, unsigned B);
+
+				/**
+				 * Print in a guman readable format.
+				 * 
+				 * \return string representation of the solver
+				 */
 				std::string print() const;
 			};
 		}

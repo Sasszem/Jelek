@@ -1,5 +1,5 @@
 #include "CurrentSource.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::CurrentSource;
 using Analyzer::Device::IDevice;

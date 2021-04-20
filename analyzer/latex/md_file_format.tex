@@ -1,0 +1,217 @@
+\hypertarget{md_file_format_autotoc_md1}{}\doxysection{Header}\label{md_file_format_autotoc_md1}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<network parameters> <analysis mode> [analysis parameters]}
+\end{DoxyCode}
+\hypertarget{md_file_format_autotoc_md2}{}\doxysubsection{Network parameters}\label{md_file_format_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<N: unsigned> <B: unsigned>}
+\end{DoxyCode}
+
+
+The header must consist of 2 unsigned integers N and B
+\begin{DoxyItemize}
+\item N is the number of nodes in the network
+\item B is the number of devices (branches)
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md3}{}\doxysubsection{Analysis mode}\label{md_file_format_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<mode: DC | GEN | TWOPORT | EQ | RES >}
+\end{DoxyCode}
+
+
+The header must continue with a word specifying the analysis mode.
+
+possible values\+:
+\begin{DoxyItemize}
+\item DC -\/ solves for all voltages and currents
+\item G\+EN -\/ solves for equivalent generator (Thevenin and Norton) parameters
+\item T\+W\+O\+P\+O\+RT -\/ solves for all possible two-\/port characteristic matrices
+\item EQ -\/ diagnostic printing of the extended matrix of the equation system
+\item R\+ES -\/ equivalent resistor parameters
+\end{DoxyItemize}
+
+If omitted, it defaults to DC\hypertarget{md_file_format_autotoc_md4}{}\doxysubsection{Analysis modes and parameters}\label{md_file_format_autotoc_md4}
+Additional analysis parameters might follow after the mode\hypertarget{md_file_format_autotoc_md5}{}\doxysubsubsection{DC}\label{md_file_format_autotoc_md5}
+DC has no parameters, anything after mode will be ignored
+
+Return will be a column vector with every device\textquotesingle{}s voltage and current, sorted by id, so {\ttfamily u1, i1, u2, i2, ...}\hypertarget{md_file_format_autotoc_md6}{}\doxysubsubsection{G\+EN}\label{md_file_format_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<DEVICEID: unsigned> [<R1: double> <R2: double>]}
+\end{DoxyCode}
+
+
+G\+EN has the following parameters\+:
+
+
+\begin{DoxyItemize}
+\item D\+E\+V\+I\+C\+E\+ID\+: unsigned integer id of a device that will be used as \char`\"{}output\char`\"{}. It\textquotesingle{}s equation will be replaced, so it can be anything but a resistor is recommended
+\item R1, R2\+: resistance values to terminate the network with. Default is 1 and 1M
+\end{DoxyItemize}
+
+Result will be a 3x1 column vector {\ttfamily \mbox{[}u, i, r\mbox{]}}\hypertarget{md_file_format_autotoc_md7}{}\doxysubsubsection{T\+W\+O\+P\+O\+RT}\label{md_file_format_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<PRIMARYID: unsined> <SECONDARYID: unsigned>}
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item P\+R\+I\+M\+A\+R\+Y\+ID\+: id of the primary port of the two-\/port network
+\item S\+E\+C\+O\+N\+D\+A\+R\+Y\+ID\+: id of the secondary port of the network
+\end{DoxyItemize}
+
+Both devices will be removed, so setting them as a resistor or wire is recommended
+
+Result will be a 12x2 matrix, where 2x2 blocks are the R, G, H, K, A and B matrices in this order from top to bottom.
+
+{\bfseries{W\+A\+R\+N\+I\+NG\+:}} I got some funny results when N\+OT using device 1 and 2 as the ports, witch I\textquotesingle{}ll look furter into later.\hypertarget{md_file_format_autotoc_md8}{}\doxysubsubsection{EQ}\label{md_file_format_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[printType: 1 | 2]}
+\end{DoxyCode}
+
+
+Parameters
+\begin{DoxyItemize}
+\item {\ttfamily print\+Type}. 1 for human-\/readable, 2 for matlab-\/code. Defaults to 1 (human-\/readable)
+\end{DoxyItemize}
+
+Result is the extended matrix of the equation system or matlab code declarinig matrix and vector of the equation system\hypertarget{md_file_format_autotoc_md9}{}\doxysubsubsection{R\+ES}\label{md_file_format_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{port: device}
+\end{DoxyCode}
+
+
+Calculates equivalent resistor value. Does a basic sanity check with 0-\/current stimulus to check if it\textquotesingle{}s really a resistor.
+
+
+\begin{DoxyItemize}
+\item P\+O\+RT\+: id of the device identifying the ports
+\end{DoxyItemize}
+
+The equation of the device specified will be erased! If it was already erased by a nullor, the answer will be wrong!
+
+Result is a 1x1 matrix with the resistance value.\hypertarget{md_file_format_autotoc_md10}{}\doxysection{devices}\label{md_file_format_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<TYPE: string> <ID: unsigned> <PLUS: unsigned> <MINUS: unsigned> <...params>}
+\end{DoxyCode}
+
+
+All devices have a type, an ID, and two connections (plus and minus) to nodes.\hypertarget{md_file_format_autotoc_md11}{}\doxysubsection{Resistor}\label{md_file_format_autotoc_md11}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily R\+ES}
+\item parameter\+: resistance (double)
+\item equation\+: {\ttfamily iR -\/ u = 0}
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md12}{}\doxysubsection{Voltage source}\label{md_file_format_autotoc_md12}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily V\+OL}
+\item parameter\+: voltage (double)
+\item equation\+: {\ttfamily u = uset}
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md13}{}\doxysubsection{Current source}\label{md_file_format_autotoc_md13}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily C\+UR}
+\item parameter\+: current (double)
+\item equation\+: {\ttfamily i = iset}
+\end{DoxyItemize}
+
+Caveat\+: it\textquotesingle{}s a current S\+I\+NK, so current will flow from + to -\/! (it follows the normal directions for voltage and current)\hypertarget{md_file_format_autotoc_md14}{}\doxysubsection{Short / wire}\label{md_file_format_autotoc_md14}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily W\+I\+RE}
+\item no parameters
+\item equation\+: {\ttfamily u = 0}
+\item useful for current-\/controlled devices or dummy devices in T\+W\+O\+P\+O\+RT or R\+E\+S\+I\+S\+T\+OR analysis
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md15}{}\doxysubsection{Break / probe}\label{md_file_format_autotoc_md15}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily P\+R\+O\+BE}
+\item no parameters
+\item equation\+: {\ttfamily i = 0}
+\item useful for voltage-\/controlled devices or as dummy devices
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md16}{}\doxysubsection{Coupled devices}\label{md_file_format_autotoc_md16}
+These devices should come in pairs, but it\textquotesingle{}s not enforced, so it\textquotesingle{}s the responsibility of the creator of the file to ensure that.
+
+To make clear that a device is a coupled one, all coupled device types start with a dollar sign\hypertarget{md_file_format_autotoc_md17}{}\doxysubsubsection{Current controlled current source}\label{md_file_format_autotoc_md17}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily \$\+C\+C\+CS}
+\item parameters\+: source (id), current gain (double a)
+\item equation\+: {\ttfamily a $\ast$ i(id) -\/ i = 0}
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md18}{}\doxysubsubsection{Current controlled voltage source}\label{md_file_format_autotoc_md18}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily \$\+C\+C\+VS}
+\item parameters\+: source(id), transfer resistance (double r)
+\item equation\+: {\ttfamily r $\ast$ i(id) -\/ u = 0}
+\end{DoxyItemize}
+
+Since there\textquotesingle{}s no gyrator component, two of these can be used instead easily\hypertarget{md_file_format_autotoc_md19}{}\doxysubsubsection{Voltage controlled voltage source}\label{md_file_format_autotoc_md19}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily \$\+V\+C\+VS}
+\item parameters\+: source(id), voltage gain (double g)
+\item equation\+: {\ttfamily g $\ast$ u(id) -\/ u = 0}
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md20}{}\doxysubsubsection{Voltage controlled current source}\label{md_file_format_autotoc_md20}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily \$\+V\+C\+CS}
+\item parameters\+: source(id), transfer conductance (double g)
+\item equation\+: {\ttfamily g $\ast$ u(id) -\/ i = 0}
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md21}{}\doxysubsubsection{Nullator}\label{md_file_format_autotoc_md21}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily \$\+N\+U\+LL}
+\item parameters\+: friend device (id)
+\item equations\+: {\ttfamily u=0, i=0}
+\item {\bfseries{F\+R\+I\+E\+ND D\+E\+V\+I\+CE ID M\+U\+ST BE L\+O\+W\+ER T\+H\+EN I\+D!}}
+\item since every device can have only one equation, it overrides the equation of it\textquotesingle{}s \textquotesingle{}friend\textquotesingle{} device
+\item this means the other device effectively becomes a norator, and the two devices together form a nullor, or an ideal amplifier
+\item the writer of a file must be careful with the friend devices!
+\item using {\ttfamily A\+MP} shorthand is recommended instead
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md22}{}\doxysubsection{Coupled pair shorthand}\label{md_file_format_autotoc_md22}
+These pseudo-\/devices are actually two normal devices used to build a common coupled pair. Since they are still two devices, they take the given ID and the next one.
+
+To make clear that a device is a pair shorthand, all type strings start with an exclamation mark.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<type: string> <id> <plus1: node> <minus1: node> <plus2: node> <minus2: node> <param: double>}
+\end{DoxyCode}
+
+
+Don\textquotesingle{}t forget that they still count as 2 devices, taking {\ttfamily id} and {\ttfamily id+1}!\hypertarget{md_file_format_autotoc_md23}{}\doxysubsubsection{ideal transformer}\label{md_file_format_autotoc_md23}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily !\+T\+R\+AN}
+\item parameter is ratio between first and second device
+\item synthetized with a C\+C\+CS and V\+C\+VS
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md24}{}\doxysubsubsection{gyrator}\label{md_file_format_autotoc_md24}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily !\+G\+YR}
+\item parameter is gyration resistance
+\item synthetized with two C\+C\+V\+S-\/es
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md25}{}\doxysubsubsection{Ideal amplifier}\label{md_file_format_autotoc_md25}
+
+\begin{DoxyItemize}
+\item type string\+: {\ttfamily !\+A\+MP}
+\item no parameters
+\item synthetized with a nullator and a short (replaced with a norator)
+\end{DoxyItemize}\hypertarget{md_file_format_autotoc_md26}{}\doxysection{Empty lines, comments or E\+OF}\label{md_file_format_autotoc_md26}
+
+\begin{DoxyItemize}
+\item empty lines are ignored
+\item also every line starting with hashtag (\#) is ignored
+\item (due to the way parsing is implemented any extra info written after a line is also ignored IF NO P\+A\+R\+A\+M\+E\+T\+E\+RS C\+AN F\+O\+L\+L\+OW)
+\item parsing terminates without error when E\+OF is reached or a line contains {\ttfamily E\+ND}
+\item don\textquotesingle{}t press C\+T\+R\+L-\/C, because it throws and exception. 
+\end{DoxyItemize}

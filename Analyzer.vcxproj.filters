@@ -46,10 +46,14 @@
     <Filter Include="tests">
       <UniqueIdentifier>{cbaf9c30-ddb6-4673-86e9-0ade009f2a79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Device\Coupled">
+      <UniqueIdentifier>{e71d417e-02fa-4ed9-bc8d-7d7587d95a27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="analyzer\file_format.md" />
+    <None Include="analyzer\Doxyfile" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="analyzer\Device\CCVS.cpp">
@@ -138,37 +142,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="analyzer\Device\CCVS.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="analyzer\Device\CCCS.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
     <ClInclude Include="analyzer\Device\CurrentSource.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="analyzer\Device\devices.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
-    <ClInclude Include="analyzer\Device\ICoupledDevice.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
     <ClInclude Include="analyzer\Device\IDevice.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="analyzer\Device\Nullator.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="analyzer\Device\Probe.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="analyzer\Device\Resistor.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="analyzer\Device\VCVS.h">
-      <Filter>Header Files\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="analyzer\Device\VCCS.h">
       <Filter>Header Files\Device</Filter>
     </ClInclude>
     <ClInclude Include="analyzer\Device\VoltageSource.h">
@@ -233,6 +219,24 @@
     </ClInclude>
     <ClInclude Include="analyzer\Network\SolveException.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\CCVS.h">
+      <Filter>Header Files\Device\Coupled</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\CCCS.h">
+      <Filter>Header Files\Device\Coupled</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\ICoupledDevice.h">
+      <Filter>Header Files\Device\Coupled</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\Nullator.h">
+      <Filter>Header Files\Device\Coupled</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\VCVS.h">
+      <Filter>Header Files\Device\Coupled</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer\Device\VCCS.h">
+      <Filter>Header Files\Device\Coupled</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

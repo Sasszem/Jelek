@@ -1,6 +1,6 @@
 #include "Network.h"
 #include "graphFunctions.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 #include <algorithm>
 #include <stdexcept>
 #include "SolveException.h"
@@ -88,7 +88,7 @@ LinMath::Matrix Network::getEquations() {
 	// Kirchoff's voltage laws (KVLs)
 	// going round in a loop, the sum of all voltages (with proper directions) is 0
 
-	auto cycles = findCycles(N, B, graph, branches);
+	auto cycles = findCycles(graph, branches);
 	for (auto& cycle : *cycles) {
 		for (auto& b : cycle) {
 			eq(idx, 2 * abs(b) - 2) = (b > 0) ? 1 : -1;
@@ -109,7 +109,7 @@ LinMath::Matrix Network::solve() {
 	}
 }
 
-const std::vector<std::unique_ptr<IDevice>>& Network::getBranches()
+unsigned Analyzer::Network::Network::getBranchCount() const
 {
-	return branches;
+	return branches.size();
 }

@@ -1,7 +1,7 @@
 #include "NetworkSolverGen.h"
 
-#include "../../Device/Resistor.h"
-#include "../../fmt/core.h"
+#include <Device/Resistor.h>
+#include <fmt/core.h>
 
 #include <iostream>
 using Analyzer::Network::Solvers::NetworkSolverGen;

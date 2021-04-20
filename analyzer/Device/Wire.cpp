@@ -1,5 +1,5 @@
 #include "Wire.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::Wire;
 using Analyzer::Device::IDevice;

@@ -1,5 +1,5 @@
 #include "Probe.h"
-#include "../fmt/core.h"
+#include <fmt/core.h>
 
 using Analyzer::Device::Probe;
 using Analyzer::Device::IDevice;
