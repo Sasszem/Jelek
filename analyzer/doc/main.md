@@ -7,3 +7,5 @@ The newest version of this project is available at the [Github repo](https://git
 See also:
 - [file format documentation](file_format.md)
 - [how it works](working.md)
+
+This project uses the [fmt library](https://fmt.dev/latest/index.html)
