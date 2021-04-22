@@ -1,0 +1,5 @@
+<map id="Analyzer::Device::VCVS" name="Analyzer::Device::VCVS">
+<area shape="rect" id="node1" title="Voltage controlled voltage source." alt="" coords="17,169,191,196"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1ICoupledDevice.html" title="Coupled device abstract base class." alt="" coords="5,80,203,121"/>
+<area shape="rect" id="node3" href="$classAnalyzer_1_1Device_1_1IDevice.html" title="Abstract base class of devices." alt="" coords="9,5,199,32"/>
+</map>

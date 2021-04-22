@@ -1,0 +1,9 @@
+<map id="Analyzer::Device::ICoupledDevice" name="Analyzer::Device::ICoupledDevice">
+<area shape="rect" id="node1" title="Coupled device abstract base class." alt="" coords="243,99,440,141"/>
+<area shape="rect" id="node3" href="$classAnalyzer_1_1Device_1_1CCCS.html" title="Current controlled current source." alt="" coords="497,5,671,32"/>
+<area shape="rect" id="node4" href="$classAnalyzer_1_1Device_1_1CCVS.html" title="Current controlled voltage source." alt="" coords="497,56,671,83"/>
+<area shape="rect" id="node5" href="$classAnalyzer_1_1Device_1_1Nullator.html" title="Nullator." alt="" coords="488,107,680,133"/>
+<area shape="rect" id="node6" href="$classAnalyzer_1_1Device_1_1VCCS.html" title="voltage controlled current source." alt="" coords="497,157,671,184"/>
+<area shape="rect" id="node7" href="$classAnalyzer_1_1Device_1_1VCVS.html" title="Voltage controlled voltage source." alt="" coords="497,208,671,235"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1IDevice.html" title="Abstract base class of devices." alt="" coords="5,107,195,133"/>
+</map>

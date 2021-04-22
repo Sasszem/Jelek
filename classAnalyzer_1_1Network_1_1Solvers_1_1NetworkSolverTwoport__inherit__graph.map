@@ -1,0 +1,4 @@
+<map id="Analyzer::Network::Solvers::NetworkSolverTwoport" name="Analyzer::Network::Solvers::NetworkSolverTwoport">
+<area shape="rect" id="node1" title="Network solver for two port characteristic matrices." alt="" coords="5,95,231,136"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="43,5,193,47"/>
+</map>

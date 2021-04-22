@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,107,134"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1LoadException.html" title="Exception thrown when a loading error is encountered." alt="" coords="185,5,317,47"/>
+<area shape="rect" id="node3" href="$classAnalyzer_1_1Network_1_1SolveException.html" title="Exception thrown when the network can not be solver for some reason." alt="" coords="185,71,317,112"/>
+<area shape="rect" id="node4" href="$classLinMath_1_1DimensionException.html" title="something dimension&#45;related gone wrong" alt="" coords="155,137,347,163"/>
+<area shape="rect" id="node5" href="$classLinMath_1_1InvertException.html" title="The matrix could not be inverted because it was singular." alt="" coords="169,187,333,214"/>
+</map>

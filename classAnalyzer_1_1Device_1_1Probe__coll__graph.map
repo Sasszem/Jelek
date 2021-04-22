@@ -1,0 +1,4 @@
+<map id="Analyzer::Device::Probe" name="Analyzer::Device::Probe">
+<area shape="rect" id="node1" title="Probe / break / 0&#45;current source." alt="" coords="11,80,189,107"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1IDevice.html" title="Abstract base class of devices." alt="" coords="5,5,195,32"/>
+</map>
