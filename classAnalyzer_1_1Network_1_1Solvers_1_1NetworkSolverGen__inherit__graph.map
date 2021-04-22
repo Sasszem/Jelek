@@ -1,4 +1,4 @@
 <map id="Analyzer::Network::Solvers::NetworkSolverGen" name="Analyzer::Network::Solvers::NetworkSolverGen">
-<area shape="rect" id="node1" title="Solver for determining equivalent generator (Thevenin, Norton) parameters." alt="" coords="5,95,205,136"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="30,5,181,47"/>
+<area shape="rect" id="node1" title="Solver for determining equivalent generator (Thevenin, Norton) parameters." alt="" coords="5,95,188,136"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="31,5,163,47"/>
 </map>

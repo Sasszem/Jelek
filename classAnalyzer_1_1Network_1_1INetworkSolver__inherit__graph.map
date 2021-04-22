@@ -1,8 +1,8 @@
 <map id="Analyzer::Network::INetworkSolver" name="Analyzer::Network::INetworkSolver">
-<area shape="rect" id="node1" title="Abstract base class of all network solvers." alt="" coords="5,136,156,177"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1Solvers_1_1EquationSystemSolver.html" title="Network &quot;solver&quot; for printing the equations." alt="" coords="214,5,439,47"/>
-<area shape="rect" id="node3" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverDC.html" title="DS solver, solves for all voltages and currents." alt="" coords="230,71,423,112"/>
-<area shape="rect" id="node4" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverGen.html" title="Solver for determining equivalent generator (Thevenin, Norton) parameters." alt="" coords="227,136,427,177"/>
-<area shape="rect" id="node5" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverResistance.html" title="Network solver to determine equivalent resistance of a network." alt="" coords="204,201,449,243"/>
-<area shape="rect" id="node6" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverTwoport.html" title="Network solver for two port characteristic matrices." alt="" coords="214,267,439,308"/>
+<area shape="rect" id="node1" title="Abstract base class of all network solvers." alt="" coords="5,136,137,177"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1Solvers_1_1EquationSystemSolver.html" title="Network &quot;solver&quot; for printing the equations." alt="" coords="195,5,398,47"/>
+<area shape="rect" id="node3" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverDC.html" title="DS solver, solves for all voltages and currents." alt="" coords="209,71,385,112"/>
+<area shape="rect" id="node4" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverGen.html" title="Solver for determining equivalent generator (Thevenin, Norton) parameters." alt="" coords="205,136,388,177"/>
+<area shape="rect" id="node5" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverResistance.html" title="Network solver to determine equivalent resistance of a network." alt="" coords="185,201,408,243"/>
+<area shape="rect" id="node6" href="$classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverTwoport.html" title="Network solver for two port characteristic matrices." alt="" coords="194,267,399,308"/>
 </map>

@@ -1,14 +1,14 @@
 <map id="Analyzer::Device::IDevice" name="Analyzer::Device::IDevice">
-<area shape="rect" id="node1" title="Abstract base class of devices." alt="" coords="5,191,195,217"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1CurrentSource.html" title="Current source." alt="" coords="247,34,435,75"/>
-<area shape="rect" id="node3" href="$classAnalyzer_1_1Device_1_1ICoupledDevice.html" title="Coupled device abstract base class." alt="" coords="243,99,440,141"/>
-<area shape="rect" id="node9" href="$classAnalyzer_1_1Device_1_1Probe.html" title="Probe / break / 0&#45;current source." alt="" coords="253,165,430,192"/>
-<area shape="rect" id="node10" href="$classAnalyzer_1_1Device_1_1Resistor.html" title="Resistor." alt="" coords="245,216,438,243"/>
-<area shape="rect" id="node11" href="$classAnalyzer_1_1Device_1_1VoltageSource.html" title="Voltage source." alt="" coords="246,267,437,309"/>
-<area shape="rect" id="node12" href="$classAnalyzer_1_1Device_1_1Wire.html" title="Wire / short / 0&#45;voltage source." alt="" coords="256,333,427,360"/>
-<area shape="rect" id="node4" href="$classAnalyzer_1_1Device_1_1CCCS.html" title="Current controlled current source." alt="" coords="497,5,671,32"/>
-<area shape="rect" id="node5" href="$classAnalyzer_1_1Device_1_1CCVS.html" title="Current controlled voltage source." alt="" coords="497,56,671,83"/>
-<area shape="rect" id="node6" href="$classAnalyzer_1_1Device_1_1Nullator.html" title="Nullator." alt="" coords="488,107,680,133"/>
-<area shape="rect" id="node7" href="$classAnalyzer_1_1Device_1_1VCCS.html" title="voltage controlled current source." alt="" coords="497,157,671,184"/>
-<area shape="rect" id="node8" href="$classAnalyzer_1_1Device_1_1VCVS.html" title="Voltage controlled voltage source." alt="" coords="497,208,671,235"/>
+<area shape="rect" id="node1" title="Abstract base class of devices." alt="" coords="5,191,172,217"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1CurrentSource.html" title="Current source." alt="" coords="225,34,390,75"/>
+<area shape="rect" id="node3" href="$classAnalyzer_1_1Device_1_1ICoupledDevice.html" title="Coupled device abstract base class." alt="" coords="220,99,395,141"/>
+<area shape="rect" id="node9" href="$classAnalyzer_1_1Device_1_1Probe.html" title="Probe / break / 0&#45;current source." alt="" coords="229,165,386,192"/>
+<area shape="rect" id="node10" href="$classAnalyzer_1_1Device_1_1Resistor.html" title="Resistor." alt="" coords="222,216,393,243"/>
+<area shape="rect" id="node11" href="$classAnalyzer_1_1Device_1_1VoltageSource.html" title="Voltage source." alt="" coords="224,267,391,309"/>
+<area shape="rect" id="node12" href="$classAnalyzer_1_1Device_1_1Wire.html" title="Wire / short / 0&#45;voltage source." alt="" coords="233,333,382,360"/>
+<area shape="rect" id="node4" href="$classAnalyzer_1_1Device_1_1CCCS.html" title="Current controlled current source." alt="" coords="447,5,606,32"/>
+<area shape="rect" id="node5" href="$classAnalyzer_1_1Device_1_1CCVS.html" title="Current controlled voltage source." alt="" coords="447,56,606,83"/>
+<area shape="rect" id="node6" href="$classAnalyzer_1_1Device_1_1Nullator.html" title="Nullator." alt="" coords="443,107,611,133"/>
+<area shape="rect" id="node7" href="$classAnalyzer_1_1Device_1_1VCCS.html" title="voltage controlled current source." alt="" coords="447,157,606,184"/>
+<area shape="rect" id="node8" href="$classAnalyzer_1_1Device_1_1VCVS.html" title="Voltage controlled voltage source." alt="" coords="447,208,606,235"/>
 </map>

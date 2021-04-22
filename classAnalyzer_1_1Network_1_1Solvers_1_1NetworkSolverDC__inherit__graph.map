@@ -1,4 +1,4 @@
 <map id="Analyzer::Network::Solvers::NetworkSolverDC" name="Analyzer::Network::Solvers::NetworkSolverDC">
-<area shape="rect" id="node1" title="DS solver, solves for all voltages and currents." alt="" coords="5,95,199,136"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="27,5,177,47"/>
+<area shape="rect" id="node1" title="DS solver, solves for all voltages and currents." alt="" coords="5,95,181,136"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="27,5,159,47"/>
 </map>

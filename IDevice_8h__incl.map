@@ -1,10 +1,10 @@
 <map id="Device/IDevice.h" name="Device/IDevice.h">
-<area shape="rect" id="node1" title=" " alt="" coords="341,5,473,32"/>
-<area shape="rect" id="node2" href="$math_8h.html" title=" " alt="" coords="287,80,411,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="436,80,495,107"/>
-<area shape="rect" id="node3" href="$DimensionException_8h.html" title=" " alt="" coords="5,155,229,181"/>
-<area shape="rect" id="node5" href="$InvertException_8h.html" title=" " alt="" coords="253,155,445,181"/>
-<area shape="rect" id="node6" href="$Matrix_8h.html" title=" " alt="" coords="470,155,602,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="190,229,277,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="497,229,575,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="309,5,429,32"/>
+<area shape="rect" id="node2" href="$math_8h.html" title=" " alt="" coords="260,80,372,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="397,80,451,107"/>
+<area shape="rect" id="node3" href="$DimensionException_8h.html" title=" " alt="" coords="5,155,205,181"/>
+<area shape="rect" id="node5" href="$InvertException_8h.html" title=" " alt="" coords="230,155,402,181"/>
+<area shape="rect" id="node6" href="$Matrix_8h.html" title=" " alt="" coords="426,155,545,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="171,229,250,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="451,229,519,256"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="Analyzer::Device::Wire" name="Analyzer::Device::Wire">
-<area shape="rect" id="node1" title="Wire / short / 0&#45;voltage source." alt="" coords="15,80,185,107"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1IDevice.html" title="Abstract base class of devices." alt="" coords="5,5,195,32"/>
+<area shape="rect" id="node1" title="Wire / short / 0&#45;voltage source." alt="" coords="14,80,163,107"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Device_1_1IDevice.html" title="Abstract base class of devices." alt="" coords="5,5,172,32"/>
 </map>

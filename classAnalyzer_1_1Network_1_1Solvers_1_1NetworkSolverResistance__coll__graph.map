@@ -1,4 +1,4 @@
 <map id="Analyzer::Network::Solvers::NetworkSolverResistance" name="Analyzer::Network::Solvers::NetworkSolverResistance">
-<area shape="rect" id="node1" title="Network solver to determine equivalent resistance of a network." alt="" coords="5,95,251,136"/>
-<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="53,5,203,47"/>
+<area shape="rect" id="node1" title="Network solver to determine equivalent resistance of a network." alt="" coords="5,95,228,136"/>
+<area shape="rect" id="node2" href="$classAnalyzer_1_1Network_1_1INetworkSolver.html" title="Abstract base class of all network solvers." alt="" coords="51,5,183,47"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="Device/Wire.h" name="Device/Wire.h">
-<area shape="rect" id="node1" title=" " alt="" coords="121,5,235,32"/>
-<area shape="rect" id="node2" href="$devices_8h.html" title=" " alt="" coords="34,80,167,107"/>
-<area shape="rect" id="node4" href="$Wire_8cpp.html" title=" " alt="" coords="191,80,319,107"/>
-<area shape="rect" id="node3" href="$loadNetwork_8cpp.html" title=" " alt="" coords="5,155,196,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="111,5,213,32"/>
+<area shape="rect" id="node2" href="$devices_8h.html" title=" " alt="" coords="31,80,152,107"/>
+<area shape="rect" id="node4" href="$Wire_8cpp.html" title=" " alt="" coords="176,80,292,107"/>
+<area shape="rect" id="node3" href="$loadNetwork_8cpp.html" title=" " alt="" coords="5,155,177,181"/>
 </map>
