@@ -5,7 +5,7 @@ namespace Analyzer {
 	namespace Network {
 		namespace Solvers {
 			/**
-			 * Solver for determining equivalent generator (Thevenin, Norton) parameters.
+			 * \brief Solver for determining equivalent generator (Thevenin, Norton) parameters.
 			 * 
 			 * Returns 3x1 matrix [U0; I0; R]
 			 */
@@ -23,7 +23,7 @@ namespace Analyzer {
 				const unsigned deviceId;
 			public:
 				/**
-				 * Create a new solver instance.
+				 * \brief Create a new solver instance.
 				 * 
 				 * \param deviceId termination device id
 				 * \param R1 first termination resistance to "measure" with
@@ -32,20 +32,20 @@ namespace Analyzer {
 				NetworkSolverGen(unsigned deviceId, double R1, double R2);
 
 				/**
-				 * Solve the network for generator parameters.
+				 * \brief Solve the network for generator parameters.
 				 * 
 				 * \param eqOrig extended equation system matrix of the network
 				 * \return generator parameters as a [U0; I0; R] column matrix
 				 */
 				LinMath::Matrix solve(LinMath::Matrix& eqOrig) const;
 				/**
-				 * Print the solver in a human readable format.
+				 * \brief Print the solver in a human readable format.
 				 * 
 				 * \return string representation of the solver
 				 */
 				std::string print() const;
 				/**
-				 * Validate the solver.
+				 * \brief Validate the solver.
 				 * 
 				 * - termination device must be valid
 				 * - R1 and R2 must be two different positive numbers

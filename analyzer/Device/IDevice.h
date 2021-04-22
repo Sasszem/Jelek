@@ -5,11 +5,11 @@
 
 namespace Analyzer {
 	/**
-	 * Namespace for (coupled) devices.
+	 * \brief  Namespace for (coupled) devices.
 	 */
 	namespace Device {
 		/**
-		 * Abstract base class of devices.
+		 * \brief  Abstract base class of devices.
 		 * 
 		 * Devices have 2 connections (plus and minus), have a voltage drop, current and a characteristic equation describing the relationship between those 2.
 		 * 
@@ -23,14 +23,14 @@ namespace Analyzer {
 		{
 		protected:
 			/**
-			 * Current index helper when writing equations into the matrix
+			 * \brief Current index helper when writing equations into the matrix
 			 * 
 			 * \param id id of device to get current index of
 			 * \return unknown index of the current of the given device
 			 */
 			static unsigned currentIndexFromId(unsigned id);
 			/**
-			 * Voltage index helper when writing equations into the matrix
+			 * \brief Voltage index helper when writing equations into the matrix
 			 *
 			 * \param id id of device to get voltage index of
 			 * \return unknown index of the voltage of the given device
@@ -44,7 +44,7 @@ namespace Analyzer {
 			/// ID of self
 			const unsigned id;
 			/**
-			 * Construct device base common to all devices.
+			 * \brief Construct device base common to all devices.
 			 * 
 			 * \param id
 			 * \param plus
@@ -53,7 +53,7 @@ namespace Analyzer {
 			IDevice(unsigned id, unsigned plus, unsigned minus);
 
 			/**
-			 * Get other port if one port is given.
+			 * \brief Get other port if one port is given.
 			 * 
 			 * If the port is neither plus nor minus port, it returns 0.
 			 * Since this, care must be taken to ensure that port is valid
@@ -64,7 +64,7 @@ namespace Analyzer {
 			unsigned other_port(unsigned port);
 
 			/**
-			 * Sign of this device as seen from port.
+			 * \brief Sign of this device as seen from port.
 			 * 
 			 * - 1 if port is plus port
 			 * - -1 otherwise
@@ -77,7 +77,7 @@ namespace Analyzer {
 			int sign(unsigned port);
 
 			/**
-			 * Write characteristic equation of this node into the matrix.
+			 * \brief Write characteristic equation of this node into the matrix.
 			 * 
 			 * \param eq matrix to write variable coefficents
 			 * \return free component of the equation
@@ -85,27 +85,27 @@ namespace Analyzer {
 			virtual double equation(LinMath::Matrix& eq) = 0;
 
 			/**
-			 * Get current index of this device.
+			 * \brief Get current index of this device.
 			 * 
 			 * \return index of the current of this device in the matrix
 			 */
 			unsigned currentIndex();
 			/**
-			 * Get voltage index of this device.
+			 * \brief Get voltage index of this device.
 			 *
 			 * \return index of the voltage of this device in the matrix
 			 */
 			unsigned voltageIndex();
 
 			/**
-			 * Print this device in a human-readable format.
+			 * \brief Print this device in a human-readable format.
 			 * 
 			 * \return string representation of this device
 			 */
 			virtual std::string print() = 0;
 
 			/**
-			 * (empty) virtual destructor for futureproofing.
+			 * \brief (empty) virtual destructor for futureproofing.
 			 */
 			virtual ~IDevice();
 		};

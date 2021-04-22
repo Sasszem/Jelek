@@ -5,13 +5,13 @@
 namespace Analyzer {
 	namespace Network {
 		/**
-		 * Exception thrown when a loading error is encountered.
+		 * \brief Exception thrown when a loading error is encountered.
 		 */
 		class LoadException : public std::exception
 		{
 		public:
 			/**
-			 * Default constructor with message.
+			 * \brief Default constructor with message.
 			 * 
 			 * \param message
 			 */

@@ -5,7 +5,7 @@ namespace Analyzer {
 	namespace Network {
 		namespace Solvers {
 			/**
-			 * Network solver to determine equivalent resistance of a network.
+			 * \brief Network solver to determine equivalent resistance of a network.
 			 */
 			class NetworkSolverResistance :
 				public INetworkSolver
@@ -14,13 +14,13 @@ namespace Analyzer {
 				const unsigned port;
 			public:
 				/**
-				 * Initialize solver using a termination device ID.
+				 * \brief Initialize solver using a termination device ID.
 				 * 
 				 * \param device
 				 */
 				NetworkSolverResistance(unsigned device);
 				/**
-				 * Solve for the equivalent resistance of the network seen from the termination device.
+				 * \brief Solve for the equivalent resistance of the network seen from the termination device.
 				 * 
 				 * \param eqOrig extended equation system matrix
 				 * \return 1x1 matrix with the resistance
@@ -28,14 +28,14 @@ namespace Analyzer {
 				 */
 				LinMath::Matrix solve(LinMath::Matrix& eqOrig) const;
 				/**
-				 * Convert to a human readable format.
+				 * \brief Convert to a human readable format.
 				 * 
 				 * \return string representation of the solver
 				 */
 				std::string print() const;
 
 				/**
-				 * Validate the solver.
+				 * \brief Validate the solver.
 				 * 
 				 * - termination device ID should be valid
 				 * 

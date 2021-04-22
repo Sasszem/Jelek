@@ -11,7 +11,7 @@ namespace LinMath {
 	{
 	public:
 		/**
-		 * Default constructor.
+		 * \brief Default constructor.
 		 * 
 		 * \param message provided message
 		 */

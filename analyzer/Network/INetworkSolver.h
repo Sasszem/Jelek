@@ -6,13 +6,13 @@
 namespace Analyzer {
 	namespace Network {
 		/**
-		 * Abstract base class of all network solvers.
+		 * \brief Abstract base class of all network solvers.
 		 */
 		class INetworkSolver
 		{
 		public:
 			/**
-			 * Solve the network based on extended equation system matrix.
+			 * \brief Solve the network based on extended equation system matrix.
 			 * 
 			 * The result's interpretation depends on the solver instance
 			 * 
@@ -24,7 +24,7 @@ namespace Analyzer {
 			virtual LinMath::Matrix solve(LinMath::Matrix& eq) const = 0;
 
 			/**
-			 * Print the solver in a human readable format.
+			 * \brief Print the solver in a human readable format.
 			 * 
 			 * Used when debugging
 			 * 
@@ -33,7 +33,7 @@ namespace Analyzer {
 			virtual std::string print() const = 0;
 
 			/**
-			 * Validate solver based on network parameters.
+			 * \brief Validate solver based on network parameters.
 			 * 
 			 * \param N number of nodes in the network
 			 * \param B number of branches (devices) in the network

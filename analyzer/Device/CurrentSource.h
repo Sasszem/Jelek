@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Current source.
+		 * \brief Current source.
 		 * 
 		 * Parameter: current
 		 * Equation: i=I0
@@ -16,7 +16,7 @@ namespace Analyzer {
 			double current;
 		public:
 			/**
-			 * Initialize a new current source.
+			 * \brief Initialize a new current source.
 			 * 
 			 * \param id
 			 * \param port_plus
@@ -26,7 +26,7 @@ namespace Analyzer {
 			CurrentSource(unsigned id, unsigned port_plus, unsigned port_minus, double current);
 			
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 * 
 			 * See class description for equation, and IDevice::equation for details on this function
 			 * 
@@ -36,7 +36,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix& eq);
 
 			/**
-			 * Print this current source in human-readable format.
+			 * \brief Print this current source in human-readable format.
 			 * 
 			 * \return string representation of this current source
 			 */

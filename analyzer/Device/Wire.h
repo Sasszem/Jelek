@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Wire / short / 0-voltage source.
+		 * \brief Wire / short / 0-voltage source.
 		 *
 		 * Parameter: none
 		 * Equation: u=0
@@ -14,7 +14,7 @@ namespace Analyzer {
 		{
 		public:
 			/**
-			 * Initialize a new wire
+			 * \brief Initialize a new wire
 			 *
 			 * \param id
 			 * \param port_plus
@@ -23,7 +23,7 @@ namespace Analyzer {
 			Wire(unsigned id, unsigned port_plus, unsigned port_minus);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -33,7 +33,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix&);
 
 			/**
-			 * Print this wire in human-readable format.
+			 * \brief Print this wire in human-readable format.
 			 *
 			 * \return string representation of this wire
 			 */

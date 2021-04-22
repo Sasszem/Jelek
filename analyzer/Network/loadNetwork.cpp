@@ -11,10 +11,50 @@ using namespace Analyzer::Network;
 using namespace Analyzer::Network::Solvers;
 using namespace Analyzer::Device;
 
-void parseDevice(std::string, std::unique_ptr<Network>&);
-void parseCoupledDevice(std::string, std::unique_ptr<Network>&);
-void parseShorthand(std::string, std::unique_ptr<Network>&);
-std::unique_ptr<Network> parseHeader(std::string);
+/**
+ * \brief parse and load one coupled device pair shorthand.
+ * 
+ * \param line line to load from
+ * \param network network to add the devices to
+ * \throw LoadException if the shorthand is invalid
+ */
+void parseShorthand(std::string line, std::unique_ptr<Network>& network);
+
+/**
+ * \brief parse and load one normal (non-coupled) device.
+ * 
+ * \param line line to load from
+ * \param network network to add the device to
+ * \throw LoadException if the device is invalid
+ */
+void parseDevice(std::string line, std::unique_ptr<Network>& network);
+
+
+/**
+ * \brief parse and load one couple device.
+ * 
+ * \param line line to load from
+ * \param network network to add the device to
+ * \throw LoadException if the device is invalid
+ */
+void parseCoupledDevice(std::string line, std::unique_ptr<Network>& network);
+
+/**
+ * \brief parse network parameters and solver
+ *
+ * \param line first line of the file
+ * \return the created network
+ * \throw LoadException if the header is invalid
+ */
+std::unique_ptr<Network> parseHeader(std::string line);
+
+/**
+ * \brief load a network from a stream
+ * 
+ * \param stream
+ * \return the loaded network
+ * \throw LoadException if the contents are invalid
+ */
 std::unique_ptr<Network> loadFromStream(std::istream& stream);
 
 

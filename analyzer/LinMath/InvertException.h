@@ -3,13 +3,13 @@
 
 namespace LinMath {
 	/**
-	 * The matrix could not be inverted because it was singular.
+	 * \brief The matrix could not be inverted because it was singular.
 	 */
 	class InvertException : public std::exception
 	{
 	public:
 		/**
-		 * Default constructor.
+		 * \brief Default constructor.
 		 * 
 		 */
 		InvertException();

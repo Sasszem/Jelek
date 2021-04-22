@@ -5,7 +5,7 @@ namespace Analyzer {
 	namespace Network {
 		namespace Solvers {
 			/**
-			 * Network "solver" for printing the equations.
+			 * \brief Network "solver" for printing the equations.
 			 * 
 			 * Can print in a human-readable format or as matlab code
 			 */
@@ -19,13 +19,13 @@ namespace Analyzer {
 				const static unsigned MODE_DEFAULT = 1;
 
 				/**
-				 * Initialize with mode.
+				 * \brief Initialize with mode.
 				 * 
 				 * \param mode
 				 */
 				EquationSystemSolver(unsigned mode);
 				/**
-				 * "Solve" the network (print equation system).
+				 * \brief "Solve" the network (print equation system).
 				 * 
 				 * \param eq
 				 * \return an empty (0x0) matrix
@@ -33,7 +33,7 @@ namespace Analyzer {
 				LinMath::Matrix solve(LinMath::Matrix& eq) const;
 
 				/**
-				 * Validate solver.
+				 * \brief Validate solver.
 				 * 
 				 * Validates mode only
 				 * 
@@ -44,7 +44,7 @@ namespace Analyzer {
 				std::string validate(unsigned N, unsigned B);
 
 				/**
-				 * Print in a guman readable format.
+				 * \brief Print in a guman readable format.
 				 * 
 				 * \return string representation of the solver
 				 */

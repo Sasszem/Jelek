@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Nullator.
+		 * \brief Nullator.
 		 *
 		 * Parameter: none
 		 * Equation: u=i=0
@@ -18,7 +18,7 @@ namespace Analyzer {
 		{
 		public:
 			/**
-			 * Construct a new nullator.
+			 * \brief Construct a new nullator.
 			 * 
 			 * \param id
 			 * \param pPlus
@@ -28,7 +28,7 @@ namespace Analyzer {
 			Nullator(unsigned id, unsigned pPlus, unsigned pMinus, unsigned noratorID);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -38,7 +38,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix& eq);
 
 			/**
-			 * Print this device in human-readable format.
+			 * \brief Print this device in human-readable format.
 			 *
 			 * \return string representation of this device
 			 */

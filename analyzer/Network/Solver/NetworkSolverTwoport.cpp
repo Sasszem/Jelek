@@ -12,10 +12,53 @@ NetworkSolverTwoport::NetworkSolverTwoport(unsigned primaryID, unsigned secondar
 {
 }
 
+/**
+ * \brief generate a permute matrix.
+ * 
+ * It will have 1s in the specified columns for the first rows, one in each row
+ * it will be a N x N matrix
+ * 
+ * \param n number of rows & columns of the result matrix
+ * \param targets target columns to place 1s into
+ * \return generated permute matrix
+ */
 LinMath::Matrix permuteMatrix(unsigned n, LinMath::Matrix targets);
-LinMath::Matrix solve_for(unsigned, unsigned, unsigned, unsigned, LinMath::Matrix&);
-void copy_matrix(LinMath::Matrix&, LinMath::Matrix&, unsigned);
-LinMath::Matrix solve_or_nan(unsigned, unsigned, unsigned, unsigned, LinMath::Matrix&);
+
+/**
+ * \brief solve for 2 unknowns from 2 others.
+ * 
+ * Uses a permute matrix to reorder, then uses simple matrix arithmetics
+ * Assumes no constant is added
+ * 
+ * \param for1
+ * \param for2
+ * \param from1
+ * \param from2
+ * \param eq equation system to solve in
+ * \return 2x2 matrix
+ */
+LinMath::Matrix solve_for(unsigned for1, unsigned for2, unsigned from1, unsigned from2, LinMath::Matrix& eq);
+
+/**
+ * \brief copy a 2x2 matrix into a bigger matrix starting at row.
+ * 
+ * \param from matrix to copy from
+ * \param to matrix to copy to
+ * \param row copy to that row
+ */
+void copy_matrix(LinMath::Matrix& from, LinMath::Matrix& to, unsigned row);
+
+/**
+ * \brief solve_for but catch any exception and NaN the matrix instead.
+ * 
+ * \param for1
+ * \param for2
+ * \param from1
+ * \param from2
+ * \param eq
+ * \return 
+ */
+LinMath::Matrix solve_or_nan(unsigned for1, unsigned for2, unsigned from1, unsigned from2, LinMath::Matrix& eq);
 
 LinMath::Matrix NetworkSolverTwoport::solve(LinMath::Matrix& eqOrig) const
 {

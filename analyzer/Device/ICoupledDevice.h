@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Coupled device abstract base class.
+		 * \brief Coupled device abstract base class.
 		 * 
 		 * Coupled devices can have equations depending on other devices parameters.
 		 */
@@ -17,7 +17,7 @@ namespace Analyzer {
 		public:
 
 			/**
-			 * Constructor of the base class parameters.
+			 * \brief Constructor of the base class parameters.
 			 * 
 			 * \param id
 			 * \param plus

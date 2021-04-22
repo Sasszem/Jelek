@@ -2,7 +2,7 @@
 
 #include <memory>
 
-/// namespace to hold linear algebra releated classes
+/// \brief namespace to hold linear algebra releated classes
 /// use the batch import file <LinMath/math.h> to include!
 namespace LinMath {
 	/**
@@ -20,21 +20,21 @@ namespace LinMath {
 		/// columns of this matrix
 		const unsigned columns;
 		/**
-		 * Create an empty (zeros) matrix with a given size.
+		 * \brief Create an empty (zeros) matrix with a given size.
 		 * 
 		 * \param rows
 		 * \param columns
 		 */
 		Matrix(unsigned rows, unsigned columns);
 		/**
-		 * Deep-copy another matrix.
+		 * \brief Deep-copy another matrix.
 		 * 
 		 * \param other
 		 */
 		Matrix(const Matrix& other);
 
 		/**
-		 * Invert the matrix.
+		 * \brief Invert the matrix.
 		 * 
 		 * \return the inverted matrix
 		 * \throw InvertException if the matrix is singular
@@ -42,7 +42,9 @@ namespace LinMath {
 		Matrix invert() const;
 
 		/**
-		 * Acces an element of the matrix. Uses 0-based indexing!
+		 * \brief Acces an element of the matrix. 
+		 * 
+		 * Uses 0-based indexing!
 		 * 
 		 * \param row
 		 * \param column
@@ -52,7 +54,9 @@ namespace LinMath {
 		double& operator()(unsigned row, unsigned column);
 
 		/**
-		 * Read an element of the matrix. Uses 0-based indexing!
+		 * \brief Read an element of the matrix. 
+		 * 
+		 * Uses 0-based indexing!
 		 * 
 		 * \param row
 		 * \param column
@@ -62,7 +66,7 @@ namespace LinMath {
 		const double& operator()(unsigned row, unsigned column) const;
 
 		/**
-		 * Multiply this matrix from the right with another (matrix-matrix multiplication).
+		 * \brief Multiply this matrix from the right with another (matrix-matrix multiplication).
 		 * 
 		 * \param rhs the other matrix to multiply with
 		 * \return the result of the multiplication
@@ -71,7 +75,7 @@ namespace LinMath {
 		Matrix operator*(const Matrix& rhs) const;
 
 		/**
-		 * Extract a continous rectangular submatrix from this matrix.
+		 * \brief Extract a continous rectangular submatrix from this matrix.
 		 * 
 		 * \param startRow the row to start from
 		 * \param startColumn the column to start from
@@ -83,14 +87,14 @@ namespace LinMath {
 		Matrix subMatrix(unsigned startRow, unsigned startColumn, unsigned height, unsigned width) const;
 
 		/**
-		 * Transpose the matrix (swap columns with rows).
+		 * \brief Transpose the matrix (swap columns with rows).
 		 * 
 		 * \return the transposed matrix
 		 */
 		Matrix transpose() const;
 
 		/**
-		 * Add two matrices (element by element).
+		 * \brief Add two matrices (element by element).
 		 * 
 		 * \param rhs the matrix to add
 		 * \return the sum of the matrices
@@ -99,7 +103,7 @@ namespace LinMath {
 		Matrix operator+(const Matrix& rhs) const;
 
 		/**
-		 * Multiply the matrix by a scalar.
+		 * \brief Multiply the matrix by a scalar.
 		 * 
 		 * \param scalar
 		 * \return the scaled matrix
@@ -107,7 +111,7 @@ namespace LinMath {
 		Matrix operator*(double scalar) const;
 
 		/**
-		 * Subtract matrices.
+		 * \brief Subtract matrices.
 		 * 
 		 * \param rhs matrix to subtract from this one
 		 * \return the result
@@ -116,8 +120,11 @@ namespace LinMath {
 		Matrix operator-(const Matrix& rhs) const;
 
 		/**
-		 * Print the matrix in a human-readable format.
+		 * \brief print the matrix in a human-readable format.
+		 * \param stream stream to print into
+		 * \param m matrix to print
+		 * \return the stream for chaining
 		 */
-		friend std::ostream& operator<<(std::ostream&, const Matrix&);
+		friend std::ostream& operator<<(std::ostream& stream, const LinMath::Matrix& m);
 	};
 }

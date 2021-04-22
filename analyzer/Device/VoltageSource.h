@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Voltage source.
+		 * \brief Voltage source.
 		 *
 		 * Parameter: voltage
 		 * Equation: u=U0
@@ -16,7 +16,7 @@ namespace Analyzer {
 			double voltage;
 		public:
 			/**
-			 * Initialize a new voltage source.
+			 * \brief Initialize a new voltage source.
 			 *
 			 * \param id
 			 * \param port_plus
@@ -26,7 +26,7 @@ namespace Analyzer {
 			VoltageSource(unsigned id, unsigned port_plus, unsigned port_minus, double V);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -36,7 +36,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix&);
 
 			/**
-			 * Print this voltage source in human-readable format.
+			 * \brief Print this voltage source in human-readable format.
 			 *
 			 * \return string representation of this voltage source
 			 */

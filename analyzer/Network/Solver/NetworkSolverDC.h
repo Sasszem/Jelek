@@ -4,11 +4,11 @@
 namespace Analyzer {
 	namespace Network {
 		/**
-		 * Namespace for all the different network solvers.
+		 * \brief Namespace for all the different network solvers.
 		 */
 		namespace Solvers {
 			/**
-			 * DS solver, solves for all voltages and currents.
+			 * \brief DS solver, solves for all voltages and currents.
 			 * 
 			 * Result is 2B x 1 matrix, with voltages and currents
 			 * in u1, i1, u2, i2, ... order
@@ -18,14 +18,14 @@ namespace Analyzer {
 			{
 			public:
 				/**
-				 * Constructor.
+				 * \brief Constructor.
 				 * 
 				 * This solver does not have any parameters.
 				 * 
 				 */
 				NetworkSolverDC();
 				/**
-				 * Mandatory solve method.
+				 * \brief Mandatory solve method.
 				 * 
 				 * Solves by inverting the matrix.
 				 * 
@@ -35,14 +35,14 @@ namespace Analyzer {
 				LinMath::Matrix solve(LinMath::Matrix& eq) const;
 
 				/**
-				 * Print the solver.
+				 * \brief Print the solver.
 				 * 
 				 * \return a string representation of the solver (human-readable)
 				 */
 				std::string print() const;
 
 				/**
-				 * Validate the solver for a network.
+				 * \brief Validate the solver for a network.
 				 * 
 				 * Always returns no error (empty string)
 				 * 

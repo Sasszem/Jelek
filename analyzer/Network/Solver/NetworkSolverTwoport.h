@@ -5,9 +5,9 @@ namespace Analyzer {
 	namespace Network {
 		namespace Solvers {
 			/**
-			 * Network solver for two port characteristic matrices.
+			 * \brief Network solver for two port characteristic matrices.
 			 * 
-			 * Returns a 12x2 matrix, containing the 6 characteristic matrices (R, G, H, K, A, B). If any of them does not exitst, it'll be NaN-d
+			 * \brief Returns a 12x2 matrix, containing the 6 characteristic matrices (R, G, H, K, A, B). If any of them does not exitst, it'll be NaN-d
 			 */
 			class NetworkSolverTwoport :
 				public INetworkSolver
@@ -18,7 +18,7 @@ namespace Analyzer {
 				const unsigned secondary;
 			public:
 				/**
-				 * Initialize a solver with port termination devices.
+				 * \brief Initialize a solver with port termination devices.
 				 * 
 				 * \param primaryID
 				 * \param secondaryID
@@ -26,7 +26,7 @@ namespace Analyzer {
 				NetworkSolverTwoport(unsigned primaryID, unsigned secondaryID);
 
 				/**
-				 * Solve for characteristic matrices.
+				 * \brief Solve for characteristic matrices.
 				 * 
 				 * \param eqOrig
 				 * \return the 12x2 matrix as described in the class's description
@@ -34,14 +34,14 @@ namespace Analyzer {
 				LinMath::Matrix solve(LinMath::Matrix& eqOrig) const;
 
 				/**
-				 * Print the solver in a human readable format.
+				 * \brief Print the solver in a human readable format.
 				 * 
 				 * \return string representation of the solver
 				 */
 				std::string print() const;
 
 				/**
-				 * Validate the solver.
+				 * \brief Validate the solver.
 				 * 
 				 * - both device IDs must be valid
 				 * 

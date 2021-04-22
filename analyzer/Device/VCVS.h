@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Voltage controlled voltage source.
+		 * \brief Voltage controlled voltage source.
 		 *
 		 * Parameter: voltage gain
 		 * Equation: u - gain*u(other) = 0
@@ -16,7 +16,7 @@ namespace Analyzer {
 			const double voltageGain;
 		public:
 			/**
-			 * Construct a new VCVS.
+			 * \brief Construct a new VCVS.
 			 * 
 			 * \param id
 			 * \param plus
@@ -27,7 +27,7 @@ namespace Analyzer {
 			VCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double gain);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -37,7 +37,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix& eq);
 
 			/**
-			 * Print this device in human-readable format.
+			 * \brief Print this device in human-readable format.
 			 *
 			 * \return string representation of this device
 			 */

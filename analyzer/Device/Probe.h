@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Probe / break / 0-current source.
+		 * \brief Probe / break / 0-current source.
 		 * 
 		 * Parameter: none
 		 * Equation: i=0
@@ -14,7 +14,7 @@ namespace Analyzer {
 		{
 		public:
 			/**
-			 * Initialize new probe.
+			 * \brief Initialize new probe.
 			 * 
 			 * \param id
 			 * \param port_plus
@@ -23,7 +23,7 @@ namespace Analyzer {
 			Probe(unsigned id, unsigned port_plus, unsigned port_minus);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -33,7 +33,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix& eq);
 
 			/**
-			 * Print this probe in human-readable format.
+			 * \brief Print this probe in human-readable format.
 			 *
 			 * \return string representation of this probe
 			 */

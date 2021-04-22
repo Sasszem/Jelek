@@ -5,7 +5,7 @@
 namespace Analyzer {
 	namespace Network {
 		/**
-		 * A function returning all the cycles found in the network graph.
+		 * \brief A function returning all the cycles found in the network graph.
 		 * 
 		 * It returns the branches of the cycle as signed IDs depending on the orientation (+ if same as the cycle, - otherwise)
 		 * 
@@ -15,7 +15,7 @@ namespace Analyzer {
 		std::unique_ptr<NetworkGraph> findCycles(NetworkGraph& graph, Branches& branches);
 
 		/**
-		 * DFS traversal on the graph 
+		 * \brief DFS traversal on the graph 
 		 * 
 		 * this dual purpose function is a DFS traversal for two jobs
 		 * it finds all binding branches of the spanning forest of the network graph

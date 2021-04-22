@@ -5,6 +5,6 @@
  * A batch-import file for linear math related classes
  */
 
-#include "DimensionException.h"
-#include "InvertException.h"
-#include "Matrix.h"
+#include <LinMath/DimensionException.h>
+#include <LinMath/InvertException.h>
+#include <LinMath/Matrix.h>

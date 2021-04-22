@@ -5,9 +5,9 @@
 #include <vector>
 #include <memory>
 
-/// namespace for analyzer project
+/// \brief namespace for analyzer project
 namespace Analyzer {
-	/// namespace for network-related classes and functions
+	/// \brief namespace for network-related classes and functions
 	namespace Network {
 		/// vector of vector of ints used for network graph or list of cycles
 		typedef std::vector<std::vector<int>> NetworkGraph;
@@ -16,7 +16,7 @@ namespace Analyzer {
 
 
 		/**
-		 * Class representing a linear resistive network.
+		 * \brief Class representing a linear resistive network.
 		 * 
 		 * Stores network and produces equations for solving.
 		 */
@@ -39,7 +39,7 @@ namespace Analyzer {
 			/// number of branches of the network graph (number of devices)
 			const unsigned B;
 			/**
-			 * Initialize empty network with capacity and solver.
+			 * \brief Initialize empty network with capacity and solver.
 			 * 
 			 * \param N number of nodes
 			 * \param B number of branches
@@ -47,7 +47,7 @@ namespace Analyzer {
 			 */
 			Network(unsigned N, unsigned B, std::unique_ptr<INetworkSolver> solver);
 			/**
-			 * Add one device to the network.
+			 * \brief Add one device to the network.
 			 * 
 			 * \param device
 			 * \throw LoadException if the device ID is invalid (0 or >B)
@@ -56,12 +56,12 @@ namespace Analyzer {
 			 */
 			void addDevice(std::unique_ptr<Analyzer::Device::IDevice> device);
 			/**
-			 * Sort devices by ID.
+			 * \brief Sort devices by ID.
 			 */
 			void finishLoading();
 
 			/**
-			 * Generate equation system of the network.
+			 * \brief Generate equation system of the network.
 			 * 
 			 * It'll be
 			 * - B characteristic equations of devices sorted by ID ascending
@@ -73,7 +73,7 @@ namespace Analyzer {
 			LinMath::Matrix getEquations();
 
 			/**
-			 * Solve the network using the solver. The meaning of the solution matrix depends on the solver used.
+			 * \brief Solve the network using the solver. The meaning of the solution matrix depends on the solver used.
 			 * 
 			 * \return a matrix representing the solution
 			 * \throw SolveException if anything goes wrong
@@ -82,7 +82,7 @@ namespace Analyzer {
 
 
 			/**
-			 * Get current branch count (used while loading).
+			 * \brief Get current branch count (used while loading).
 			 * 
 			 * \return the number of already added branches
 			 */
@@ -90,7 +90,7 @@ namespace Analyzer {
 		};
 
 		/**
-		 * Load a network from a file.
+		 * \brief Load a network from a file.
 		 * 
 		 * Filename "-" means load from stdin
 		 * 

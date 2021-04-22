@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Resistor.
+		 * \brief Resistor.
 		 *
 		 * Parameter: resistance
 		 * Equation: iR - u = 0
@@ -16,7 +16,7 @@ namespace Analyzer {
 			double resistance;
 		public:
 			/**
-			 * Initialize a new resistor.
+			 * \brief Initialize a new resistor.
 			 *
 			 * \param id
 			 * \param port_plus
@@ -26,7 +26,7 @@ namespace Analyzer {
 			Resistor(unsigned id, unsigned port_plus, unsigned port_minus, double R);
 
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -36,7 +36,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix&);
 
 			/**
-			 * Print this resistor in human-readable format.
+			 * \brief Print this resistor in human-readable format.
 			 *
 			 * \return string representation of this resistor
 			 */

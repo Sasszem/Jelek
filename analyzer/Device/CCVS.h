@@ -4,7 +4,7 @@
 namespace Analyzer {
 	namespace Device {
 		/**
-		 * Current controlled voltage source.
+		 * \brief Current controlled voltage source.
 		 *
 		 * Parameter: transfer resistance
 		 * Equation: u - tr*i(other) = 0
@@ -16,7 +16,7 @@ namespace Analyzer {
 			const double transferRes;
 		public:
 			/**
-			 * Construct a new CCVS.
+			 * \brief Construct a new CCVS.
 			 * 
 			 * \param id
 			 * \param plus
@@ -27,7 +27,7 @@ namespace Analyzer {
 			CCVS(unsigned id, unsigned plus, unsigned minus, unsigned other, double transferRes);
 			
 			/**
-			 * Write equation.
+			 * \brief Write equation.
 			 *
 			 * See class description for equation, and IDevice::equation for details on this function
 			 *
@@ -37,7 +37,7 @@ namespace Analyzer {
 			double equation(LinMath::Matrix& eq);
 
 			/**
-			 * Print this device in human-readable format.
+			 * \brief Print this device in human-readable format.
 			 *
 			 * \return string representation of this device
 			 */
