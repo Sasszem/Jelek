@@ -191,8 +191,8 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> (line.empty() || line[0] == <span class="charliteral">&#39;#&#39;</span>)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">continue</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// stop on &#39;END&#39;</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;END&quot;</span>) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// stop on any line starting with &#39;END&#39;</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (line.rfind(<span class="stringliteral">&quot;END&quot;</span>, 0) == 0) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (network-&gt;B != network-&gt;getBranchCount()) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="classAnalyzer_1_1Network_1_1LoadException.html">LoadException</a>(fmt::format(<span class="stringliteral">&quot;Load error: END but less then B={} branches were added!&quot;</span>, network-&gt;B));</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
@@ -516,7 +516,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            solver = <span class="keyword">new</span> <a class="code" href="classAnalyzer_1_1Network_1_1Solvers_1_1NetworkSolverResistance.html">NetworkSolverResistance</a>(port);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classAnalyzer_1_1Network_1_1LoadException.html">LoadException</a>(fmt::format(<span class="stringliteral">&quot;Error: invalid analysis type &#39;{}&#39; (valid options are &#39;DC&#39; (default), &#39;GEN&#39; or &#39;TWOPORT&#39;)&quot;</span>, analysisType));</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classAnalyzer_1_1Network_1_1LoadException.html">LoadException</a>(fmt::format(<span class="stringliteral">&quot;Error: invalid analysis type &#39;{}&#39; (valid options are &#39;DC&#39; (default), &#39;GEN&#39;, &#39;TWOPORT&#39;, &#39;EQ&#39; or &#39;RES&#39;)&quot;</span>, analysisType));</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">else</span> {</div>
