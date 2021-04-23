@@ -218,5 +218,5 @@ Don't forget that they still count as 2 devices, taking `id` and `id+1`!
 - empty lines are ignored
 - also every line starting with hashtag (#) is ignored
 - (due to the way parsing is implemented any extra info written after a line is also ignored IF NO PARAMETERS CAN FOLLOW)
-- parsing terminates without error when EOF is reached or a line contains `END`
+- parsing terminates without error when EOF is reached or a line starts with `END`
 - don't press CTRL-C, because it throws and exception.

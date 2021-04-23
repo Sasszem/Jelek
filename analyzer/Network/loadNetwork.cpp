@@ -88,8 +88,8 @@ std::unique_ptr<Network> loadFromStream(std::istream& stream)
 		if (line.empty() || line[0] == '#')
 			continue;
 
-		// stop on 'END'
-		if (line == "END") {
+		// stop on any line starting with 'END'
+		if (line.rfind("END", 0) == 0) {
 			if (network->B != network->getBranchCount()) {
 				throw LoadException(fmt::format("Load error: END but less then B={} branches were added!", network->B));
 			}
@@ -310,7 +310,7 @@ std::unique_ptr<Network> parseHeader(std::string line) {
 			solver = new NetworkSolverResistance(port);
 		}
 		else {
-			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN' or 'TWOPORT')", analysisType));
+			throw LoadException(fmt::format("Error: invalid analysis type '{}' (valid options are 'DC' (default), 'GEN', 'TWOPORT', 'EQ' or 'RES')", analysisType));
 		}
 	}
 	else {
