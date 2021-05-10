@@ -1,73 +1,171 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="LinMath::Matrix" Collapsed="true">
-    <Position X="13.75" Y="0.5" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="LinMath::Matrix">
+    <Position X="53.75" Y="1.25" Width="6" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAACAgAAAAAAAAAQAAAAEAAIAAAAAwAAAAAAA=</HashCode>
-      <FileName>LinMath\LinVector.h</FileName>
+      <HashCode>AAAAgAAAAABAAAAAEABAAAAAAAAgAAAACAAwAAAAAAA=</HashCode>
+      <FileName>analyzer\LinMath\Matrix.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LinMath::Matrix" Collapsed="true">
-    <Position X="12" Y="1.5" Width="1.5" />
+  <Class Name="Analyzer::Network::Solvers::NetworkSolverDC">
+    <Position X="33.5" Y="23.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAABAAAAAAABAAAAAAAEgAAAACAAwAAAAAAA=</HashCode>
-      <FileName>LinMath\Matrix.h</FileName>
+      <HashCode>AAQAAIAAAAAAAAAAAIAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\Solver\NetworkSolverDC.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LinMath::LinearEquationSystem" Collapsed="true">
-    <Position X="12" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIAQAAACAAAAAAAAgAAEAAAAAAAAA=</HashCode>
-      <FileName>LinMath\LinearEquationSystem.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NetworkSolverDC" Collapsed="true">
-    <Position X="0.5" Y="8.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Network\Solver\NetworkSolverDC.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CurrentSource" Collapsed="true">
-    <Position X="0.5" Y="5" Width="1.5" />
+  <Class Name="Analyzer::Device::CurrentSource">
+    <Position X="2.5" Y="13.25" Width="5.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAABAQAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Device\CurrentSource.h</FileName>
+      <FileName>analyzer\Device\CurrentSource.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Probe" Collapsed="true">
-    <Position X="7.25" Y="5" Width="1.5" />
+  <Class Name="Analyzer::Device::Probe">
+    <Position X="20.25" Y="13.25" Width="4" />
     <TypeIdentifier>
       <HashCode>AAQAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Device\Probe.h</FileName>
+      <FileName>analyzer\Device\Probe.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Resistor" Collapsed="true">
-    <Position X="2.75" Y="5" Width="1.5" />
+  <Class Name="Analyzer::Device::Resistor">
+    <Position X="8.75" Y="13.25" Width="4.75" />
     <TypeIdentifier>
       <HashCode>AAwAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Device\Resistor.h</FileName>
+      <FileName>analyzer\Device\Resistor.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VoltageSource" Collapsed="true">
-    <Position X="5" Y="5" Width="1.5" />
+  <Class Name="Analyzer::Device::VoltageSource">
+    <Position X="14.25" Y="13.25" Width="5.25" />
     <TypeIdentifier>
       <HashCode>AAQAABAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Device\VoltageSource.h</FileName>
+      <FileName>analyzer\Device\VoltageSource.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Wire" Collapsed="true">
-    <Position X="10.5" Y="5" Width="1.5" />
+  <Class Name="Analyzer::Device::Wire">
+    <Position X="25" Y="13.25" Width="4" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
-      <FileName>Device\Wire.h</FileName>
+      <FileName>analyzer\Device\Wire.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IOnePort">
-    <Position X="4.5" Y="0.5" Width="2.5" />
+  <Class Name="Analyzer::Device::IDevice">
+    <Position X="29.25" Y="8.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAACAAAAQAAIAAECCAAAAACIAAgAAAgA=</HashCode>
-      <FileName>Device\IDevice.h</FileName>
+      <HashCode>AAQAAAAAAAAAAACAAAAQAAAAAECAAQACACIAAgAAAgA=</HashCode>
+      <FileName>analyzer\Device\IDevice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::CCVS">
+    <Position X="48.25" Y="15.5" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIQAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\CCVS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::CCCS">
+    <Position X="54.5" Y="15.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\CCCS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::Nullator">
+    <Position X="29.75" Y="15.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\Nullator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::VCVS">
+    <Position X="42.25" Y="15.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\VCVS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::VCCS">
+    <Position X="35.5" Y="15.5" Width="6" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAAAAAAAQAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\VCCS.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Device::ICoupledDevice">
+    <Position X="42.25" Y="13.25" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Device\ICoupledDevice.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::Solvers::NetworkSolverResistance">
+    <Position X="20.75" Y="23.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAAACEgAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\Solver\NetworkSolverResistance.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::Solvers::EquationSystemSolver">
+    <Position X="24.5" Y="23.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AASAAIAAAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAE=</HashCode>
+      <FileName>analyzer\Network\Solver\EquationSystemSolver.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::Solvers::NetworkSolverGen">
+    <Position X="37.25" Y="23.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAYAAIAAAAEAAAAAEABAAAAAAAAgCAAAAAAABAAAAAA=</HashCode>
+      <FileName>analyzer\Network\Solver\NetworkSolverGen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::Solvers::NetworkSolverTwoport">
+    <Position X="28.25" Y="23.25" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAQAABAAAAAACAAAAIAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\Solver\NetworkSolverTwoport.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::INetworkSolver">
+    <Position X="29.5" Y="21" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\INetworkSolver.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::SolveException">
+    <Position X="21.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\SolveException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::Network">
+    <Position X="15.75" Y="3.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAICAABCAAAAAAAABWAEAA=</HashCode>
+      <FileName>analyzer\Network\Network.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analyzer::Network::LoadException">
+    <Position X="21.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\Network\LoadException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinMath::InvertException">
+    <Position X="60.25" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\LinMath\InvertException.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LinMath::DimensionException">
+    <Position X="60.25" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analyzer\LinMath\DimensionException.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
