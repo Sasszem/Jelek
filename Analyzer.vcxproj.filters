@@ -49,11 +49,23 @@
     <Filter Include="Header Files\Device\Coupled">
       <UniqueIdentifier>{e71d417e-02fa-4ed9-bc8d-7d7587d95a27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{3fd58022-1911-4950-92a6-06e525e33747}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="analyzer\file_format.md" />
     <None Include="analyzer\Doxyfile" />
+    <None Include="analyzer\doc\file_format.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="analyzer\doc\main.md">
+      <Filter>doc</Filter>
+    </None>
+    <None Include="analyzer\doc\working.md">
+      <Filter>doc</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="analyzer\Device\CCVS.cpp">

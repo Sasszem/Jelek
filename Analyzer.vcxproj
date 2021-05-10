@@ -152,6 +152,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="analyzer\doc\file_format.md" />
+    <None Include="analyzer\doc\main.md" />
+    <None Include="analyzer\doc\working.md" />
     <None Include="analyzer\Doxyfile" />
     <None Include="analyzer\file_format.md" />
     <None Include="ClassDiagram.cd" />
