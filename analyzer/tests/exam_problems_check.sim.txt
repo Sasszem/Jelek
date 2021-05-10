@@ -1,8 +1,8 @@
+
+4 7 TWOPORT 1 2
 # 2 problems from my exam today
 # I finished early, so used this to check my answers after giving in
 # they look correct, this was not a hard exam
-
-4 7 TWOPORT 1 2
 
 WIRE 1 2 1
 WIRE 2 3 1

@@ -1,5 +1,8 @@
 4 6 DC
 
+# network to test if my amplifier device is correct
+# see amp_test.png for the network
+
 VOL 1 2 1 5
 RES 2 3 1 1000
 RES 3 4 3 1000

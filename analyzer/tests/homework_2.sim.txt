@@ -1,0 +1,21 @@
+6 12 EQ 2
+
+# I used this to generate network equations
+# and imported it as matlab
+# I used that as a first step of analyzing this network's transient (step) response
+
+CUR 1 1 2 0
+RES 2 2 1 160000
+!GYR 3 2 1 4 3 5000
+RES 5 3 1 80000
+RES 6 5 4 80000
+RES 7 5 2 160000
+RES 8 5 2 80000
+# capacitor - this equation will be removed later
+RES 9 5 2 0
+RES 10 5 3 160000
+RES 11 5 6 80000
+
+#inductor - same as capacitor
+RES 12 5 3 0
+END

@@ -1,5 +1,8 @@
 5 7 DC
 
+# test if I programmed ITs correctly
+# see ideal_transformer_tet.png for the network
+
 # Us = 2V
 # R = 50
 

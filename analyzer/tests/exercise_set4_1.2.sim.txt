@@ -1,5 +1,7 @@
 9 14 DC
 
+# test based on an exercise from the given out set 4
+# it used a few parameters, so I used dummy values for that:
 # R = 42
 # Rs = 111
 # Rg = 666

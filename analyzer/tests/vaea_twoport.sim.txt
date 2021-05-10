@@ -1,5 +1,7 @@
 5 7 TWOPORT 1 2
 
+# someone else's homework I tested twoport solving on
+
 WIRE 1 2 1
 WIRE 2 5 3
 
